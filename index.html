@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Creation Jewellers | Luxury Handcrafted Jewellery</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<body>
+
+    <div id="loader">
+        <div class="loader-content text-center">
+
+            <!-- Animated Logo Text -->
+            <h1 class="loader-title font-serif">Unique Creation</h1>
+
+            <!-- Diamond Spinner -->
+            <div class="diamond-loader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Loading Text -->
+            <p class="loading-text">Crafting Luxury...</p>
+
+        </div>
+    </div>
+    <div class="announcement-bar text-center py-2">
+        <p class="m-0 small text-uppercase letter-spacing-2">✨ Flat 20% Off on Diamond Making Charges — <a
+                href="offers.html" class="text-dark fw-bold">Shop Now</a></p>
+    </div>
+
+    
+
+    <nav class="navbar navbar-expand-lg fixed-top luxury-nav">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-main">UNIQUE</span>
+      <span class="brand-sub">CREATION</span>
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="menu-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav luxury-menu">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Icons -->
+    <div class="nav-icons d-flex align-items-center gap-3">
+      <a href="#" class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+
+      <a href="#" class="icon-btn position-relative">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count">0</span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+    <!-- <header id="heroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"
+                style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070');">
+                <div class="hero-overlay"></div>
+                <div class="container h-100 d-flex align-items-center">
+                    <div class="hero-text" data-aos="fade-up">
+                        <span class="text-gold mb-2 d-block">The Solitaire Collection</span>
+                        <h1 class="display-2 font-serif">Pure <em>Elegance</em><br>In Every Facet</h1>
+                        <a href="products.html" class="btn-luxury mt-4">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header> -->
+
+
+    <!-- Hero Slider / Video -->
+    <header id="heroSlider" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+        <div class="carousel-inner">
+
+            <!-- Slide 1 (Image) -->
+            <div class="carousel-item active"
+                style="background-image: url('assets/hero/2204_w015_n001_801a_p30_801.jpg'); background-size: cover; background-position: center; height: 90vh;">
+                <div class="hero-overlay"
+                    style="background: rgba(0,0,0,0.35); position:absolute; top:0; left:0; width:100%; height:100%;">
+                </div>
+                <div class="container h-100 d-flex align-items-center position-relative">
+                    <div class="hero-text text-white" data-aos="fade-up">
+                        <span class="text-gold mb-2 d-block" style="letter-spacing:2px;">The Solitaire Collection</span>
+                        <h1 class="display-2 font-serif">Pure <em>Elegance</em><br>In Every Facet</h1>
+                        <a href="products.html" class="btn btn-gold mt-4">Discover More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 (Video) -->
+            <div class="carousel-item" style="height: 90vh; position: relative;">
+                <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+                    <source src="assets/videos/6173172-hd_1920_1080_25fps.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"
+                    style="background: rgba(0,0,0,0.35); position:absolute; top:0; left:0; width:100%; height:100%;">
+                </div>
+                <div class="container h-100 d-flex align-items-center position-relative">
+                    <div class="hero-text text-white" data-aos="fade-up">
+                        <span class="text-gold mb-2 d-block" style="letter-spacing:2px;">Exquisite Craftsmanship</span>
+                        <h1 class="display-2 font-serif">Luxury <em>Handcrafted</em><br>Jewellery</h1>
+                        <a href="collections.html" class="btn btn-gold mt-4">Explore Collections</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 (Image) -->
+            <div class="carousel-item"
+                style="background-image: url('assets/hero/5825697.jpg'); background-size: cover; background-position: center; height: 90vh;">
+                <div class="hero-overlay"
+                    style="background: rgba(0,0,0,0.35); position:absolute; top:0; left:0; width:100%; height:100%;">
+                </div>
+                <div class="container h-100 d-flex align-items-center position-relative">
+                    <div class="hero-text text-white" data-aos="fade-up">
+                        <span class="text-gold mb-2 d-block" style="letter-spacing:2px;">Timeless Designs</span>
+                        <h1 class="display-2 font-serif">Jewellery <em>That Inspires</em><br>Your Story</h1>
+                        <a href="products.html" class="btn btn-gold mt-4">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 (Video Again) -->
+            <div class="carousel-item" style="height: 90vh; position: relative;">
+                <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+                    <source src="assets/videos/13529793_2160_3840_30fps.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"
+                    style="background: rgba(0,0,0,0.35); position:absolute; top:0; left:0; width:100%; height:100%;">
+                </div>
+                <div class="container h-100 d-flex align-items-center position-relative">
+                    <div class="hero-text text-white" data-aos="fade-up">
+                        <span class="text-gold mb-2 d-block" style="letter-spacing:2px;">Signature Collection</span>
+                        <h1 class="display-2 font-serif">Shine <em>Every Day</em><br>With Luxury</h1>
+                        <a href="collections.html" class="btn btn-gold mt-4">View Collection</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="3"></button>
+        </div>
+    </header>
+
+    <section class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="section-title text-center mb-5" data-aos="fade-up">
+                <h2 class="font-serif">Shop by <em>Category</em></h2>
+            </div>
+            <div class="row g-4 text-center">
+
+                <!-- Rings -->
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="100">
+                    <a href="rings.html" class="cat-card-link">
+                        <div class="cat-card">
+                            <div class="cat-img-circle">
+                                <img src="assets/images/rings/yellow.avif" alt="Rings">
+                            </div>
+                            <p class="mt-2 fw-medium">Rings</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Bracelets -->
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="200">
+                    <a href="bracelets.html" class="cat-card-link">
+                        <div class="cat-card">
+                            <div class="cat-img-circle">
+                                <img src="assets/images/bracelets/images (1).jpg" alt="Bracelets">
+                            </div>
+                            <p class="mt-2 fw-medium">Bracelets</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Mangalsutra -->
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="300">
+                    <a href="mangalsutra.html" class="cat-card-link">
+                        <div class="cat-card">
+                            <div class="cat-img-circle">
+                                <img src="assets/images/mangalsutra/download (1).jpg" alt="Mangalsutra">
+                            </div>
+                            <p class="mt-2 fw-medium">Mangalsutra</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Earrings -->
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="400">
+                    <a href="earrings.html" class="cat-card-link">
+                        <div class="cat-card">
+                            <div class="cat-img-circle">
+                                <img src="assets/images/earings/download.jpg" alt="Earrings">
+                            </div>
+                            <p class="mt-2 fw-medium">Earrings</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Necklaces -->
+                <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="500">
+                    <a href="necklaces.html" class="cat-card-link">
+                        <div class="cat-card">
+                            <div class="cat-img-circle">
+                                <img src="assets/images/neklaces/1742912473630-53-Y1.webp" alt="Necklaces">
+                            </div>
+                            <p class="mt-2 fw-medium">Necklaces</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="d-flex justify-content-between align-items-end mb-5" data-aos="fade-right">
+                <div>
+                    <h2 class="font-serif display-5">Bestsellers</h2>
+                    <p class="text-muted">Most loved pieces by our community</p>
+                </div>
+                <a href="products.html" class="btn-text">View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="row g-4">
+                <!-- Product 1 -->
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card shadow-sm rounded overflow-hidden">
+                        <div class="product-img-wrap position-relative">
+                            <img src="assets/images/rings/513.jpg" class="main-img w-100" alt="Rose Gold Diamond Ring">
+                            <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-regular fa-heart"></i></button>
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info p-3 text-center">
+                            <h6 class="mb-1 fw-semibold">Rose Gold Diamond Ring</h6>
+                            <p class="price text-gold fw-bold">₹32,500 <span
+                                    class="old-price text-muted text-decoration-line-through">₹38,000</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card shadow-sm rounded overflow-hidden">
+                        <div class="product-img-wrap position-relative">
+                            <img src="assets/images/bracelets/images (1).jpg" class="main-img w-100"
+                                alt="Gold Bracelet">
+                            <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-regular fa-heart"></i></button>
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info p-3 text-center">
+                            <h6 class="mb-1 fw-semibold">Elegant Gold Bracelet</h6>
+                            <p class="price text-gold fw-bold">₹28,000 <span
+                                    class="old-price text-muted text-decoration-line-through">₹33,000</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="product-card shadow-sm rounded overflow-hidden">
+                        <div class="product-img-wrap position-relative">
+                            <img src="assets/images/mangalsutra/images.png" class="main-img w-100" alt="Mangalsutra">
+                            <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-regular fa-heart"></i></button>
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info p-3 text-center">
+                            <h6 class="mb-1 fw-semibold">Classic Mangalsutra</h6>
+                            <p class="price text-gold fw-bold">₹15,000 <span
+                                    class="old-price text-muted text-decoration-line-through">₹18,000</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="product-card shadow-sm rounded overflow-hidden">
+                        <div class="product-img-wrap position-relative">
+                            <img src="assets/images/earings/download.jpg" class="main-img w-100" alt="Diamond Earrings">
+                            <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-regular fa-heart"></i></button>
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info p-3 text-center">
+                            <h6 class="mb-1 fw-semibold">Diamond Earrings</h6>
+                            <p class="price text-gold fw-bold">₹22,500 <span
+                                    class="old-price text-muted text-decoration-line-through">₹26,000</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="500">
+                    <div class="product-card shadow-sm rounded overflow-hidden">
+                        <div class="product-img-wrap position-relative">
+                            <img src="assets/images/neklaces/images.jpg" class="main-img w-100" alt="Pearl Necklace">
+                            <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-regular fa-heart"></i></button>
+                                <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i
+                                        class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info p-3 text-center">
+                            <h6 class="mb-1 fw-semibold">Pearl Necklace</h6>
+                            <p class="price text-gold fw-bold">₹35,000 <span
+                                    class="old-price text-muted text-decoration-line-through">₹40,000</span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="font-serif display-5 mb-4">Why Purchase From Unique Creation Jewellers?</h2>
+            <p class="text-muted mb-5">Experience luxury, trust, and excellence with every piece.</p>
+
+            <div class="row g-4 justify-content-center">
+
+                <!-- Certified Jewellery -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="why-card p-4 bg-white rounded shadow-sm h-100">
+                        <i class="fa-solid fa-certificate fa-3x text-gold mb-3"></i>
+                        <h6 class="fw-bold mb-2">Certified Jewellery</h6>
+                        <p class="small text-muted">Authentic and certified gems and metals.</p>
+                    </div>
+                </div>
+
+                <!-- 7 Days Money Back -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="why-card p-4 bg-white rounded shadow-sm h-100">
+                        <i class="fa-solid fa-arrow-rotate-left fa-3x text-gold mb-3"></i>
+                        <h6 class="fw-bold mb-2">7 Days Money Back</h6>
+                        <p class="small text-muted">Hassle-free returns within 7 days.</p>
+                    </div>
+                </div>
+
+                <!-- Free Shipping -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="why-card p-4 bg-white rounded shadow-sm h-100">
+                        <i class="fa-solid fa-truck-fast fa-3x text-gold mb-3"></i>
+                        <h6 class="fw-bold mb-2">Free Shipping</h6>
+                        <p class="small text-muted">Delivered safely to your doorstep at no extra cost.</p>
+                    </div>
+                </div>
+
+                <!-- Easy Exchange & Buyback -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="why-card p-4 bg-white rounded shadow-sm h-100">
+                        <i class="fa-solid fa-handshake fa-3x text-gold mb-3"></i>
+                        <h6 class="fw-bold mb-2">Easy Exchange & Buyback</h6>
+                        <p class="small text-muted">Seamless exchange and buyback services for peace of mind.</p>
+                    </div>
+                </div>
+
+                <!-- Free Jewellery Insurance -->
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="why-card p-4 bg-white rounded shadow-sm h-100">
+                        <i class="fa-solid fa-shield-halved fa-3x text-gold mb-3"></i>
+                        <h6 class="fw-bold mb-2">Free Jewellery Insurance</h6>
+                        <p class="small text-muted">Protect your valuable jewellery at no extra cost.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Testimonials Section -->
+    <!-- Testimonials Section (Auto-scroll) -->
+    <section class="py-4 bg-white">
+        <div class="container">
+            <div class="section-title text-center mb-5" data-aos="fade-up">
+                <h2 class="font-serif">What Our Customers Say</h2>
+                <p class="text-muted">Hear from our happy clients who love our handcrafted jewellery</p>
+            </div>
+
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-inner">
+
+                    <!-- Testimonial 1 -->
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="testimonial-card text-center p-4 shadow-sm rounded" data-aos="fade-up">
+                                    <img src="assets/images/testimonials/Untitled2.jpg" alt="Customer 1"
+                                        class="rounded-circle mb-3 testimonial-img">
+                                    <h6 class="fw-bold mb-1">Anjali Sharma</h6>
+                                    <p class="small text-muted mb-2">Mumbai, India</p>
+                                    <div class="mb-2">
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star-half-stroke text-gold"></i>
+                                    </div>
+                                    <p class="text-muted">"Absolutely stunning jewellery! The craftsmanship is exquisite
+                                        and delivery was super fast."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="testimonial-card text-center p-4 shadow-sm rounded" data-aos="fade-up">
+                                    <img src="assets/images/testimonials/Untitled1.jpg" alt="Customer 2"
+                                        class="rounded-circle mb-3 testimonial-img">
+                                    <h6 class="fw-bold mb-1">Rohit Mehra</h6>
+                                    <p class="small text-muted mb-2">Delhi, India</p>
+                                    <div class="mb-2">
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-regular fa-star text-gold"></i>
+                                    </div>
+                                    <p class="text-muted">"The rings I ordered are beyond beautiful. Excellent quality
+                                        and value for money!"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="testimonial-card text-center p-4 shadow-sm rounded" data-aos="fade-up">
+                                    <img src="assets/images/testimonials/Untitled.jpg" alt="Customer 3"
+                                        class="rounded-circle mb-3 testimonial-img">
+                                    <h6 class="fw-bold mb-1">Priya Kapoor</h6>
+                                    <p class="small text-muted mb-2">Bangalore, India</p>
+                                    <div class="mb-2">
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                        <i class="fa-solid fa-star text-gold"></i>
+                                    </div>
+                                    <p class="text-muted">"Unique Creation has become my go-to for jewellery. Every
+                                        piece feels personal and luxurious."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="row align-items-stretch">
+
+                <!-- Left Side: Google Map -->
+                <div class="col-lg-6 mb-4 mb-lg-0 position-relative">
+                    <h3 class="mb-4 text-gold">Our Location</h3>
+                    <div class="map-container"
+                        style="border-radius: 15px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+                        <iframe src="https://www.google.com/maps?q=Shreyas+Cinema+Ghatkopar+Mumbai&output=embed"
+                            width="100%" height="100%" style="border:0; min-height:400px;" allowfullscreen=""
+                            loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- Right Side: Contact Form -->
+                <div class="col-lg-6">
+                    <h3 class="mb-4 text-gold">Get in Touch</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-bold">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label fw-bold">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message"
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer-luxury text-white pt-5 position-relative">
+
+        <!-- Top Gradient Glow -->
+        <div class="footer-glow"></div>
+
+        <div class="container py-5">
+            <div class="row g-5">
+
+                <!-- Brand -->
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="font-serif text-gold mb-3">Unique Creation</h3>
+                    <p class="text-light opacity-75">
+                        Redefining luxury through handcrafted excellence since 2024.
+                        Every piece tells a story of love and art.
+                    </p>
+
+                    <!-- Social -->
+                    <div class="mt-4 d-flex gap-3">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="footer-title">Quick Links</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="collections.html">Collections</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="footer-title">Customer Care</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="footer-title">Stay Connected</h6>
+                    <p class="text-light opacity-75 mb-3">
+                        Subscribe for exclusive offers & latest collections
+                    </p>
+
+                    <div class="input-group newsletter-box">
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                        <button class="btn btn-gold">Join</button>
+                    </div>
+
+                    <!-- Payments -->
+                    <!-- <div class="mt-4 d-flex gap-3 align-items-center">
+                    <img src="assets/images/payments/visa.png" class="payment-icon">
+                    <img src="assets/images/payments/mastercard.png" class="payment-icon">
+                    <img src="assets/images/payments/paypal.png" class="payment-icon">
+                    <img src="assets/images/payments/amex.png" class="payment-icon">
+                </div> -->
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom text-center py-3">
+            <p class="m-0 small">&copy; 2026 Unique Creation Jewellers. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({ duration: 1000, once: true });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function () {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white', 'shadow-sm', 'py-2');
+            } else {
+                nav.classList.remove('bg-white', 'shadow-sm', 'py-2');
+            }
+        });
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }, 1000);
+        });
+    </script>
+
+    <script>
+        // Ensure videos play when slide becomes active
+        const carousel = document.getElementById('heroSlider');
+        carousel.addEventListener('slide.bs.carousel', function (event) {
+            const videos = carousel.querySelectorAll('video');
+            videos.forEach(video => video.pause());
+            const activeVideo = event.relatedTarget.querySelector('video');
+            if (activeVideo) activeVideo.play();
+        });
+    </script>
+</body>
+
+</html>

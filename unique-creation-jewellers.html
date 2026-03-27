@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unique Creation Jewellers – Timeless Elegance</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E9C8;
+    --dark: #0D0D0D;
+    --deep: #1A1408;
+    --cream: #FAF6EE;
+    --ivory: #F2EBD9;
+    --text-dark: #2C2415;
+    --text-mid: #5C4E30;
+    --text-light: #9A8860;
+    --white: #FFFFFF;
+    --border: rgba(201,168,76,0.25);
+    --border-light: rgba(201,168,76,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── CURSOR ─── */
+  .cursor {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    position: fixed; pointer-events: none;
+    z-index: 9999; transition: transform 0.15s ease;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    position: fixed; pointer-events: none;
+    z-index: 9998;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+  }
+
+  /* ─── LOADER ─── */
+  #loader {
+    position: fixed; inset: 0;
+    background: var(--deep);
+    z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #loader.hidden { opacity: 0; visibility: hidden; }
+  .loader-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: loaderReveal 1.2s forwards 0.4s;
+  }
+  .loader-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 8px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-top: 6px;
+    opacity: 0;
+    animation: loaderReveal 1s forwards 0.9s;
+  }
+  .loader-bar {
+    width: 180px; height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .loader-bar::after {
+    content: '';
+    position: absolute; inset: 0 100% 0 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: loaderBar 1.8s ease forwards 0.3s;
+  }
+  @keyframes loaderReveal { to { opacity: 1; } }
+  @keyframes loaderBar { to { left: 0; right: 0; } }
+
+  /* ─── NAVBAR ─── */
+  #navbar {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 0 2rem;
+    transition: all 0.4s ease;
+    background: transparent;
+  }
+  #navbar.scrolled {
+    background: rgba(250,246,238,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+  }
+  .nav-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 80px;
+  }
+  .nav-logo {
+    display: flex; flex-direction: column; align-items: flex-start;
+    text-decoration: none;
+  }
+  .nav-logo-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1;
+    transition: color 0.4s;
+  }
+  #navbar.scrolled .nav-logo-main { color: var(--text-dark); }
+  .nav-logo-sub {
+    font-size: 0.5rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 3px;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+    transition: color 0.3s;
+    position: relative;
+  }
+  #navbar.scrolled .nav-links a { color: var(--text-mid); }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after, .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-actions { display: flex; gap: 1.2rem; align-items: center; }
+  .nav-icon {
+    background: none; border: none;
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem; cursor: pointer;
+    transition: color 0.3s;
+    position: relative;
+  }
+  #navbar.scrolled .nav-icon { color: var(--text-mid); }
+  .nav-icon:hover { color: var(--gold); }
+  .cart-badge {
+    position: absolute; top: -6px; right: -6px;
+    width: 16px; height: 16px;
+    background: var(--gold);
+    border-radius: 50%;
+    font-size: 0.55rem;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--dark); font-weight: 600;
+  }
+  .hamburger {
+    display: none;
+    background: none; border: none;
+    flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    width: 24px; height: 1.5px;
+    background: var(--white);
+    transition: all 0.3s;
+    display: block;
+  }
+  #navbar.scrolled .hamburger span { background: var(--text-dark); }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative; height: 100vh; min-height: 700px;
+    background: var(--deep);
+    overflow: hidden;
+    display: flex; align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.06) 0%, transparent 50%),
+                linear-gradient(135deg, #0D0D0D 0%, #1A1408 50%, #0D0D0D 100%);
+  }
+  .hero-particles {
+    position: absolute; inset: 0; overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0;
+    animation: particleFloat linear infinite;
+  }
+  @keyframes particleFloat {
+    0% { opacity: 0; transform: translateY(0) scale(0); }
+    20% { opacity: 0.7; transform: translateY(-20px) scale(1); }
+    80% { opacity: 0.4; }
+    100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
+  }
+  .hero-ornament {
+    position: absolute; right: 8%; top: 50%;
+    transform: translateY(-50%);
+    width: 500px; height: 500px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+    animation: ornamentRotate 30s linear infinite;
+  }
+  .hero-ornament::before {
+    content: '';
+    position: absolute; inset: 30px;
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 50%;
+  }
+  .hero-ornament::after {
+    content: '';
+    position: absolute; inset: 60px;
+    border: 1px solid rgba(201,168,76,0.07);
+    border-radius: 50%;
+    animation: ornamentRotate 20s linear infinite reverse;
+  }
+  .hero-diamond {
+    position: absolute; right: 8%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; height: 400px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .diamond-shape {
+    width: 200px; height: 200px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.3) 0%, rgba(201,168,76,0.05) 50%, rgba(201,168,76,0.2) 100%);
+    transform: rotate(45deg);
+    border: 1px solid rgba(201,168,76,0.4);
+    box-shadow: 0 0 60px rgba(201,168,76,0.15), inset 0 0 30px rgba(201,168,76,0.05);
+    animation: diamondPulse 4s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .diamond-shape::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+    animation: diamondShine 3s ease-in-out infinite 1s;
+  }
+  @keyframes ornamentRotate { to { transform: translateY(-50%) rotate(360deg); } }
+  @keyframes diamondPulse {
+    0%, 100% { box-shadow: 0 0 60px rgba(201,168,76,0.15); }
+    50% { box-shadow: 0 0 100px rgba(201,168,76,0.3), 0 0 40px rgba(201,168,76,0.2); }
+  }
+  @keyframes diamondShine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1400px; margin: 0 auto; padding: 0 2rem;
+    width: 100%;
+  }
+  .hero-tag {
+    font-size: 0.6rem;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 2s;
+  }
+  .hero-tag::before {
+    content: ''; flex: 0 0 40px; height: 1px; background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    max-width: 700px;
+    opacity: 0;
+    animation: fadeUp 0.9s forwards 2.2s;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; }
+  .hero-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 420px;
+    line-height: 1.9;
+    letter-spacing: 0.5px;
+    margin: 1.8rem 0 2.8rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 2.5s;
+  }
+  .hero-btns {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 2.7s;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 14px 36px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-gold::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--white);
+    transform: translateX(-101%);
+    transition: transform 0.4s ease;
+  }
+  .btn-gold:hover::before { transform: translateX(0); }
+  .btn-gold span { position: relative; z-index: 1; color: var(--dark); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 14px 36px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards 3s;
+  }
+  .hero-scroll span {
+    font-size: 0.55rem; letter-spacing: 4px;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.6); opacity: 0.5; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-section {
+    background: var(--gold);
+    padding: 14px 0;
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marqueeScroll 25s linear infinite;
+    width: max-content;
+  }
+  .marquee-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 0 30px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dark);
+    white-space: nowrap;
+  }
+  .marquee-item i { font-size: 0.5rem; opacity: 0.6; }
+  @keyframes marqueeScroll { to { transform: translateX(-50%); } }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-tag {
+    font-size: 0.6rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .section-tag::before, .section-tag::after {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-line {
+    width: 50px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.2rem auto 0;
+  }
+
+  /* ─── COLLECTIONS ─── */
+  #collections { padding: 6rem 0; background: var(--cream); }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 1.5px;
+  }
+  .collection-card {
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    background: var(--ivory);
+  }
+  .collection-card:first-child {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+  .collection-card-img {
+    width: 100%; height: 100%; min-height: 280px;
+    background: linear-gradient(135deg, var(--ivory) 0%, #EDE4CC 100%);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .collection-card:first-child .collection-card-img { min-height: 580px; }
+  .collection-card-img::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,13,13,0.6) 0%, transparent 50%);
+    z-index: 1;
+    opacity: 0.7;
+    transition: opacity 0.4s;
+  }
+  .collection-card:hover .collection-card-img { transform: scale(1.06); }
+  .collection-card:hover .collection-card-img::before { opacity: 1; }
+  .jewel-icon {
+    font-size: 4rem; color: var(--gold-light);
+    opacity: 0.4; position: relative; z-index: 0;
+    transition: all 0.4s;
+  }
+  .collection-card:first-child .jewel-icon { font-size: 7rem; }
+  .collection-card:hover .jewel-icon { opacity: 0.7; transform: scale(1.1); }
+  .collection-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 1.8rem;
+    z-index: 2;
+  }
+  .collection-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .collection-card:first-child .collection-info h3 { font-size: 2rem; }
+  .collection-info p {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .collection-arrow {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); z-index: 2;
+    opacity: 0;
+    transform: rotate(-45deg) scale(0.8);
+    transition: all 0.3s ease;
+  }
+  .collection-card:hover .collection-arrow {
+    opacity: 1; transform: rotate(0) scale(1);
+  }
+
+  /* ─── FEATURED PRODUCTS ─── */
+  #products { padding: 6rem 0; background: var(--white); }
+  .product-tabs {
+    display: flex; gap: 0;
+    justify-content: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .product-tab {
+    padding: 10px 28px;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--text-light);
+    cursor: pointer;
+    border: none;
+    background: none;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .product-tab::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .product-tab.active { color: var(--gold); }
+  .product-tab.active::after { transform: scaleX(1); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .product-card {
+    cursor: pointer; position: relative;
+  }
+  .product-img-wrap {
+    background: var(--ivory);
+    aspect-ratio: 3/4;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+    margin-bottom: 1.2rem;
+  }
+  .product-img-wrap::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,13,13,0.04) 0%, transparent 50%);
+    transition: opacity 0.3s;
+  }
+  .product-img-wrap i {
+    font-size: 3.5rem;
+    color: var(--gold-light);
+    opacity: 0.35;
+    transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+  }
+  .product-card:hover .product-img-wrap i { opacity: 0.7; transform: scale(1.1); }
+  .product-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-weight: 600;
+  }
+  .product-actions {
+    position: absolute; bottom: 12px; left: 12px; right: 12px;
+    display: flex; gap: 8px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  .product-card:hover .product-actions { transform: translateY(0); opacity: 1; }
+  .product-action-btn {
+    flex: 1;
+    background: rgba(13,13,13,0.85);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .product-action-btn:hover { background: var(--gold); color: var(--dark); }
+  .wishlist-btn {
+    flex: 0 0 42px;
+    background: rgba(13,13,13,0.85);
+    border: none; cursor: pointer;
+    color: var(--white);
+    transition: all 0.3s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .wishlist-btn:hover { background: var(--gold); color: var(--dark); }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .product-material {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 10px;
+  }
+  .product-price {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+  .product-price .original {
+    text-decoration: line-through;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-left: 8px;
+  }
+  .product-stars { color: var(--gold); font-size: 0.65rem; margin-bottom: 8px; }
+
+  /* ─── PROMO BANNER ─── */
+  #promo {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--deep) 0%, #1A1408 50%, #0A0A06 100%);
+    position: relative; overflow: hidden;
+  }
+  #promo::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.1) 0%, transparent 70%);
+  }
+  .promo-ornament {
+    position: absolute;
+    width: 400px; height: 400px;
+    border: 1px solid rgba(201,168,76,0.08);
+    border-radius: 50%;
+    top: 50%; left: -100px;
+    transform: translateY(-50%);
+  }
+  .promo-ornament2 {
+    position: absolute;
+    width: 300px; height: 300px;
+    border: 1px solid rgba(201,168,76,0.06);
+    border-radius: 50%;
+    top: 50%; right: -80px;
+    transform: translateY(-50%);
+  }
+  .promo-inner {
+    position: relative; z-index: 1;
+    text-align: center;
+  }
+  .promo-inner .section-tag { margin-bottom: 1.2rem; }
+  .promo-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .promo-title em { color: var(--gold); font-style: italic; }
+  .promo-desc {
+    color: rgba(255,255,255,0.5);
+    max-width: 500px; margin: 0 auto 2.5rem;
+    line-height: 1.8; font-size: 0.9rem;
+    font-weight: 300;
+  }
+  .countdown-row {
+    display: flex; gap: 2rem; justify-content: center; margin-bottom: 3rem;
+  }
+  .countdown-item { text-align: center; }
+  .countdown-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300;
+    color: var(--gold); line-height: 1;
+  }
+  .countdown-label {
+    font-size: 0.55rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+  .countdown-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: rgba(201,168,76,0.3);
+    align-self: flex-start; padding-top: 4px;
+  }
+
+  /* ─── FEATURES ─── */
+  #features { padding: 5rem 0; background: var(--cream); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border-light);
+  }
+  .feature-item {
+    background: var(--cream);
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .feature-item:hover { background: var(--ivory); }
+  .feature-icon {
+    width: 60px; height: 60px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.4rem; color: var(--gold);
+    transition: all 0.3s;
+  }
+  .feature-item:hover .feature-icon {
+    background: var(--gold); color: var(--dark);
+    border-color: var(--gold);
+  }
+  .feature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+  .feature-desc {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials { padding: 6rem 0; background: var(--white); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .testimonial-card {
+    padding: 2.5rem;
+    border: 1px solid var(--border-light);
+    position: relative;
+    transition: all 0.3s;
+  }
+  .testimonial-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    transform: translateY(-4px);
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    opacity: 0.2;
+    position: absolute;
+    top: -10px; left: 20px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .author-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-pale), var(--gold-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+  }
+  .author-name {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+  }
+  .author-loc {
+    font-size: 0.65rem;
+    color: var(--text-light);
+    letter-spacing: 1px;
+  }
+  .testimonial-stars { color: var(--gold); font-size: 0.7rem; margin-bottom: 1rem; }
+
+  /* ─── INSTAGRAM ─── */
+  #instagram { padding: 5rem 0 0; background: var(--cream); }
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+  }
+  .insta-item {
+    aspect-ratio: 1;
+    background: var(--ivory);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; cursor: pointer; position: relative;
+  }
+  .insta-item i { font-size: 2rem; color: var(--gold-light); opacity: 0.3; }
+  .insta-overlay {
+    position: absolute; inset: 0;
+    background: rgba(13,13,13,0.7);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .insta-item:hover .insta-overlay { opacity: 1; }
+  .insta-overlay i { font-size: 1.5rem; color: var(--white); opacity: 1; }
+
+  /* ─── NEWSLETTER ─── */
+  #newsletter {
+    padding: 5rem 0;
+    background: var(--deep);
+    text-align: center;
+  }
+  .newsletter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300;
+    color: var(--white); margin-bottom: 0.8rem;
+  }
+  .newsletter-desc {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.85rem; margin-bottom: 2rem;
+    font-weight: 300; letter-spacing: 0.5px;
+  }
+  .newsletter-form {
+    display: flex; max-width: 460px; margin: 0 auto;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .newsletter-input {
+    flex: 1;
+    background: transparent;
+    border: none; outline: none;
+    padding: 14px 20px;
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+  .newsletter-btn {
+    background: var(--gold);
+    border: none;
+    padding: 14px 24px;
+    color: var(--dark);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .newsletter-btn:hover { background: var(--gold-light); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #080805;
+    padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .footer-tagline {
+    font-size: 0.55rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 1.2rem;
+  }
+  .footer-about {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.9;
+    font-weight: 300;
+    max-width: 260px;
+  }
+  .footer-socials {
+    display: flex; gap: 12px; margin-top: 1.5rem;
+  }
+  .social-btn {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4); font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .social-btn:hover {
+    border-color: var(--gold); color: var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+  .footer-heading {
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    text-decoration: none;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    transition: color 0.3s;
+    letter-spacing: 0.5px;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.2);
+  }
+  .footer-bottom-links { display: flex; gap: 1.5rem; }
+  .footer-bottom-links a {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-bottom-links a:hover { color: var(--gold); }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-menu {
+    position: fixed;
+    top: 0; right: -100%; width: 300px; height: 100%;
+    background: var(--cream);
+    z-index: 1001;
+    padding: 5rem 2rem 2rem;
+    transition: right 0.4s cubic-bezier(0.23,1,0.32,1);
+    box-shadow: -20px 0 60px rgba(0,0,0,0.12);
+  }
+  .mobile-menu.open { right: 0; }
+  .mobile-menu-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    background: none; border: none; font-size: 1.5rem;
+    color: var(--text-dark); cursor: pointer;
+  }
+  .mobile-menu ul { list-style: none; }
+  .mobile-menu ul li { border-bottom: 1px solid var(--border-light); }
+  .mobile-menu ul li a {
+    display: block; padding: 1rem 0;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: color 0.3s;
+  }
+  .mobile-menu ul li a:hover { color: var(--gold); }
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    opacity: 0; visibility: hidden;
+    transition: all 0.3s;
+  }
+  .overlay.show { opacity: 1; visibility: visible; }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left {
+    opacity: 0; transform: translateX(-40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1100px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .collection-grid { grid-template-columns: 1fr 1fr; }
+    .collection-card:first-child { grid-column: 1 / 3; grid-row: auto; }
+    .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    .insta-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .countdown-row { gap: 1rem; }
+    .countdown-num { font-size: 2.5rem; }
+    .hero-diamond { display: none; }
+    .hero-ornament { display: none; }
+  }
+  @media (max-width: 540px) {
+    .products-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .collection-grid { grid-template-columns: 1fr; }
+    .collection-card:first-child { grid-column: 1; }
+    .insta-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+    .hero-btns { flex-direction: column; }
+    .btn-gold, .btn-outline { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Unique Creation</div>
+  <div class="loader-sub">Jewellers · Est. 2024</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeMobileMenu()"></div>
+
+<!-- MOBILE MENU -->
+<nav class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()"><i class="fa fa-times"></i></button>
+  <ul>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#products">Jewellery</a></li>
+    <li><a href="#promo">Offers</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#newsletter">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-main">Unique Creation</div>
+      <div class="nav-logo-sub">Jewellers</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#products">Jewellery</a></li>
+      <li><a href="#promo">Offers</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#newsletter">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon"><i class="fa fa-search"></i></button>
+      <button class="nav-icon" style="position:relative">
+        <i class="fa fa-heart"></i>
+      </button>
+      <button class="nav-icon" style="position:relative">
+        <i class="fa fa-shopping-bag"></i>
+        <span class="cart-badge">3</span>
+      </button>
+      <button class="nav-icon hamburger" id="hamburgerBtn" onclick="openMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-diamond">
+    <div class="diamond-shape"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">New Collection 2025</div>
+    <h1 class="hero-title">
+      Where <em>Elegance</em><br>Meets Craft
+    </h1>
+    <p class="hero-desc">
+      Handcrafted jewellery that tells your story. Each piece at Unique Creation is born from passion, tradition, and the finest materials on earth.
+    </p>
+    <div class="hero-btns">
+      <a href="#collections" class="btn-gold"><span>Explore Collections</span></a>
+      <a href="#products" class="btn-outline">View All Jewellery</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<!-- COLLECTIONS -->
+<section id="collections">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="section-header reveal">
+      <div class="section-tag">Our Collections</div>
+      <h2 class="section-title">Curated for <em>Every Occasion</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="collection-grid">
+      <div class="collection-card reveal">
+        <div class="collection-card-img">
+          <i class="fa fa-ring jewel-icon"></i>
+        </div>
+        <div class="collection-info">
+          <h3>Bridal Collection</h3>
+          <p>120+ Designs Available</p>
+        </div>
+        <div class="collection-arrow"><i class="fa fa-arrow-right fa-sm"></i></div>
+      </div>
+      <div class="collection-card reveal">
+        <div class="collection-card-img">
+          <i class="fa fa-gem jewel-icon"></i>
+        </div>
+        <div class="collection-info">
+          <h3>Diamond Rings</h3>
+          <p>Premium Solitaires</p>
+        </div>
+        <div class="collection-arrow"><i class="fa fa-arrow-right fa-sm"></i></div>
+      </div>
+      <div class="collection-card reveal">
+        <div class="collection-card-img">
+          <i class="fas fa-star jewel-icon"></i>
+        </div>
+        <div class="collection-info">
+          <h3>Gold Necklaces</h3>
+          <p>22kt Pure Gold</p>
+        </div>
+        <div class="collection-arrow"><i class="fa fa-arrow-right fa-sm"></i></div>
+      </div>
+      <div class="collection-card reveal">
+        <div class="collection-card-img">
+          <i class="fas fa-certificate jewel-icon"></i>
+        </div>
+        <div class="collection-info">
+          <h3>Earrings</h3>
+          <p>Studs, Hoops & Drops</p>
+        </div>
+        <div class="collection-arrow"><i class="fa fa-arrow-right fa-sm"></i></div>
+      </div>
+      <div class="collection-card reveal">
+        <div class="collection-card-img">
+          <i class="fas fa-crown jewel-icon"></i>
+        </div>
+        <div class="collection-info">
+          <h3>Bangles & Bracelets</h3>
+          <p>Heritage Craftsmanship</p>
+        </div>
+        <div class="collection-arrow"><i class="fa fa-arrow-right fa-sm"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section id="products">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="section-header reveal">
+      <div class="section-tag">Our Jewellery</div>
+      <h2 class="section-title">Handpicked <em>Bestsellers</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="product-tabs">
+      <button class="product-tab active" onclick="setTab(this)">All</button>
+      <button class="product-tab" onclick="setTab(this)">Gold</button>
+      <button class="product-tab" onclick="setTab(this)">Diamond</button>
+      <button class="product-tab" onclick="setTab(this)">Silver</button>
+      <button class="product-tab" onclick="setTab(this)">Platinum</button>
+    </div>
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <span class="product-badge">New</span>
+          <i class="fa fa-ring"></i>
+          <div class="product-actions">
+            <button class="product-action-btn"><i class="fa fa-shopping-bag fa-xs"></i> Add to Cart</button>
+            <button class="wishlist-btn"><i class="fa fa-heart fa-sm"></i></button>
+          </div>
+        </div>
+        <div class="product-stars">★★★★★</div>
+        <div class="product-material">22kt Gold · Ring</div>
+        <div class="product-name">Radiant Solitaire Band</div>
+        <div class="product-price">₹28,500 <span class="original">₹34,000</span></div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <span class="product-badge">Bestseller</span>
+          <i class="fa fa-gem"></i>
+          <div class="product-actions">
+            <button class="product-action-btn"><i class="fa fa-shopping-bag fa-xs"></i> Add to Cart</button>
+            <button class="wishlist-btn"><i class="fa fa-heart fa-sm"></i></button>
+          </div>
+        </div>
+        <div class="product-stars">★★★★★</div>
+        <div class="product-material">Diamond · Necklace</div>
+        <div class="product-name">Celestial Diamond Pendant</div>
+        <div class="product-price">₹1,15,000</div>
+      </div>
+      <!-- Product 3 -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <i class="fas fa-star"></i>
+          <div class="product-actions">
+            <button class="product-action-btn"><i class="fa fa-shopping-bag fa-xs"></i> Add to Cart</button>
+            <button class="wishlist-btn"><i class="fa fa-heart fa-sm"></i></button>
+          </div>
+        </div>
+        <div class="product-stars">★★★★☆</div>
+        <div class="product-material">18kt Gold · Earrings</div>
+        <div class="product-name">Floral Jhumka Earrings</div>
+        <div class="product-price">₹19,200 <span class="original">₹22,000</span></div>
+      </div>
+      <!-- Product 4 -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <span class="product-badge">Sale</span>
+          <i class="fas fa-crown"></i>
+          <div class="product-actions">
+            <button class="product-action-btn"><i class="fa fa-shopping-bag fa-xs"></i> Add to Cart</button>
+            <button class="wishlist-btn"><i class="fa fa-heart fa-sm"></i></button>
+          </div>
+        </div>
+        <div class="product-stars">★★★★★</div>
+        <div class="product-material">22kt Gold · Bangle Set</div>
+        <div class="product-name">Heritage Bangle Pair</div>
+        <div class="product-price">₹68,000 <span class="original">₹78,000</span></div>
+      </div>
+      <!-- Product 5 -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <i class="fas fa-certificate"></i>
+          <div class="product-actions">
+            <button class="product-action-btn"><i class="fa fa-shopping-bag fa-xs"></i> Add to Cart</button>
+            <button class="wishlist-btn"><i class="fa fa-heart fa-sm"></i></button>
+          </div>
+        </div>
+        <div class="product-stars">★★★★★</div>
+        <div class="product-material">Platinum · Bracelet</div>
+        <div class="product-name">Diamond Tennis Bracelet</div>
+        <div class="product-price">₹2,45,000</div>
+      </div>
+      <!-- Product 6 -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <span class="product-badge">New</span>
+          <i class="fa fa-ring"></i>
+          <div class="product-actions">
+            <button class="product-action-btn"><i class="fa fa-shopping-bag fa-xs"></i> Add to Cart</button>
+            <button class="wishlist-btn"><i class="fa fa-heart fa-sm"></i></button>
+          </div>
+        </div>
+        <div class="product-stars">★★★★☆</div>
+        <div class="product-material">Diamond · Ring</div>
+        <div class="product-name">Infinity Engagement Ring</div>
+        <div class="product-price">₹85,000 <span class="original">₹95,000</span></div>
+      </div>
+      <!-- Product 7 -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <i class="fas fa-star"></i>
+          <div class="product-actions">
+            <button class="product-action-btn"><i class="fa fa-shopping-bag fa-xs"></i> Add to Cart</button>
+            <button class="wishlist-btn"><i class="fa fa-heart fa-sm"></i></button>
+          </div>
+        </div>
+        <div class="product-stars">★★★★★</div>
+        <div class="product-material">22kt Gold · Necklace</div>
+        <div class="product-name">Temple Lakshmi Haaram</div>
+        <div class="product-price">₹1,42,000</div>
+      </div>
+      <!-- Product 8 -->
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <span class="product-badge">Trending</span>
+          <i class="fa fa-gem"></i>
+          <div class="product-actions">
+            <button class="product-action-btn"><i class="fa fa-shopping-bag fa-xs"></i> Add to Cart</button>
+            <button class="wishlist-btn"><i class="fa fa-heart fa-sm"></i></button>
+          </div>
+        </div>
+        <div class="product-stars">★★★★★</div>
+        <div class="product-material">Sterling Silver · Set</div>
+        <div class="product-name">Moonstone Bridal Set</div>
+        <div class="product-price">₹12,800 <span class="original">₹15,500</span></div>
+      </div>
+    </div>
+    <div class="text-center mt-5 reveal">
+      <a href="#" class="btn-gold"><span>View All Jewellery</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO BANNER -->
+<section id="promo">
+  <div class="promo-ornament"></div>
+  <div class="promo-ornament2"></div>
+  <div class="container">
+    <div class="promo-inner reveal">
+      <div class="section-tag">Limited Time</div>
+      <h2 class="promo-title">Wedding Season<br><em>Grand Sale</em></h2>
+      <p class="promo-desc">Celebrate love with our exclusive wedding collection. Up to 25% off on bridal sets and engagement jewellery. Offer valid while stock lasts.</p>
+      <div class="countdown-row">
+        <div class="countdown-item">
+          <div class="countdown-num" id="cd-days">07</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <div class="countdown-num" id="cd-hours">14</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <div class="countdown-num" id="cd-mins">38</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <div class="countdown-num" id="cd-secs">52</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+      <a href="#products" class="btn-gold"><span>Shop the Sale</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container-fluid px-4 px-lg-5">
+    <div class="features-grid">
+      <div class="feature-item reveal">
+        <div class="feature-icon"><i class="fa fa-certificate"></i></div>
+        <div class="feature-title">BIS Hallmarked</div>
+        <p class="feature-desc">Every piece comes with BIS hallmark certification, guaranteeing authentic gold and silver purity.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><i class="fa fa-undo"></i></div>
+        <div class="feature-title">Easy Exchange</div>
+        <p class="feature-desc">Lifetime exchange policy on all jewellery. Trade in your old gold at fair market value.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><i class="fa fa-shipping-fast"></i></div>
+        <div class="feature-title">Secure Delivery</div>
+        <p class="feature-desc">Fully insured, tamper-proof packaging. Free delivery across India on orders above ₹5,000.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-icon"><i class="fa fa-gem"></i></div>
+        <div class="feature-title">Custom Orders</div>
+        <p class="feature-desc">Bring your dream jewellery to life. Our master craftsmen create bespoke designs just for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Love Stories</div>
+      <h2 class="section-title">What Our <em>Customers Say</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I bought my wedding set from Unique Creation and it was absolutely breathtaking. The craftsmanship is beyond compare — every guest at my wedding asked where I got my jewellery."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <div class="author-name">Priya Sharma</div>
+            <div class="author-loc">Mumbai, Maharashtra</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The custom engagement ring I ordered exceeded all my expectations. The team was incredibly helpful throughout and the diamond quality is absolutely flawless."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Rahul Mehta</div>
+            <div class="author-loc">Pune, Maharashtra</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Trusted this brand for my daughter's engagement jewellery. Outstanding quality, fair pricing, and they delivered exactly on time. Highly recommend to all brides!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div>
+            <div class="author-name">Sunita Patel</div>
+            <div class="author-loc">Ahmedabad, Gujarat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM GRID -->
+<section id="instagram">
+  <div class="section-header reveal" style="padding: 0 1rem 2rem;">
+    <div class="section-tag">Follow Our Story</div>
+    <h2 class="section-title"><em>@uniquecreationjewellers</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="insta-grid">
+    <div class="insta-item"><i class="fa fa-ring"></i><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+    <div class="insta-item"><i class="fa fa-gem"></i><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+    <div class="insta-item"><i class="fas fa-star"></i><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+    <div class="insta-item"><i class="fas fa-crown"></i><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+    <div class="insta-item"><i class="fas fa-certificate"></i><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+    <div class="insta-item"><i class="fa fa-heart"></i><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="container reveal">
+    <div class="section-tag" style="justify-content:center; margin-bottom:1rem;">Exclusive Access</div>
+    <h2 class="newsletter-title">Join the Inner Circle</h2>
+    <p class="newsletter-desc">Subscribe for early access to new collections, exclusive offers and jewellery care tips.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="Your email address">
+      <button class="newsletter-btn">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Unique Creation</div>
+        <div class="footer-tagline">Jewellers · Est. 2024</div>
+        <p class="footer-about">Born from a love of fine jewellery, Unique Creation Jewellers crafts each piece with devotion, bringing timeless beauty to every milestone in your life.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Jewellery</div>
+        <ul class="footer-links">
+          <li><a href="#">Gold Jewellery</a></li>
+          <li><a href="#">Diamond Jewellery</a></li>
+          <li><a href="#">Silver Jewellery</a></li>
+          <li><a href="#">Platinum</a></li>
+          <li><a href="#">Bridal Collection</a></li>
+          <li><a href="#">Men's Jewellery</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Store Locator</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Support</div>
+        <ul class="footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Jewellery Care</a></li>
+          <li><a href="#">Size Guide</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Unique Creation Jewellers. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+// ── LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 2600);
+});
+
+// ── CUSTOM CURSOR
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX - 6 + 'px';
+  cursor.style.top = mouseY - 6 + 'px';
+});
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.15;
+  ringY += (mouseY - ringY) * 0.15;
+  ring.style.left = ringX - 18 + 'px';
+  ring.style.top = ringY - 18 + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a, button, .product-card, .collection-card').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.style.transform = 'scale(1.8)');
+  el.addEventListener('mouseleave', () => ring.style.transform = 'scale(1)');
+});
+
+// ── NAVBAR SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── PARTICLES
+const particleContainer = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.cssText = `
+    left: ${Math.random() * 100}%;
+    top: ${Math.random() * 100}%;
+    animation-delay: ${Math.random() * 8}s;
+    animation-duration: ${5 + Math.random() * 8}s;
+    width: ${1 + Math.random() * 2}px;
+    height: ${1 + Math.random() * 2}px;
+  `;
+  particleContainer.appendChild(p);
+}
+
+// ── MARQUEE
+const marqueeItems = ['Free Shipping Above ₹5,000', 'BIS Hallmarked Jewellery', 'Lifetime Exchange Policy', '100% Authentic Gold', 'Custom Orders Welcome', 'Certified Diamonds', 'EMI Available'];
+const track = document.getElementById('marqueeTrack');
+[...marqueeItems, ...marqueeItems].forEach(item => {
+  const el = document.createElement('div');
+  el.className = 'marquee-item';
+  el.innerHTML = `${item} <i class="fas fa-diamond"></i>`;
+  track.appendChild(el);
+});
+
+// ── REVEAL ANIMATIONS
+const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), 100);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+// ── PRODUCT TABS
+function setTab(btn) {
+  document.querySelectorAll('.product-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── MOBILE MENU
+function openMobileMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// ── COUNTDOWN
+const saleEnd = new Date();
+saleEnd.setDate(saleEnd.getDate() + 7);
+saleEnd.setHours(14, 38, 52);
+function updateCountdown() {
+  const now = new Date();
+  const diff = saleEnd - now;
+  if (diff <= 0) return;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+</script>
+</body>
+</html>

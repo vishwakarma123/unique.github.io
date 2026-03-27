@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shop All | Unique Creation Jewellers</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Product Card */
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img-wrap img {
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .hover-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .product-card:hover .hover-actions {
+            opacity: 1;
+        }
+
+        .btn-white {
+            background: #fff;
+            border: none;
+            color: #333;
+        }
+
+        .btn-white:hover {
+            background: #d4af37;
+            color: #fff;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #d4af37;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+        }
+
+        .text-gold {
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        /* Sidebar */
+        aside h6 {
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .filter-group p {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        @media(max-width: 992px) {
+            aside {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top luxury-nav">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-main">UNIQUE</span>
+      <span class="brand-sub">CREATION</span>
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="menu-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav luxury-menu">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Icons -->
+    <div class="nav-icons d-flex align-items-center gap-3">
+      <a href="#" class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+
+      <a href="#" class="icon-btn position-relative">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count">0</span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+    <!-- Page Content -->
+    <div class="container-fluid px-lg-5 mt-5">
+        <div class="row">
+            <!-- Sidebar Filters -->
+<aside class="col-lg-2 border-end d-none d-lg-block sidebar-filters px-3">
+    <h6 class="text-uppercase letter-spacing-2 mb-4 fw-bold">Refine By</h6>
+
+    <!-- Category -->
+    <div class="filter-group mb-5">
+        <p class="fw-bold small mb-3">Category</p>
+
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="filterRings" onclick="location.href='rings.html'">
+            <label class="small fw-medium filter-label" for="filterRings">Rings</label>
+        </div>
+
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="filterBracelets" onclick="location.href='bracelets.html'">
+            <label class="small fw-medium filter-label" for="filterBracelets">Bracelets</label>
+        </div>
+
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="filterEarrings" onclick="location.href='earrings.html'">
+            <label class="small fw-medium filter-label" for="filterEarrings">Earrings</label>
+        </div>
+
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="filterMangalsutra" onclick="location.href='mangalsutra.html'">
+            <label class="small fw-medium filter-label" for="filterMangalsutra">Mangalsutra</label>
+        </div>
+
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="filterNecklaces" onclick="location.href='necklaces.html'">
+            <label class="small fw-medium filter-label" for="filterNecklaces">Necklaces</label>
+        </div>
+    </div>
+
+    <!-- Metal -->
+    <div class="filter-group mb-5">
+        <p class="fw-bold small mb-3">Metal</p>
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="gold">
+            <label class="small fw-medium filter-label" for="gold">18Kt Gold</label>
+        </div>
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="roseGold">
+            <label class="small fw-medium filter-label" for="roseGold">Rose Gold</label>
+        </div>
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="platinum">
+            <label class="small fw-medium filter-label" for="platinum">Platinum</label>
+        </div>
+    </div>
+
+    <!-- Price Range -->
+    <div class="filter-group mb-5">
+        <p class="fw-bold small mb-3">Price Range</p>
+        <input type="range" class="form-range" min="0" max="500000">
+        <div class="d-flex justify-content-between small text-muted mt-2">
+            <span>₹0</span>
+            <span>₹5L+</span>
+        </div>
+    </div>
+</aside>
+
+            <!-- Product Grid -->
+            <main class="col-lg-10 ps-lg-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="font-serif">All Jewellery <span class="text-muted small">(420 Items)</span></h5>
+                    <select class="form-select w-auto border-0 bg-light">
+                        <option>Sort: Popularity</option>
+                        <option>Price: Low to High</option>
+                        <option>Newest First</option>
+                    </select>
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- Product 1 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="product-card">
+                            <div class="product-img-wrap">
+                                <span class="badge-new">BESTSELLER</span>
+                                <img src="assets/images/rings/513.jpg" class="img-fluid" alt="Elegant Diamond Ring">
+                                <div class="hover-actions">
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-regular fa-heart"></i></button>
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                            </div>
+                            <div class="pt-3 text-center">
+                                <h6 class="mb-1 fw-normal">Elegant Diamond Ring</h6>
+                                <p class="text-gold small mb-0">₹32,500 <span
+                                        class="text-muted text-decoration-line-through">₹38,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="product-card">
+                            <div class="product-img-wrap">
+                                <span class="badge-new">NEW</span>
+                                <img src="assets/images/bracelets/images (1).jpg" class="img-fluid" alt="Gold Bracelet">
+                                <div class="hover-actions">
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-regular fa-heart"></i></button>
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                            </div>
+                            <div class="pt-3 text-center">
+                                <h6 class="mb-1 fw-normal">Gold Bracelet</h6>
+                                <p class="text-gold small mb-0">₹28,000 <span
+                                        class="text-muted text-decoration-line-through">₹33,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="product-card">
+                            <div class="product-img-wrap">
+                                <img src="assets/images/earings/images.jpg" class="img-fluid" alt="Diamond Earrings">
+                                <div class="hover-actions">
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-regular fa-heart"></i></button>
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                            </div>
+                            <div class="pt-3 text-center">
+                                <h6 class="mb-1 fw-normal">Diamond Earrings</h6>
+                                <p class="text-gold small mb-0">₹22,500 <span
+                                        class="text-muted text-decoration-line-through">₹26,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="product-card">
+                            <div class="product-img-wrap">
+                                <img src="assets/images/mangalsutra/images.png" class="img-fluid"
+                                    alt="Classic Mangalsutra">
+                                <div class="hover-actions">
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-regular fa-heart"></i></button>
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                            </div>
+                            <div class="pt-3 text-center">
+                                <h6 class="mb-1 fw-normal">Classic Mangalsutra</h6>
+                                <p class="text-gold small mb-0">₹15,000 <span
+                                        class="text-muted text-decoration-line-through">₹18,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="product-card">
+                            <div class="product-img-wrap">
+                                <img src="assets/images/neklaces/images.jpg" class="img-fluid" alt="Pearl Necklace">
+                                <div class="hover-actions">
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-regular fa-heart"></i></button>
+                                    <button class="btn btn-white shadow-sm rounded-circle"><i
+                                            class="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                            </div>
+                            <div class="pt-3 text-center">
+                                <h6 class="mb-1 fw-normal">Pearl Necklace</h6>
+                                <p class="text-gold small mb-0">₹35,000 <span
+                                        class="text-muted text-decoration-line-through">₹40,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<footer class="footer-luxury text-white pt-5 position-relative">
+
+    <!-- Top Gradient Glow -->
+    <div class="footer-glow"></div>
+
+    <div class="container py-5">
+        <div class="row g-5">
+
+            <!-- Brand -->
+            <div class="col-lg-4 col-md-6">
+                <h3 class="font-serif text-gold mb-3">Unique Creation</h3>
+                <p class="text-light opacity-75">
+                    Redefining luxury through handcrafted excellence since 2024. 
+                    Every piece tells a story of love and art.
+                </p>
+
+                <!-- Social -->
+                <div class="mt-4 d-flex gap-3">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-title">Quick Links</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="products.html">All Products</a></li>
+                    <li><a href="offers.html">Offers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-title">Customer Care</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-title">Stay Connected</h6>
+                <p class="text-light opacity-75 mb-3">
+                    Subscribe for exclusive offers & latest collections
+                </p>
+
+                <div class="input-group newsletter-box">
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                    <button class="btn btn-gold">Join</button>
+                </div>
+
+                <!-- Payments -->
+                <!-- <div class="mt-4 d-flex gap-3 align-items-center">
+                    <img src="assets/images/payments/visa.png" class="payment-icon">
+                    <img src="assets/images/payments/mastercard.png" class="payment-icon">
+                    <img src="assets/images/payments/paypal.png" class="payment-icon">
+                    <img src="assets/images/payments/amex.png" class="payment-icon">
+                </div> -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer-bottom text-center py-3">
+        <p class="m-0 small">&copy; 2026 Unique Creation Jewellers. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</html>
