@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mangalsutra | Unique Creation Jewellers</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #ffcc66;
+            --gold-dark: #b8962e;
+            --gold-pale: #F4EBD0;
+            --light-bg: #FCFBFA;
+            --dark-text: #1a1a1a;
+            --dark: #1a1a1a;
+            --dark-2: #111;
+            --dark-3: #000;
+            --text-light: #ccc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--light-bg);
+            font-family: 'Jost', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ── CURSOR ── */
+        .cursor-Mangalsutra {
+            position: fixed;
+            width: 36px; height: 36px;
+            border: 1.5px solid var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: all 0.12s ease;
+            mix-blend-mode: multiply;
+        }
+
+        /* ── NAVBAR ── */
+        .luxury-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        .luxury-nav.scrolled {
+            padding: 8px 0;
+            background: #fff;
+        }
+        .navbar-brand {
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            line-height: 1;
+            text-decoration: none;
+        }
+        .brand-main {
+            display: block;
+            font-size: 20px;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        .brand-sub {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: var(--gold);
+        }
+        .luxury-menu .nav-link {
+            color: var(--dark-text) !important;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 18px !important;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .luxury-menu .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0%; height: 2px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+        .luxury-menu .nav-link:hover::after,
+        .luxury-menu .nav-link.active::after { width: 100%; }
+        .luxury-menu .nav-link:hover { color: var(--gold) !important; }
+        .navbar-toggler { border: none; }
+        .menu-icon,
+        .menu-icon::before,
+        .menu-icon::after {
+            width: 25px; height: 2px;
+            background: #000;
+            display: block;
+            position: relative;
+            transition: 0.3s;
+        }
+        .menu-icon::before, .menu-icon::after {
+            content: ""; position: absolute;
+        }
+        .menu-icon::before { top: -7px; }
+        .menu-icon::after { top: 7px; }
+        @media(max-width: 991px) {
+            .luxury-menu {
+                background: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                margin-top: 10px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+        }
+
+        /* ── HERO BANNER ── */
+        .Mangalsutra-hero {
+            background: var(--dark);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        .Mangalsutra-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%);
+        }
+        /* Orbiting decorative Mangalsutra */
+        .hero-orbit {
+            position: absolute;
+            width: 500px; height: 500px;
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 50%;
+            animation: orbit-spin 30s linear infinite;
+        }
+        .hero-orbit::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: 50%;
+            width: 8px; height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 12px var(--gold);
+        }
+        .hero-orbit-2 {
+            width: 320px; height: 320px;
+            border-color: rgba(212,175,55,0.07);
+            animation: orbit-spin 20s linear infinite reverse;
+        }
+        @keyframes orbit-spin { to { transform: rotate(360deg); } }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 3px; height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: float-up linear infinite;
+            opacity: 0;
+        }
+        @keyframes float-up {
+            0% { transform: translateY(100px) scale(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.3; }
+            100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
+        }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; }
+        .hero-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease 0.3s forwards;
+        }
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.05;
+            opacity: 0;
+            animation: fadeSlideUp 0.9s ease 0.5s forwards;
+        }
+        .hero-title span { color: var(--gold); font-style: italic; font-family: 'Cormorant Garamond', serif; }
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 1.2rem;
+            opacity: 0;
+            animation: fadeSlideUp 0.9s ease 0.7s forwards;
+        }
+        .hero-divider {
+            width: 60px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 2rem auto;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.9s forwards;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* ── FILTER BAR ── */
+        .filter-bar {
+            background: #fff;
+            padding: 20px 0;
+            position: sticky;
+            top: 62px;
+            z-index: 100;
+            border-bottom: 1px solid #eee;
+            border-top: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #ddd;
+            color: var(--dark-text);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff;
+        }
+
+        /* ── SECTION ── */
+        .Mangalsutra-section { padding: 80px 0 100px; }
+
+        .section-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .section-heading {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--dark-text);
+            font-weight: 400;
+        }
+        .section-heading em {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.2em;
+            color: var(--gold-dark);
+        }
+
+        /* ── PRODUCT CARD ── */
+        .product-card {
+            position: relative;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease;
+        }
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Gold corner brackets on hover */
+        .product-card::before,
+        .product-card::after {
+            content: '';
+            position: absolute;
+            width: 20px; height: 20px;
+            opacity: 0;
+            transition: opacity 0.4s, transform 0.4s;
+            z-index: 10;
+        }
+        .product-card::before {
+            top: 8px; left: 8px;
+            border-top: 2px solid var(--gold);
+            border-left: 2px solid var(--gold);
+            transform: translate(-4px, -4px);
+        }
+        .product-card::after {
+            bottom: 8px; right: 8px;
+            border-bottom: 2px solid var(--gold);
+            border-right: 2px solid var(--gold);
+            transform: translate(4px, 4px);
+        }
+        .product-card:hover::before,
+        .product-card:hover::after {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* image */
+        .product-img-wrap {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: brightness(0.97);
+        }
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+
+        /* shimmer overlay */
+        .product-img-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(212,175,55,0.08) 50%, transparent 60%);
+            background-size: 200% 200%;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .product-card:hover .product-img-wrap::after {
+            opacity: 1;
+            animation: shimmer 1.5s ease infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 200%; }
+            100% { background-position: -50% -50%; }
+        }
+
+        /* overlay panel */
+        .card-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(14,13,11,0.9) 0%, transparent 100%);
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .product-card:hover .card-overlay { transform: translateY(0); }
+        .overlay-actions { display: flex; gap: 10px; }
+        .overlay-btn {
+            flex: 1;
+            padding: 10px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-cart {
+            background: var(--gold);
+            color: var(--dark);
+            font-weight: 500;
+        }
+        .btn-cart:hover { background: var(--gold-light); }
+        .btn-wish {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            color: #fff;
+            width: 42px !important;
+            flex: none;
+        }
+        .btn-wish:hover { border-color: var(--gold) !important; color: var(--gold); }
+
+        /* card body */
+        .card-body-custom {
+            padding: 18px 16px 20px;
+            background: #fff;
+            border-top: 1px solid #f0ece2;
+        }
+        .card-tag {
+            font-size: 0.62rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            font-family: 'Jost', sans-serif;
+            margin-bottom: 4px;
+        }
+        .card-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+        .price-current {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+        .price-old {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8em;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 5px;
+        }
+        .card-badge {
+            position: absolute;
+            top: 10px; left: 10px;
+            background: var(--gold);
+            color: #fff;
+            font-family: 'Jost', sans-serif;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 2px;
+            z-index: 5;
+        }
+
+        /* ── FEATURED STRIP ── */
+        .featured-strip {
+            background: var(--dark);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-strip::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .featured-strip::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .marquee-track {
+            display: flex;
+            gap: 60px;
+            animation: marquee 20s linear infinite;
+            white-space: nowrap;
+        }
+        .marquee-item {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: rgba(212,175,55,0.5);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .marquee-item .dot { color: var(--gold); font-size: 1.2rem; }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ── FOOTER ── */
+        .footer-luxury {
+            background: #1a1a1a;
+            border-top: 1px solid rgba(212,175,55,0.12);
+        }
+        .footer-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'Jost', sans-serif;
+            transition: 0.3s;
+            position: relative;
+        }
+        .footer-links a:hover { color: var(--gold); padding-left: 5px; }
+        .text-gold { color: var(--gold); }
+        .social-icon {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .social-icon:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(-5px);
+        }
+        .newsletter-box .form-control {
+            background: transparent;
+            border: 1px solid #555;
+            border-right: none;
+            color: #fff;
+            border-radius: 0;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.82rem;
+        }
+        .newsletter-box .form-control::placeholder { color: #aaa; }
+        .newsletter-box .form-control:focus {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--gold);
+            box-shadow: none;
+            color: #fff;
+        }
+        .newsletter-box .btn-gold {
+            background: var(--gold);
+            color: #fff;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .newsletter-box .btn-gold:hover { background: var(--gold-dark); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: #000;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* Loading state */
+        body:not(.loaded) .Mangalsutra-section {
+            pointer-events: none;
+        }
+
+        /* Scroll indicator */
+        .scroll-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            z-index: 9998;
+            transition: width 0.1s linear;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2.8rem; }
+            .filter-btn { padding: 7px 14px; font-size: 0.65rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor-Mangalsutra" id="cursor"></div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-bar" id="scrollBar"></div>
+
+<nav class="navbar navbar-expand-lg fixed-top luxury-nav">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-main">UNIQUE</span>
+      <span class="brand-sub">CREATION</span>
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="menu-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav luxury-menu">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="Mangalsutra-hero">
+    <div class="hero-orbit"></div>
+    <div class="hero-orbit hero-orbit-2"></div>
+
+    <!-- Particles -->
+    <div class="particle" style="left:20%;animation-duration:6s;animation-delay:0s;"></div>
+    <div class="particle" style="left:35%;animation-duration:8s;animation-delay:1s;"></div>
+    <div class="particle" style="left:55%;animation-duration:5s;animation-delay:2.5s;"></div>
+    <div class="particle" style="left:70%;animation-duration:7s;animation-delay:0.5s;"></div>
+    <div class="particle" style="left:80%;animation-duration:9s;animation-delay:1.5s;"></div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">Unique Creation Jewellers</p>
+        <h1 class="hero-title">The Art of<br><span>Mangalsutra</span></h1>
+        <p class="hero-subtitle">Handcrafted with passion · Worn with grace</p>
+        <div class="hero-divider"></div>
+    </div>
+</section>
+
+<!-- ── MARQUEE STRIP ── -->
+<div class="featured-strip">
+    <div class="marquee-track">
+        <span class="marquee-item">Diamond Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-item">Gold Solitaires <span class="dot">◆</span></span>
+        <span class="marquee-item">Rose Gold <span class="dot">◆</span></span>
+        <span class="marquee-item">Platinum Band <span class="dot">◆</span></span>
+        <span class="marquee-item">Engagement Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-item">Bridal Collection <span class="dot">◆</span></span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item">Diamond Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-item">Gold Solitaires <span class="dot">◆</span></span>
+        <span class="marquee-item">Rose Gold <span class="dot">◆</span></span>
+        <span class="marquee-item">Platinum Band <span class="dot">◆</span></span>
+        <span class="marquee-item">Engagement Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-item">Bridal Collection <span class="dot">◆</span></span>
+    </div>
+</div>
+
+<!-- ── FILTER BAR ── -->
+<div class="filter-bar">
+    <div class="container">
+        <div class="d-flex gap-2 flex-wrap justify-content-center">
+            <button class="filter-btn active" data-filter="all">All Mangalsutra</button>
+            <button class="filter-btn" data-filter="gold">Gold</button>
+            <button class="filter-btn" data-filter="diamond">Diamond</button>
+            <button class="filter-btn" data-filter="rose">Rose Gold</button>
+            <button class="filter-btn" data-filter="bridal">Bridal</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── Mangalsutra GRID ── -->
+<section class="Mangalsutra-section">
+    <div class="container">
+
+        <div class="d-flex align-items-end justify-content-between mb-5 flex-wrap gap-3">
+            <div>
+                <span class="section-label">Curated Collection</span>
+                <h2 class="section-heading">Mangalsutra for <em>Every Story</em></h2>
+            </div>
+            <p class="text-muted small" style="font-family:'Jost',sans-serif;max-width:300px;">Each Mangalsutra is a masterpiece — crafted by hand with certified gemstones and precious metals.</p>
+        </div>
+
+        <div class="row g-4" id="product-grid">
+
+            <!-- Mangalsutra 1 -->
+            <div class="col-6 col-md-4 col-lg-3" data-category="gold">
+                <div class="product-card">
+                    <span class="card-badge">Bestseller</span>
+                    <div class="product-img-wrap">
+                        <img src="assets/images/mangalsutra/Untitled1.jpg" alt="Elegant Gold Mangalsutra" loading="lazy">
+                        <div class="card-overlay">
+                            <div class="overlay-actions">
+                                <button class="overlay-btn btn-cart"><i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart</button>
+                                <button class="overlay-btn btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body-custom">
+                        <p class="card-tag">22K Yellow Gold</p>
+                        <h6 class="card-name">Elegant Gold Mangalsutra</h6>
+                        <div>
+                            <span class="price-current">₹32,500</span>
+                            <span class="price-old">₹38,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mangalsutra 2 -->
+            <div class="col-6 col-md-4 col-lg-3" data-category="diamond">
+                <div class="product-card">
+                    <span class="card-badge">New</span>
+                    <div class="product-img-wrap">
+                        <img src="assets/images/mangalsutra/images.png" alt="Diamond Solitaire Mangalsutra" loading="lazy">
+                        <div class="card-overlay">
+                            <div class="overlay-actions">
+                                <button class="overlay-btn btn-cart"><i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart</button>
+                                <button class="overlay-btn btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body-custom">
+                        <p class="card-tag">GIA Certified Diamond</p>
+                        <h6 class="card-name">Diamond Solitaire Mangalsutra</h6>
+                        <div>
+                            <span class="price-current">₹45,000</span>
+                            <span class="price-old">₹50,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mangalsutra 3 -->
+            <div class="col-6 col-md-4 col-lg-3" data-category="rose">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="assets/images/mangalsutra/Untitled.jpg" alt="Rose Gold Mangalsutra" loading="lazy">
+                        <div class="card-overlay">
+                            <div class="overlay-actions">
+                                <button class="overlay-btn btn-cart"><i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart</button>
+                                <button class="overlay-btn btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body-custom">
+                        <p class="card-tag">18K Rose Gold</p>
+                        <h6 class="card-name">Rose Gold Mangalsutra</h6>
+                        <div>
+                            <span class="price-current">₹38,000</span>
+                            <span class="price-old">₹42,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mangalsutra 4 -->
+            <div class="col-6 col-md-4 col-lg-3" data-category="diamond bridal">
+                <div class="product-card">
+                    <span class="card-badge">Bridal</span>
+                    <div class="product-img-wrap">
+                        <img src="assets/images/mangalsutra/Untitled1.jpg" alt="White Diamond Mangalsutra" loading="lazy">
+                        <div class="card-overlay">
+                            <div class="overlay-actions">
+                                <button class="overlay-btn btn-cart"><i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart</button>
+                                <button class="overlay-btn btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body-custom">
+                        <p class="card-tag">White Gold · Diamond</p>
+                        <h6 class="card-name">White Diamond Mangalsutra</h6>
+                        <div>
+                            <span class="price-current">₹52,000</span>
+                            <span class="price-old">₹60,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mangalsutra 5 -->
+            <div class="col-6 col-md-4 col-lg-3" data-category="gold bridal">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="assets/images/mangalsutra/Untitled3.jpg" alt="Bridal Gold Mangalsutra" loading="lazy">
+                        <div class="card-overlay">
+                            <div class="overlay-actions">
+                                <button class="overlay-btn btn-cart"><i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart</button>
+                                <button class="overlay-btn btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body-custom">
+                        <p class="card-tag">22K Gold · Bridal</p>
+                        <h6 class="card-name">Bridal Gold Mangalsutra</h6>
+                        <div>
+                            <span class="price-current">₹52,000</span>
+                            <span class="price-old">₹60,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mangalsutra 6 -->
+            <div class="col-6 col-md-4 col-lg-3" data-category="diamond">
+                <div class="product-card">
+                    <span class="card-badge">Sale</span>
+                    <div class="product-img-wrap">
+                        <img src="assets/images/mangalsutra/download (1).jpg" alt="Classic Diamond Mangalsutra" loading="lazy">
+                        <div class="card-overlay">
+                            <div class="overlay-actions">
+                                <button class="overlay-btn btn-cart"><i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart</button>
+                                <button class="overlay-btn btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body-custom">
+                        <p class="card-tag">Platinum · Diamond</p>
+                        <h6 class="card-name">Classic Diamond Mangalsutra</h6>
+                        <div>
+                            <span class="price-current">₹52,000</span>
+                            <span class="price-old">₹60,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /row -->
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer-luxury text-white pt-5">
+    <div class="container py-4">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <h3 class="font-serif text-gold mb-3" style="font-family:'Cinzel',serif;font-size:1.4rem;letter-spacing:2px;">Unique Creation</h3>
+                <p class="opacity-75" style="font-size:0.88rem;font-family:'Jost',sans-serif;color:var(--text-light);">
+                    Redefining luxury through handcrafted excellence since 2024. Every piece tells a story of love and art.
+                </p>
+                <div class="mt-4 d-flex gap-3">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-title">Quick Links</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="products.html">All Products</a></li>
+                    <li><a href="offers.html">Offers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-title">Customer Care</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-title">Stay Connected</h6>
+                <p style="color:var(--text-light);font-size:0.85rem;font-family:'Jost',sans-serif;" class="mb-3">Subscribe for exclusive offers & latest collections</p>
+                <div class="input-group newsletter-box">
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                    <button class="btn btn-gold">Join</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center py-3">
+        <p class="m-0 small">&copy; 2026 Unique Creation Jewellers. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    // ── Cursor ──
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('button, a, .product-card').forEach(el => {
+        el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1.6)'; cursor.style.borderColor = 'rgba(212,175,55,0.5)'; });
+        el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; cursor.style.borderColor = 'var(--gold)'; });
+    });
+
+    // ── Scroll progress ──
+    const scrollBar = document.getElementById('scrollBar');
+    window.addEventListener('scroll', () => {
+        const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        scrollBar.style.width = pct + '%';
+        // Navbar shrink
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Scroll reveal cards ──
+    const cards = document.querySelectorAll('.product-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    cards.forEach(card => observer.observe(card));
+
+    // ── Filter ──
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('#product-grid > [data-category]').forEach(col => {
+                const cats = col.dataset.category;
+                const show = filter === 'all' || cats.includes(filter);
+                col.style.transition = 'opacity 0.4s, transform 0.4s';
+                if (show) {
+                    col.style.opacity = '1';
+                    col.style.transform = 'scale(1)';
+                    col.style.display = '';
+                } else {
+                    col.style.opacity = '0';
+                    col.style.transform = 'scale(0.95)';
+                    setTimeout(() => { if (!cats.includes(btn.dataset.filter) && btn.dataset.filter !== 'all') col.style.display = 'none'; }, 400);
+                }
+            });
+        });
+    });
+
+    // ── Wishlist toggle ──
+    document.querySelectorAll('.btn-wish').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fa-regular');
+            icon.classList.toggle('fa-solid');
+            btn.style.color = icon.classList.contains('fa-solid') ? 'var(--gold)' : '';
+        });
+    });
+
+    document.body.classList.add('loaded');
+</script>
+</body>
+</html>
