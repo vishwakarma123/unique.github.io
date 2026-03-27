@@ -299,6 +299,200 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     }
     .text-gold { color: #d4af37; }
 
+
+/* OFFER SLIDER SECTION */
+.offer-slider-section {
+    background: var(--light-bg);
+}
+
+/* SLIDE */
+.offer-slide {
+    height: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* LIGHT OVERLAY (NOT DARK) */
+.offer-overlay-light {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(255,255,255,0.6),
+        rgba(255,255,255,0.3)
+    );
+}
+
+/* CONTENT */
+.offer-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s ease;
+}
+
+/* HEADING */
+.offer-content h2 {
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: var(--dark-text);
+}
+
+/* TEXT */
+.offer-content p {
+    color: #555;
+    font-size: 15px;
+}
+
+/* BADGE */
+.offer-badge {
+    border: 1px dashed var(--gold);
+    display: inline-block;
+    padding: 6px 18px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold);
+}
+
+/* ARROWS */
+.custom-arrow {
+    filter: invert(1);
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    padding: 12px;
+}
+
+/* HOVER EFFECT */
+.offer-slide:hover {
+    transform: scale(1.01);
+    transition: 0.4s ease;
+}
+
+
+
+/* SECTION BACKGROUND */
+.featured-banner-advanced {
+    position: relative;
+    background: var(--light-bg);
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+/* soft gold overlay (very light, not visible heavy) */
+.featured-banner-advanced::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(212,175,55,0.08), transparent 60%);
+}
+
+/* TEXT */
+.featured-content-adv h2 {
+    font-size: 44px;
+    line-height: 1.2;
+}
+
+.featured-content-adv em {
+    color: var(--gold);
+    font-style: normal;
+}
+
+.featured-content-adv p {
+    color: #666;
+    max-width: 450px;
+}
+
+/* IMAGE WRAPPER */
+.image-wrapper-adv {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+}
+
+/* MAIN IMAGE */
+.main-img {
+    width: 100%;
+    border-radius: 20px;
+    transition: transform 0.6s ease;
+}
+
+/* HOVER ZOOM */
+.image-wrapper-adv:hover .main-img {
+    transform: scale(1.05);
+}
+
+/* ✨ SHINE EFFECT */
+.image-wrapper-adv::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+    transform: skewX(-25deg);
+}
+
+/* SHINE ANIMATION */
+.image-wrapper-adv:hover::before {
+    animation: shineMove 1.2s;
+}
+
+@keyframes shineMove {
+    100% {
+        left: 120%;
+    }
+}
+
+/* FLOATING SHAPES */
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(212,175,55,0.2);
+    animation: floatAnim 6s infinite ease-in-out;
+}
+
+/* SHAPE SIZES */
+.shape1 {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    left: -30px;
+}
+
+.shape2 {
+    width: 50px;
+    height: 50px;
+    bottom: 20%;
+    right: -20px;
+    animation-delay: 2s;
+}
+
+.shape3 {
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    right: 10%;
+    animation-delay: 4s;
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatAnim {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+
+
+
+
+
     
  /* Testimonial Card */
 .testimonial-card {

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jhumka | Unique Creation Jewellers</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body { background: #f9f9f9; }
+
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        .product-img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+        .product-img-wrap img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.05);
+        }
+        .hover-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .product-card:hover .hover-actions {
+            opacity: 1;
+        }
+        .btn-white { background: #fff; border: none; }
+        .btn-white:hover { background: #d4af37; color: #fff; }
+        .text-gold { color: #d4af37; font-weight: bold; }
+
+        .section-title { text-align: center; margin-bottom: 2.5rem; }
+    </style>
+</head>
+
+<body>
+
+<!-- SAME NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top luxury-nav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-main">UNIQUE</span>
+      <span class="brand-sub">CREATION</span>
+    </a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">☰</button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav luxury-menu">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="collections.html">Collections</a></li>
+        <li><a class="nav-link" href="products.html">New Arrivals</a></li>
+        <li><a class="nav-link" href="offers.html">Offers</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- JHUMKA SECTION -->
+<section class="py-5" style="margin-top:80px;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Jhumka Collection</h2>
+            <p class="text-muted">Elegant traditional jhumkas crafted with perfection.</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Jhumka 1 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="assets/images/jhumka/jhumka1.jpg">
+                        <div class="hover-actions">
+                            <button class="btn btn-white rounded-circle"><i class="fa-regular fa-heart"></i></button>
+                            <button class="btn btn-white rounded-circle"><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                    <div class="pt-3 text-center">
+                        <h6>Gold Jhumka</h6>
+                        <p class="text-gold">₹18,500</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jhumka 2 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="assets/images/jhumka/jhumka2.jpg">
+                        <div class="hover-actions">
+                            <button class="btn btn-white rounded-circle"><i class="fa-regular fa-heart"></i></button>
+                            <button class="btn btn-white rounded-circle"><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                    <div class="pt-3 text-center">
+                        <h6>Temple Jhumka</h6>
+                        <p class="text-gold">₹22,000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jhumka 3 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="assets/images/jhumka/jhumka3.jpg">
+                        <div class="hover-actions">
+                            <button class="btn btn-white rounded-circle"><i class="fa-regular fa-heart"></i></button>
+                            <button class="btn btn-white rounded-circle"><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                    <div class="pt-3 text-center">
+                        <h6>Designer Jhumka</h6>
+                        <p class="text-gold">₹25,000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jhumka 4 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="assets/images/jhumka/jhumka4.jpg">
+                        <div class="hover-actions">
+                            <button class="btn btn-white rounded-circle"><i class="fa-regular fa-heart"></i></button>
+                            <button class="btn btn-white rounded-circle"><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                    <div class="pt-3 text-center">
+                        <h6>Diamond Jhumka</h6>
+                        <p class="text-gold">₹30,000</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SAME FOOTER -->
+<footer class="text-center py-4">
+    <p>© 2026 Unique Creation Jewellers</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
