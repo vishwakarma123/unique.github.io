@@ -73,6 +73,15 @@ window.addEventListener("scroll", function () {
     nav.classList.toggle("scrolled", window.scrollY > 50);
 });
 
+    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+        max: 15,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.3,
+        scale: 1.05
+    });
 
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
 
 });
