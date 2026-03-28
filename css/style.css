@@ -364,6 +364,66 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     animation: fade 2s infinite;
 }
 
+/* Letter base */
+.loader-title span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px) scale(1.2);
+    transition: 0.4s ease;
+}
+
+/* Visible letters */
+.loader-title span.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Combine effect */
+.loader-title.combine span {
+    letter-spacing: 3px;
+    transform: translateY(0) scale(1);
+}
+
+/* Space */
+.loader-title .space {
+    width: 15px;
+}
+
+/* ===== MOBILE RESPONSIVE LOADER ===== */
+@media (max-width: 768px) {
+
+    .loader-title {
+        font-size: 1.6rem;   /* smaller text */
+        letter-spacing: 2px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .loader-title span {
+        transform: translateY(20px) scale(1.1);
+    }
+
+    .loader-title .space {
+        width: 8px;
+    }
+
+    .loader-content {
+        padding: 0 15px;
+    }
+
+    .diamond-loader span {
+        width: 8px;
+        height: 8px;
+    }
+
+    .loading-text {
+        font-size: 0.75rem;
+    }
+
+    .progress-bar-wrap {
+        width: 140px;
+    }
+}
 /* Animations */
 @keyframes bounce {
     0%, 100% { transform: translateY(0) rotate(45deg); }
@@ -385,6 +445,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
 
 .progress-bar-wrap { width: 200px; height: 2px; background: #eee; margin-top: 15px; }
 .progress-line { width: 0; height: 100%; background: var(--gold); animation: load 1.5s infinite; }

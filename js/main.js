@@ -191,4 +191,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+const letters = document.querySelectorAll("#brandText span");
+let index = 0;
+
+// Step 1: Show letters one by one
+function showLetters() {
+    if (index < letters.length) {
+
+        // skip space
+        if (letters[index].classList.contains("space")) {
+            index++;
+            showLetters();
+            return;
+        }
+
+        letters[index].classList.add("show");
+        index++;
+
+        setTimeout(showLetters, 150);
+    } else {
+        // Step 2: Combine effect
+        setTimeout(() => {
+            document.getElementById("brandText").classList.add("combine");
+        }, 400);
+    }
+}
+
+window.addEventListener("load", () => {
+    showLetters();
+});
+
+
+
 });
