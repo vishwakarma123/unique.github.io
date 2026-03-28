@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Unique Creation Jewellers</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ── CSS Variables ── */
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #ffcc66;
+            --gold-dark: #b8962e;
+            --cream: #F4EBD0;
+            --off-white: #FCFBFA;
+            --dark: #1a1a1a;
+            --text-muted: #888;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Jost', sans-serif; background: #fff; color: var(--dark); overflow-x: hidden; }
+
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .text-gold { color: var(--gold) !important; }
+        .bg-gold { background: var(--gold) !important; }
+
+        /* ── Custom Cursor ── */
+        /* .cursor-dot {
+            position: fixed; width: 8px; height: 8px;
+            background: var(--gold); border-radius: 50%;
+            pointer-events: none; z-index: 10000;
+            transform: translate(-50%, -50%); transition: transform 0.1s;
+        }
+        .cursor-ring {
+            position: fixed; width: 34px; height: 34px;
+            border: 1.5px solid rgba(212,175,55,0.6); border-radius: 50%;
+            pointer-events: none; z-index: 9999;
+            transform: translate(-50%, -50%); transition: all 0.18s ease;
+        }
+        .cursor-ring.hovered { transform: translate(-50%,-50%) scale(1.6); background: rgba(212,175,55,0.08); }
+        @media (max-width: 768px) { .cursor-dot, .cursor-ring { display: none; } } */
+
+        /* ── Announcement Bar ── */
+        .announcement-bar { background: var(--cream); overflow: hidden; }
+        .announcement-bar .marquee-wrap { display: flex; animation: announceTicker 20s linear infinite; white-space: nowrap; }
+        .announcement-bar .marquee-wrap span { padding-right: 80px; }
+        @keyframes announceTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ── Navbar ── */
+        .luxury-nav {
+            background: rgba(255,255,255,0.97);
+            padding: 18px 0;
+            transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(212,175,55,0.1);
+        }
+        .luxury-nav.scrolled {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1) !important;
+            padding: 8px 0 !important;
+        }
+        .navbar-brand { text-decoration: none; line-height: 1.1; }
+        .brand-main { display: block; font-family: 'Cinzel', serif; font-size: 1.4rem; letter-spacing: 4px; color: var(--dark); }
+        .brand-sub { display: block; font-family: 'Jost', sans-serif; font-size: 0.55rem; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; }
+        .navbar-brand:hover { transform: scale(1.04); transition: transform 0.3s; }
+
+        .luxury-menu .nav-link {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem; font-weight: 500;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: var(--dark) !important; padding: 8px 18px !important;
+            position: relative; transition: color 0.3s;
+        }
+        .luxury-menu .nav-link::after {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            width: 0; height: 1px; background: var(--gold);
+            transform: translateX(-50%); transition: width 0.3s;
+        }
+        .luxury-menu .nav-link:hover::after,
+        .luxury-menu .nav-link.active::after { width: 60%; }
+        .luxury-menu .nav-link.active, .luxury-menu .nav-link:hover { color: var(--gold) !important; }
+
+        .menu-icon { display: block; width: 22px; height: 1.5px; background: var(--dark); position: relative; }
+        .menu-icon::before, .menu-icon::after {
+            content: ''; position: absolute; width: 100%; height: 100%; background: var(--dark);
+            transition: all 0.3s;
+        }
+        .menu-icon::before { top: -6px; } .menu-icon::after { top: 6px; }
+        .navbar-toggler { border: none; background: none; padding: 4px; }
+        .navbar-toggler:focus { box-shadow: none; }
+
+        /* ── Gold Divider ── */
+        .gold-divider {
+            width: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 12px auto 0; transition: width 1s ease;
+        }
+        .gold-divider.active { width: 80px; }
+        .gold-divider-left { margin-left: 0 !important; }
+
+        /* ── Btn Gold ── */
+        .btn-gold {
+            background: var(--gold); color: #fff;
+            border: none; padding: 12px 32px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem; letter-spacing: 3px;
+            text-transform: uppercase; text-decoration: none;
+            display: inline-block; position: relative; overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .btn-gold:hover { background: var(--gold-dark); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.3); }
+        .btn-gold::after {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            width: 0; height: 0; background: rgba(255,255,255,0.2);
+            border-radius: 50%; transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        .btn-gold:hover::after { width: 300px; height: 300px; }
+
+        /* ── Offer Badge ── */
+        .offer-badge {
+            background: var(--gold); color: #fff; font-size: 11px;
+            letter-spacing: 3px; padding: 5px 14px; border-radius: 2px;
+            font-family: 'Jost', sans-serif; text-transform: uppercase;
+            display: inline-block;
+        }
+
+        /* ── Reveal Sections ── */
+        .reveal-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal-section.revealed { opacity: 1; transform: translateY(0); }
+
+        /* ══════════════════════════════════════════
+           ABOUT PAGE SPECIFIC STYLES
+        ══════════════════════════════════════════ */
+
+        /* ── Hero Banner ── */
+        .about-hero {
+            /* min-height: 520px; */
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2419 50%, #1a1a1a 100%);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; margin-top: 80px;
+        }
+        .about-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .about-hero::after {
+            content: ''; position: absolute;
+            top: -100px; right: -100px;
+            width: 400px; height: 400px;
+            border: 1px solid rgba(212,175,55,0.1);
+            border-radius: 50%;
+            animation: rotateSlow 40s linear infinite;
+        }
+        @keyframes rotateSlow { to { transform: rotate(360deg); } }
+        .hero-inner-ring {
+            position: absolute; bottom: -120px; left: -80px;
+            width: 350px; height: 350px;
+            border: 1px solid rgba(212,175,55,0.08);
+            border-radius: 50%;
+            animation: rotateSlow 50s linear infinite reverse;
+        }
+        .about-hero-content { position: relative; z-index: 2; text-align: center; }
+        .about-hero-content .breadcrumb {
+            justify-content: center; background: none;
+            font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+        }
+        .about-hero-content .breadcrumb-item a { color: var(--gold); text-decoration: none; }
+        .about-hero-content .breadcrumb-item.active { color: rgba(255,255,255,0.6); }
+        .about-hero-content .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,0.3); }
+        .about-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 300;
+            color: #fff; line-height: 1.1; letter-spacing: 2px;
+        }
+        .about-hero h1 em { color: var(--gold); font-style: italic; }
+        .hero-gold-line {
+            width: 120px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 20px auto;
+        }
+
+        /* ── Story Section ── */
+        .story-section {
+            padding: 100px 0;
+            background: var(--off-white);
+            position: relative;
+        }
+        .story-section::before {
+            content: '"'; position: absolute;
+            top: 60px; left: 5%;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20rem; color: rgba(212,175,55,0.04);
+            line-height: 1; pointer-events: none;
+        }
+        .story-img-wrap { position: relative; }
+        .story-img-wrap .main-img {
+            width: 100%; border-radius: 4px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+        }
+        .story-img-wrap:hover .main-img {
+            transform: scale(1.02) translateY(-6px);
+            box-shadow: 0 40px 70px rgba(0,0,0,0.18);
+        }
+        .story-badge-frame {
+            position: absolute; bottom: -30px; right: -30px;
+            width: 130px; height: 130px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+            animation: floatBadge 4s ease-in-out infinite alternate;
+        }
+        @keyframes floatBadge {
+            from { transform: translateY(0); }
+            to { transform: translateY(-8px); }
+        }
+        .story-badge-frame .badge-year {
+            font-family: 'Cinzel', serif; font-size: 1.6rem;
+            color: #fff; font-weight: 600; line-height: 1;
+        }
+        .story-badge-frame .badge-text {
+            font-family: 'Jost', sans-serif; font-size: 0.6rem;
+            letter-spacing: 2px; color: rgba(255,255,255,0.85);
+            text-transform: uppercase;
+        }
+        .floating-dot {
+            position: absolute; border-radius: 50%;
+            background: rgba(212,175,55,0.15);
+            animation: floatShape 5s ease-in-out infinite alternate;
+        }
+        .dot1 { width: 60px; height: 60px; top: -20px; left: -20px; animation-delay: 0s; }
+        .dot2 { width: 35px; height: 35px; top: 40%; right: -18px; animation-delay: 1.5s; }
+        @keyframes floatShape {
+            from { transform: translateY(0) scale(1); }
+            to { transform: translateY(-12px) scale(1.08); }
+        }
+
+        .story-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem); color: var(--dark);
+        }
+        .story-content h2 em { color: var(--gold); font-style: italic; }
+        .story-content p { line-height: 1.9; color: #555; font-size: 0.97rem; }
+        .story-highlight {
+            border-left: 2px solid var(--gold);
+            padding-left: 20px; margin: 25px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem; font-style: italic;
+            color: var(--dark); opacity: 0.8;
+        }
+
+        /* ── Stats Strip ── */
+        .stats-strip {
+            background: linear-gradient(135deg, var(--dark) 0%, #2d2419 100%);
+            padding: 60px 0; position: relative; overflow: hidden;
+        }
+        .stats-strip::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .stat-item { text-align: center; position: relative; z-index: 2; }
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem; font-weight: 600;
+            color: var(--gold); line-height: 1;
+        }
+        .stat-label {
+            font-family: 'Jost', sans-serif; font-size: 0.72rem;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: rgba(255,255,255,0.6); margin-top: 8px;
+        }
+        .stat-divider {
+            width: 1px; height: 60px;
+            background: rgba(212,175,55,0.2);
+            margin: auto;
+        }
+
+        /* ── Mission Vision ── */
+        .mv-section {
+            padding: 100px 0;
+            background: #fff;
+        }
+        .mv-card {
+            background: var(--off-white);
+            padding: 50px 40px; border-radius: 4px;
+            position: relative; overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            height: 100%;
+        }
+        .mv-card::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; width: 4px; height: 0;
+            background: var(--gold);
+            transition: height 0.5s ease;
+        }
+        .mv-card:hover { transform: translateY(-8px); box-shadow: 0 25px 60px rgba(212,175,55,0.1); }
+        .mv-card:hover::before { height: 100%; }
+        .mv-icon {
+            width: 70px; height: 70px;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 25px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .mv-card:hover .mv-icon { background: var(--gold); border-color: var(--gold); }
+        .mv-card:hover .mv-icon i { color: #fff !important; }
+        .mv-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem; margin-bottom: 15px; color: var(--dark);
+        }
+        .mv-card p { color: #666; line-height: 1.8; font-size: 0.95rem; }
+
+        /* ── Values Section ── */
+        .values-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--off-white) 100%);
+            position: relative; overflow: hidden;
+        }
+        .values-section::before {
+            content: ''; position: absolute;
+            top: -80px; right: -80px;
+            width: 400px; height: 400px;
+            border: 1px solid rgba(212,175,55,0.1);
+            border-radius: 50%;
+            animation: rotateSlow 35s linear infinite;
+        }
+        .value-item { text-align: center; padding: 30px 20px; }
+        .value-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem; font-weight: 300;
+            color: rgba(212,175,55,0.2); line-height: 1;
+            transition: color 0.3s;
+        }
+        .value-item:hover .value-num { color: var(--gold); }
+        .value-item h5 {
+            font-family: 'Cinzel', serif; font-size: 0.82rem;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--dark); margin: 12px 0 10px;
+        }
+        .value-item p { font-size: 0.9rem; color: #666; line-height: 1.7; }
+
+        /* ── Team Section ── */
+        .team-section { padding: 100px 0; background: #fff; }
+        .team-card { position: relative; overflow: hidden; border-radius: 4px; }
+        .team-img-wrap { position: relative; overflow: hidden; padding-top: 120%; }
+        .team-img-wrap img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .team-card:hover .team-img-wrap img { transform: scale(1.08); }
+        .team-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(26,26,26,0.85) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.4s;
+            display: flex; align-items: flex-end; padding: 30px;
+        }
+        .team-card:hover .team-overlay { opacity: 1; }
+        .team-info-overlay p { color: rgba(255,255,255,0.8); font-size: 0.85rem; }
+        .team-info { padding: 20px; background: var(--off-white); }
+        .team-info h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem; margin-bottom: 4px;
+        }
+        .team-info span {
+            font-size: 0.72rem; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--gold);
+            font-family: 'Jost', sans-serif;
+        }
+
+        /* ── Journey Timeline ── */
+        .journey-section { padding: 100px 0; background: var(--off-white); }
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 50%; top: 0; bottom: 0; width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+            transform: translateX(-50%);
+        }
+        .timeline-item { position: relative; margin-bottom: 60px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: 50%; top: 20px;
+            width: 14px; height: 14px;
+            background: var(--gold); border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px rgba(212,175,55,0.15);
+            transition: box-shadow 0.3s;
+        }
+        .timeline-item:hover .timeline-dot {
+            box-shadow: 0 0 0 8px rgba(212,175,55,0.2);
+        }
+        .timeline-content {
+            width: 44%;
+            background: #fff;
+            padding: 30px; border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .timeline-content:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(212,175,55,0.12); }
+        .timeline-item:nth-child(odd) .timeline-content { margin-left: 56%; }
+        .timeline-item:nth-child(even) .timeline-content { margin-left: 0; }
+        .timeline-content::before {
+            content: ''; position: absolute; top: 24px;
+            width: 0; height: 0;
+        }
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -8px; border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent; border-right: 8px solid #fff;
+        }
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -8px; border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent; border-left: 8px solid #fff;
+        }
+        .timeline-year {
+            font-family: 'Cinzel', serif; font-size: 0.72rem;
+            letter-spacing: 3px; color: var(--gold);
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .timeline-content h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem; margin-bottom: 8px;
+        }
+        .timeline-content p { font-size: 0.9rem; color: #666; line-height: 1.7; margin: 0; }
+        @media (max-width: 767px) {
+            .timeline::before { left: 20px; }
+            .timeline-dot { left: 20px; }
+            .timeline-content { width: 85%; margin-left: 50px !important; }
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -8px; right: auto;
+                border-left: none; border-right: 8px solid #fff;
+            }
+        }
+
+        /* ── Craftsmanship Feature ── */
+        .craft-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--dark) 0%, #2d2419 100%);
+            position: relative; overflow: hidden;
+        }
+        .craft-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .craft-step { position: relative; z-index: 2; }
+        .craft-step-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem; font-weight: 300;
+            color: rgba(212,175,55,0.2); line-height: 1;
+            transition: color 0.4s;
+        }
+        .craft-step:hover .craft-step-num { color: rgba(212,175,55,0.5); }
+        .craft-step h5 {
+            font-family: 'Cinzel', serif; font-size: 0.78rem;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 10px;
+        }
+        .craft-step p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.7; }
+        .craft-step-icon {
+            width: 60px; height: 60px;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        /* ── CTA Section ── */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--cream);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute;
+            top: 50%; left: 50%; width: 600px; height: 600px;
+            border: 1px solid rgba(212,175,55,0.1); border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulseCta 6s ease-in-out infinite;
+        }
+        .cta-section::after {
+            content: ''; position: absolute;
+            top: 50%; left: 50%; width: 400px; height: 400px;
+            border: 1px solid rgba(212,175,55,0.15); border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulseCta 6s ease-in-out infinite 1s;
+        }
+        @keyframes pulseCta {
+            0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%,-50%) scale(1.05); opacity: 0.6; }
+        }
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            position: relative; z-index: 2;
+        }
+        .cta-section h2 em { color: var(--gold); font-style: italic; }
+        .cta-section p { position: relative; z-index: 2; color: #555; }
+        .cta-section .btn-gold { position: relative; z-index: 2; }
+
+        /* ── Marquee Band ── */
+        .marquee-band { background: var(--gold); padding: 14px 0; overflow: hidden; }
+        .marquee-band-track { display: flex; animation: marqueeRun 18s linear infinite; white-space: nowrap; }
+        .marquee-band-item {
+            font-family: 'Cinzel', serif; font-size: 0.72rem;
+            letter-spacing: 4px; color: #fff;
+            text-transform: uppercase; padding-right: 60px;
+            display: flex; align-items: center; gap: 20px;
+        }
+        .marquee-band-item .dot { opacity: 0.5; font-size: 1rem; }
+        @keyframes marqueeRun { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ── Footer ── */
+        .footer-luxury { background: #1a1a1a; }
+        .footer-glow {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 60%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .footer-title {
+            font-family: 'Cinzel', serif; font-size: 0.72rem;
+            letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+        }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a {
+            color: rgba(255,255,255,0.6); text-decoration: none;
+            font-size: 0.88rem; transition: color 0.3s, padding-left 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); padding-left: 5px; }
+        .social-icon {
+            width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .social-icon:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.4); }
+        .newsletter-box .form-control {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; font-size: 0.85rem;
+        }
+        .newsletter-box .form-control::placeholder { color: rgba(255,255,255,0.3); }
+        .newsletter-box .form-control:focus { box-shadow: none; border-color: var(--gold); background: rgba(255,255,255,0.08); }
+
+        /* ── Back to Top ── */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 44px; height: 44px; background: var(--gold);
+            color: #fff; border: none; border-radius: 50%;
+            font-size: 1rem; cursor: pointer; z-index: 9000;
+            opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+        }
+        #backToTop.visible { opacity: 1; transform: translateY(0); }
+        #backToTop:hover { background: var(--gold-dark); transform: translateY(-3px); }
+
+        /* ── Responsive ── */
+        @media (max-width: 991px) {
+            .story-badge-frame { width: 100px; height: 100px; bottom: -20px; right: -10px; }
+            .story-badge-frame .badge-year { font-size: 1.3rem; }
+        }
+        @media (max-width: 767px) {
+            .story-section { padding: 60px 0; }
+            .mv-section, .values-section, .journey-section,
+            .craft-section, .team-section, .cta-section { padding: 60px 0; }
+            .about-hero { min-height: 380px; }
+            .stat-divider { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Back To Top -->
+<button id="backToTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div class="announcement-bar text-center py-2">
+    <div class="marquee-wrap">
+        <span class="small text-uppercase">✨ Flat 20% Off on Diamond Making Charges — <a href="offers.html" class="text-dark fw-bold">Shop Now</a> &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; Free Shipping on orders above ₹10,000 &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; 7-Day Easy Returns &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp;</span>
+        <span class="small text-uppercase">✨ Flat 20% Off on Diamond Making Charges — <a href="offers.html" class="text-dark fw-bold">Shop Now</a> &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; Free Shipping on orders above ₹10,000 &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; 7-Day Easy Returns &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg fixed-top luxury-nav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-main">UNIQUE</span>
+      <span class="brand-sub">CREATION</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="menu-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav luxury-menu">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
+        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ABOUT HERO ── -->
+<section class="about-hero">
+    <div class="hero-inner-ring"></div>
+    <div class="about-hero-content" data-aos="fade-up">
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">About Us</li>
+            </ol>
+        </nav>
+        <h1 class="font-serif">Our <em>Story</em></h1>
+        <div class="hero-gold-line"></div>
+        <p class="text-white opacity-75 mt-2" style="font-family:'Jost',sans-serif; letter-spacing:3px; font-size:0.75rem; text-transform:uppercase;">Crafted with Passion · Worn with Pride</p>
+    </div>
+</section>
+
+<!-- ── GOLD MARQUEE STRIP ── -->
+<div class="marquee-band">
+    <div class="marquee-band-track">
+        <span class="marquee-band-item">Handcrafted Excellence <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Since 2024 <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Certified Jewellery <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Mumbai, India <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Luxury Redefined <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Your Trust, Our Pride <span class="dot">◆</span></span>
+        <!-- duplicate -->
+        <span class="marquee-band-item">Handcrafted Excellence <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Since 2024 <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Certified Jewellery <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Mumbai, India <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Luxury Redefined <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Your Trust, Our Pride <span class="dot">◆</span></span>
+    </div>
+</div>
+
+<!-- ── OUR STORY ── -->
+<section class="story-section reveal-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5" data-aos="fade-right">
+                <div class="story-img-wrap">
+                    <img src="assets/images/offers/pexels-zandatsu-29502969.jpg" class="main-img" alt="Our Story - Unique Creation Jewellers">
+                    <div class="floating-dot dot1"></div>
+                    <div class="floating-dot dot2"></div>
+                    <div class="story-badge-frame">
+                        <span class="badge-year">2024</span>
+                        <span class="badge-text">Est.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7" data-aos="fade-left" data-aos-delay="150">
+                <div class="story-content ps-lg-4">
+                    <span class="offer-badge">OUR STORY</span>
+                    <h2 class="font-serif mt-3">Born from a <em>Passion</em><br>for Timeless Beauty</h2>
+                    <div class="gold-divider gold-divider-left mt-3"></div>
+                    <p class="mt-4">Unique Creation Jewellers — proudly known as <strong>Nano Jewels</strong> — was founded in 2024 with a singular dream: to bring handcrafted luxury jewellery to every home, at prices that never compromise on quality.</p>
+                    <p class="mt-3">Nestled in the heart of Mumbai, our atelier brings together master craftsmen with decades of experience in goldsmithing, diamond setting, and fine jewellery design. We believe jewellery is more than adornment — it is memory, it is emotion, it is legacy.</p>
+                    <div class="story-highlight">
+                        "Every piece we create is a promise — of quality, of craftsmanship, and of love."
+                    </div>
+                    <p>From our iconic Diamond Solitaires to our lovingly crafted Mangalsutra collections, each piece undergoes a meticulous journey from raw material to finished jewel — all under one roof, with complete transparency and trust.</p>
+                    <a href="collections.html" class="btn btn-gold mt-4">Explore Our Collections</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── STATS STRIP ── -->
+<!-- <section class="stats-strip reveal-section">
+    <div class="container">
+        <div class="row g-4 text-center stats-strip-inner">
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5000">0</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="1200">0</div>
+                    <div class="stat-label">Unique Designs</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="25">0</div>
+                    <div class="stat-label">Expert Craftsmen</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Certified Quality</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- ── MISSION & VISION ── -->
+<section class="mv-section reveal-section">
+    <div class="container">
+        <div class="section-title text-center mb-2" data-aos="fade-up">
+            <h2 class="font-serif" style="font-size:clamp(2rem,4vw,3rem);">Our <em style="color:var(--gold); font-style:italic;">Purpose</em></h2>
+            <div class="gold-divider mx-auto mt-2"></div>
+            <p class="text-muted mt-3 mb-5">The principles that guide every piece we craft</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fa-solid fa-bullseye fa-lg text-gold"></i>
+                    </div>
+                    <h4 class="font-serif">Our Mission</h4>
+                    <p>To make luxury accessible — delivering certified, handcrafted jewellery that speaks to every heart, every occasion, and every milestone. We craft not just jewellery, but heirlooms that outlast generations.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fa-solid fa-eye fa-lg text-gold"></i>
+                    </div>
+                    <h4 class="font-serif">Our Vision</h4>
+                    <p>To become India's most trusted jewellery destination — known for transparency, artistry, and an unwavering commitment to customer delight. We envision a world where every woman wears jewellery that tells her story.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fa-solid fa-heart fa-lg text-gold"></i>
+                    </div>
+                    <h4 class="font-serif">Our Promise</h4>
+                    <p>Every piece comes with our assurance of authenticity, certified metal purity, and genuine gemstone quality. We offer transparent pricing, 7-day returns, and lifetime buyback — because your trust is our greatest jewel.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── OUR VALUES ── -->
+<section class="values-section reveal-section">
+    <div class="container">
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+            <span class="offer-badge">WHAT WE STAND FOR</span>
+            <h2 class="font-serif mt-3" style="font-size:clamp(2rem,4vw,3rem);">Our Core <em style="color:var(--gold); font-style:italic;">Values</em></h2>
+            <div class="gold-divider mx-auto mt-2"></div>
+        </div>
+        <div class="row g-0">
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
+                <div class="value-item">
+                    <div class="value-num">01</div>
+                    <h5>Authenticity</h5>
+                    <p>Every gem, every metal — certified and genuine, always.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="150">
+                <div class="value-item">
+                    <div class="value-num">02</div>
+                    <h5>Craftsmanship</h5>
+                    <p>Masterful hands shaping every curve with love and precision.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
+                <div class="value-item">
+                    <div class="value-num">03</div>
+                    <h5>Transparency</h5>
+                    <p>Honest pricing, no hidden costs — ever.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="250">
+                <div class="value-item">
+                    <div class="value-num">04</div>
+                    <h5>Trust</h5>
+                    <p>Built over every interaction, every piece, every smile.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+                <div class="value-item">
+                    <div class="value-num">05</div>
+                    <h5>Innovation</h5>
+                    <p>Blending tradition with contemporary design sensibility.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="350">
+                <div class="value-item">
+                    <div class="value-num">06</div>
+                    <h5>Customer First</h5>
+                    <p>Your joy is our greatest accomplishment and reward.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW WE CRAFT ── -->
+<!-- <section class="craft-section reveal-section">
+    <div class="container">
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+            <span class="offer-badge">THE PROCESS</span>
+            <h2 class="font-serif mt-3" style="font-size:clamp(2rem,4vw,3rem); color:#fff;">How We <em style="color:var(--gold); font-style:italic;">Craft</em> Your Jewel</h2>
+            <div class="gold-divider mx-auto mt-2"></div>
+        </div>
+        <div class="row g-4 g-lg-5 mt-2">
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="craft-step">
+                    <div class="craft-step-num">01</div>
+                    <div class="craft-step-icon mt-3">
+                        <i class="fa-solid fa-pencil-ruler fa-lg text-gold"></i>
+                    </div>
+                    <h5>Design & Sketch</h5>
+                    <p>Every piece begins as a vision. Our designers sketch, refine, and perfect each concept before any metal is touched.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="craft-step">
+                    <div class="craft-step-num">02</div>
+                    <div class="craft-step-icon mt-3">
+                        <i class="fa-solid fa-fire fa-lg text-gold"></i>
+                    </div>
+                    <h5>Casting & Forming</h5>
+                    <p>Master goldsmiths cast and hand-form precious metals, building the structural beauty at the heart of every creation.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="craft-step">
+                    <div class="craft-step-num">03</div>
+                    <div class="craft-step-icon mt-3">
+                        <i class="fa-solid fa-gem fa-lg text-gold"></i>
+                    </div>
+                    <h5>Stone Setting</h5>
+                    <p>Each gemstone is hand-selected and precisely set to capture light perfectly — by craftsmen with decades of skill.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="craft-step">
+                    <div class="craft-step-num">04</div>
+                    <div class="craft-step-icon mt-3">
+                        <i class="fa-solid fa-award fa-lg text-gold"></i>
+                    </div>
+                    <h5>Quality & Certification</h5>
+                    <p>Every finished piece undergoes rigorous quality inspection and receives certification before it reaches your hands.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- ── OUR JOURNEY ── -->
+<section class="journey-section reveal-section">
+    <div class="container">
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+            <span class="offer-badge">MILESTONES</span>
+            <h2 class="font-serif mt-3" style="font-size:clamp(2rem,4vw,3rem);">Our <em style="color:var(--gold); font-style:italic;">Journey</em></h2>
+            <div class="gold-divider mx-auto mt-2"></div>
+            <p class="text-muted mt-3">A story of passion, growth, and golden milestones</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024 · January</div>
+                    <h5 class="font-serif">The Beginning</h5>
+                    <p>Unique Creation Jewellers opens its first boutique near Shreyas Cinema, Ghatkopar, Mumbai — with a dream and a handful of handcrafted pieces.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024 · April</div>
+                    <h5 class="font-serif">First 500 Customers</h5>
+                    <p>Within three months, word-of-mouth brings us our first 500 happy families — a testament to quality and personal service that sets us apart.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024 · August</div>
+                    <h5 class="font-serif">Diamond Collection Launch</h5>
+                    <p>We launch our signature Diamond Jewellery line, offering certified solitaires and diamond studded pieces at transparent, honest prices.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025 · February</div>
+                    <h5 class="font-serif">Bridal Collection</h5>
+                    <p>Our exclusive Bridal Jewellery Collection is unveiled — earning recognition as one of Mumbai's finest destinations for wedding jewellery.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2025 · October</div>
+                    <h5 class="font-serif">Online Launch — Nano Jewels</h5>
+                    <p>Nano Jewels goes digital — bringing our handcrafted luxury to customers across India, with free shipping and 7-day easy returns.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2026 · Present</div>
+                    <h5 class="font-serif">5,000+ Happy Families</h5>
+                    <p>Today we serve over 5,000 happy customers with 1,200+ unique designs. The journey continues — one jewel, one story at a time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── WHY UNIQUE CREATION (from index) ── -->
+<!-- <section class="py-5 bg-light reveal-section">
+    <div class="container text-center">
+        <h2 class="font-serif display-5 mb-2" data-aos="fade-up">Why Choose <em style="color:var(--gold); font-style:italic;">Unique Creation</em>?</h2>
+        <div class="gold-divider mx-auto mb-3"></div>
+        <p class="text-muted mb-5" data-aos="fade-up" data-aos-delay="100">Our commitment to you goes beyond the jewellery.</p>
+        <div class="row g-4 justify-content-center">
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
+                <div class="why-card p-4 bg-white rounded shadow-sm h-100" style="transition:transform .3s,box-shadow .3s;">
+                    <i class="fa-solid fa-certificate fa-3x text-gold mb-3"></i>
+                    <h6 class="fw-bold mb-2">Certified Jewellery</h6>
+                    <p class="small text-muted">Authentic and certified gems and metals.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
+                <div class="why-card p-4 bg-white rounded shadow-sm h-100" style="transition:transform .3s,box-shadow .3s;">
+                    <i class="fa-solid fa-arrow-rotate-left fa-3x text-gold mb-3"></i>
+                    <h6 class="fw-bold mb-2">7 Days Money Back</h6>
+                    <p class="small text-muted">Hassle-free returns within 7 days.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+                <div class="why-card p-4 bg-white rounded shadow-sm h-100" style="transition:transform .3s,box-shadow .3s;">
+                    <i class="fa-solid fa-truck-fast fa-3x text-gold mb-3"></i>
+                    <h6 class="fw-bold mb-2">Free Shipping</h6>
+                    <p class="small text-muted">Delivered safely to your doorstep.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="400">
+                <div class="why-card p-4 bg-white rounded shadow-sm h-100" style="transition:transform .3s,box-shadow .3s;">
+                    <i class="fa-solid fa-handshake fa-3x text-gold mb-3"></i>
+                    <h6 class="fw-bold mb-2">Easy Exchange & Buyback</h6>
+                    <p class="small text-muted">Seamless exchange and buyback services.</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="500">
+                <div class="why-card p-4 bg-white rounded shadow-sm h-100" style="transition:transform .3s,box-shadow .3s;">
+                    <i class="fa-solid fa-shield-halved fa-3x text-gold mb-3"></i>
+                    <h6 class="fw-bold mb-2">Free Jewellery Insurance</h6>
+                    <p class="small text-muted">Protect your valuable jewellery.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- ── CTA ── -->
+<section class="cta-section reveal-section">
+    <div data-aos="fade-up">
+        <span class="offer-badge" style="position:relative;z-index:2;">BEGIN YOUR JOURNEY</span>
+        <h2 class="font-serif mt-3">Ready to Find Your <em>Perfect Jewel?</em></h2>
+        <div class="gold-divider mx-auto mt-3 mb-4"></div>
+        <p class="mb-4">Visit us at Ghatkopar, Mumbai or explore our collections online.</p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center" style="position:relative;z-index:2;">
+            <a href="collections.html" class="btn btn-gold">Shop Collections</a>
+            <a href="contact.html" class="btn btn-gold" style="background:transparent; border:1px solid var(--gold); color:var(--gold);"
+                onmouseover="this.style.background='var(--gold)'; this.style.color='#fff';"
+                onmouseout="this.style.background='transparent'; this.style.color='var(--gold)';">
+                Visit Us
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer-luxury text-white pt-5 position-relative">
+    <div class="footer-glow"></div>
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <h3 class="font-serif text-gold mb-3">Nano Jewels</h3>
+                <p class="text-light opacity-75">Redefining luxury through handcrafted excellence since 2024. Every piece tells a story of love and art.</p>
+                <div class="mt-4 d-flex gap-3">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-title">Quick Links</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="products.html">All Products</a></li>
+                    <li><a href="offers.html">Offers</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-title">Customer Care</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-title">Stay Connected</h6>
+                <p class="text-light opacity-75 mb-3">Subscribe for exclusive offers & latest collections</p>
+                <div class="input-group newsletter-box">
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                    <button class="btn btn-gold">Join</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center py-3">
+        <p class="m-0 small">&copy; 2026 Unique Creation Jewellers. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+        document.querySelector('.luxury-nav').classList.toggle('scrolled', window.scrollY > 60);
+        document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // Back to top
+    document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Custom cursor
+    // const dot = document.getElementById('cursorDot');
+    // const ring = document.getElementById('cursorRing');
+    // let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    // document.addEventListener('mousemove', e => {
+    //     mouseX = e.clientX; mouseY = e.clientY;
+    //     dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
+    // });
+    // function animateRing() {
+    //     ringX += (mouseX - ringX) * 0.12; ringY += (mouseY - ringY) * 0.12;
+    //     ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+    //     requestAnimationFrame(animateRing);
+    // }
+    // animateRing();
+    // document.querySelectorAll('a, button, .why-card, .mv-card, .craft-step, .timeline-content').forEach(el => {
+    //     el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+    //     el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+    // });
+
+    // Gold divider reveal
+    const dividerObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.gold-divider').forEach(d => dividerObserver.observe(d));
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal-section').forEach(s => revealObserver.observe(s));
+
+    // Counter animation
+    function animateCounter(el) {
+        const target = +el.dataset.target;
+        const duration = 1800;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            const suffix = target >= 100 ? '+' : '+';
+            el.textContent = Math.floor(current).toLocaleString() + suffix;
+            if (current >= target) clearInterval(timer);
+        }, 16);
+    }
+    const statsObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.querySelectorAll('.stat-number').forEach(animateCounter);
+                statsObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    const statsStrip = document.querySelector('.stats-strip-inner');
+    if (statsStrip) statsObserver.observe(statsStrip);
+
+    // Why cards hover
+    document.querySelectorAll('.why-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-8px)';
+            this.style.boxShadow = '0 16px 40px rgba(212,175,55,0.15)';
+        });
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+        });
+    });
+</script>
+</body>
+</html>
