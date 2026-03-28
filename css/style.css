@@ -12,6 +12,42 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
 .announcement-bar { background: var(--gold-pale); font-size: 11px; letter-spacing: 1px; }
 
 
+/* Navbar brand container */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between logo and text */
+  text-decoration: none; /* remove underline if any */
+}
+
+/* Logo image */
+.brand-logo {
+  height: 60px; /* adjust to fit your navbar */
+  width: auto;   /* maintain aspect ratio */
+  object-fit: contain;
+}
+
+/* Brand text container */
+.brand-text {
+  display: flex;
+  flex-direction: column; /* stack main and sub text vertically */
+  line-height: 1;          /* remove extra spacing */
+}
+
+/* Main brand text */
+.brand-main {
+  font-size: 1.5rem;  /* adjust size */
+  font-weight: bold;
+  color: #000;        /* main color */
+}
+
+/* Sub brand text */
+.brand-sub {
+  font-size: 0.9rem;  /* smaller subtext */
+  color: #555;        /* lighter color */
+}
+
+
 /* Navigation */
 /* NAVBAR BASE */
 .luxury-nav {
@@ -1660,7 +1696,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     z-index: 999;
     transition: top 0.4s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-top: 15px;
+    margin-top: 19px;
 }
 .luxury-nav.scrolled ~ .cat-menu-bar {
     top: 56px;
