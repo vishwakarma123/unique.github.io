@@ -183,25 +183,33 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
 
 @media (max-width: 768px) {
 
+    /* Push content below fixed navbar */
+    body {
+        padding-top: 70px; /* adjust if navbar height bigger */
+    }
+
+    /* Category menu visible below navbar */
+    .cat-menu-bar {
+        position: relative;
+        z-index: 1000;
+        background: #000;
+    }
+
+    /* Horizontal scroll menu */
     .cat-menu-list {
         display: flex;
-        overflow-x: auto;   /* 🔥 allows scroll */
+        overflow-x: auto;
         white-space: nowrap;
         gap: 10px;
-        padding: 10px 0;
-		margin-top:25px;
+        padding: 10px;
     }
 
     .cat-menu-list li {
         flex: 0 0 auto;
     }
 
-    .cat-menu-list a {
-        font-size: 13px;
-        padding: 6px 10px;
-    }
-
 }
+
 
 /* Hero Section */
 /* HERO FIX */
