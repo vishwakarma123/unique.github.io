@@ -189,6 +189,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
         white-space: nowrap;
         gap: 10px;
         padding: 10px 0;
+		margin-top:25px;
     }
 
     .cat-menu-list li {
