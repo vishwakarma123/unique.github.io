@@ -1,87 +1,194 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. Loader Animation
-    window.addEventListener("load", () => {
-        const loader = document.getElementById("loader");
-        gsap.to(loader, {
-            opacity: 0,
-            duration: 1,
-            delay: 1.5,
-            onComplete: () => loader.style.display = "none"
-        });
-    });
 
-    // 2. Custom Cursor Movement
+    // ── 1. Loader Animation ──
+    const loader = document.getElementById("loader");
+    if (loader) {
+        window.addEventListener("load", () => {
+            gsap.to(loader, {
+                opacity: 0,
+                duration: 1,
+                delay: 1.5,
+                onComplete: () => loader.style.display = "none"
+            });
+        });
+
+        // fallback preloader animation
+        setTimeout(() => {
+            loader.style.opacity = "0";
+            loader.style.transition = "0.5s";
+            setTimeout(() => loader.style.display = "none", 500);
+        }, 1500);
+    }
+
+    // ── 2. Custom Cursor Movement ──
     const dot = document.querySelector(".cursor-dot");
     const outline = document.querySelector(".cursor-outline");
+    const ring = document.getElementById("cursorRing");
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
-    window.addEventListener("mousemove", (e) => {
-        gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.1 });
-        gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.3 });
-    });
+    if (dot && outline) {
+        window.addEventListener("mousemove", e => {
+            gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.1 });
+            gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.3 });
 
-    // 3. Navbar Scroll Effect
-    const nav = document.getElementById("navbar");
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-            nav.classList.add("scrolled", "bg-white", "shadow-sm");
-        } else {
-            nav.classList.remove("scrolled", "bg-white", "shadow-sm");
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
+        });
+
+        function animateRing() {
+            if (ring) {
+                ringX += (mouseX - ringX) * 0.12;
+                ringY += (mouseY - ringY) * 0.12;
+                ring.style.left = ringX + 'px';
+                ring.style.top = ringY + 'px';
+            }
+            requestAnimationFrame(animateRing);
         }
-    });
+        animateRing();
 
-    // 4. GSAP Reveal Animations
-    gsap.registerPlugin(ScrollTrigger);
+        document.querySelectorAll('a, button, .product-card, .cat-card, .flip-card').forEach(el => {
+            if (ring) {
+                el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+                el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+            }
+        });
+    }
 
-    gsap.from(".hero-title", {
-        y: 100,
-        opacity: 0,
-        duration: 1.2,
-        delay: 2,
-        ease: "power4.out"
-    });
+    // ── 3. Navbar Scroll Effect ──
+    const nav = document.getElementById("navbar") || document.querySelector(".luxury-nav");
+    if (nav) {
+        window.addEventListener("scroll", () => {
+            nav.classList.toggle("scrolled", window.scrollY > 50);
+            nav.classList.toggle("bg-white", window.scrollY > 50);
+            nav.classList.toggle("shadow-sm", window.scrollY > 50);
+        });
+    }
 
-    gsap.from(".reveal", {
-        scrollTrigger: {
-            trigger: ".reveal",
-            start: "top 85%",
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2
-    });
+    // ── 4. GSAP Reveal Animations ──
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
 
+        const heroTitle = document.querySelector(".hero-title");
+        if (heroTitle) {
+            gsap.from(heroTitle, {
+                y: 100,
+                opacity: 0,
+                duration: 1.2,
+                delay: 2,
+                ease: "power4.out"
+            });
+        }
 
+        document.querySelectorAll(".reveal").forEach(el => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2
+            });
+        });
+    }
 
-window.addEventListener("load", function () {
-    const loader = document.getElementById("loader");
+    // ── VanillaTilt ──
+    if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.3,
+            scale: 1.05
+        });
+    }
 
-    setTimeout(() => {
-        loader.style.opacity = "0";
-        loader.style.transition = "0.5s";
+    // ── AOS Init ──
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
+    }
 
-        setTimeout(() => {
-            loader.style.display = "none";
-        }, 500);
-    }, 1500); // show for 1.5 sec
-});
+    // ── Scroll Progress ──
+    const progressBar = document.getElementById('scroll-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progressBar.style.width = pct + '%';
+        });
+    }
 
+    // ── Back to Top ──
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        });
 
-window.addEventListener("scroll", function () {
-    let nav = document.querySelector(".luxury-nav");
-    nav.classList.toggle("scrolled", window.scrollY > 50);
-});
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
-    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-        max: 15,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.3,
-        scale: 1.05
-    });
+    // ── Gold Divider Reveal ──
+    const dividers = document.querySelectorAll('.gold-divider');
+    if (dividers.length) {
+        const dividerObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.5 });
+        dividers.forEach(d => dividerObserver.observe(d));
+    }
 
+    // ── Scroll Reveal Sections ──
+    const revealSections = document.querySelectorAll('.reveal-section');
+    if (revealSections.length) {
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('revealed');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        revealSections.forEach(s => revealObserver.observe(s));
+    }
 
-<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    // ── Counter Animation ──
+    function animateCounter(el) {
+        const target = +el.dataset.target;
+        const duration = 1800;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = Math.floor(current).toLocaleString() + (target >= 100 ? (target === 100 ? '%' : '+') : '+');
+            if (current >= target) clearInterval(timer);
+        }, 16);
+    }
+
+    const statsStrip = document.querySelector('.stats-strip');
+    if (statsStrip) {
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.querySelectorAll('.stat-number').forEach(animateCounter);
+                    counterObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        counterObserver.observe(statsStrip);
+    }
+
+    // ── Video Carousel Fix ──
+    const carousel = document.getElementById('heroSlider');
+    if (carousel) {
+        carousel.addEventListener('slide.bs.carousel', function(event) {
+            carousel.querySelectorAll('video').forEach(v => v.pause());
+            const activeVideo = event.relatedTarget.querySelector('video');
+            if (activeVideo) activeVideo.play();
+        });
+    }
 
 });
