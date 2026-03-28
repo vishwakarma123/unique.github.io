@@ -536,6 +536,74 @@
             .offer-slide { height: 300px; }
             .featured-banner-advanced { padding: 60px 0; }
         }
+
+        /* ── Category Menu Bar ── */
+.cat-menu-bar {
+    position: fixed;
+    top: 70px; /* sits just below navbar */
+    left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+    z-index: 999;
+    transition: top 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 15px;
+}
+.luxury-nav.scrolled ~ .cat-menu-bar {
+    top: 56px;
+}
+.cat-menu-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0; padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: 0;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+.cat-menu-list::-webkit-scrollbar { display: none; }
+.cat-menu-list li a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+.cat-menu-list li a i {
+    font-size: 0.65rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+}
+.cat-menu-list li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+.cat-menu-list li a:hover { color: var(--gold); }
+.cat-menu-list li a:hover::after { width: 70%; }
+.cat-menu-list li a:hover i { transform: scale(1.2); }
+
+@media (max-width: 768px) {
+    .cat-menu-bar { top: 60px; justify-content: flex-start; }
+    .cat-menu-list { justify-content: flex-start; padding: 0 10px; }
+    .cat-menu-list li a { padding: 9px 12px; font-size: 0.68rem; letter-spacing: 1px; }
+}
+
     </style>
 </head>
 
@@ -595,6 +663,23 @@
     </div>
   </div>
 </nav>
+
+
+<!-- ── CATEGORY MENU BAR ── -->
+<div class="cat-menu-bar">
+    <div class="container">
+        <ul class="cat-menu-list">
+            <li><a href="rings.html"><i class="fa-solid fa-ring"></i> Rings</a></li>
+            <li><a href="bracelets.html"><i class="fa-solid fa-circle-dot"></i> Bracelets</a></li>
+            <li><a href="mangalsutra.html"><i class="fa-solid fa-heart"></i> Mangalsutra</a></li>
+            <li><a href="earrings.html"><i class="fa-solid fa-star"></i> Earrings</a></li>
+            <li><a href="necklaces.html"><i class="fa-solid fa-gem"></i> Necklaces</a></li>
+            <li><a href="jhumka.html"><i class="fa-solid fa-droplet"></i> Jhumka</a></li>
+            <li><a href="collections.html"><i class="fa-solid fa-crown"></i> Bridal</a></li>
+            <li><a href="products.html"><i class="fa-solid fa-diamond"></i> Diamonds</a></li>
+        </ul>
+    </div>
+</div>
 
 <!-- ── HERO SLIDER ── -->
 <header id="heroSlider" class="carousel slide carousel-fade"

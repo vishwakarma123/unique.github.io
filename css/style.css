@@ -154,11 +154,26 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
 }
 
 /* MOBILE FIX */
+
+@media (max-width: 768px) {
+
+    #heroSlider,
+    #heroSlider .carousel-inner,
+    #heroSlider .carousel-item {
+        height: 60vh; /* reduce height (try 50–70vh) */
+    }
+
+    #heroSlider video {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
 @media (max-width: 768px) {
     #heroSlider,
-    .carousel-item {
-        height: 60vh;
-        min-height: 420px;
+    #heroSlider .carousel-item {
+        height: 55vh !important;
+        min-height: 55vh !important;
     }
 }
 
