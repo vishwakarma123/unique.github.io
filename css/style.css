@@ -184,16 +184,16 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
 @media (max-width: 768px) {
 
     /* Push content below fixed navbar */
-    .cat-menu-bar {
-        padding-top: 20px; /* adjust if navbar height bigger */
+    .cat-menu-bar,.cat-menu-list {
+        padding-top: 60px; /* adjust if navbar height bigger */
     }
 
     /* Category menu visible below navbar */
-    .cat-menu-bar {
+    /* .cat-menu-bar {
         position: relative;
         z-index: 1000;
         background: #000;
-    }
+    } */
 
     /* Horizontal scroll menu */
     .cat-menu-list {
