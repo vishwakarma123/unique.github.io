@@ -184,8 +184,8 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
 @media (max-width: 768px) {
 
     /* Push content below fixed navbar */
-    body {
-        padding-top: 130px; /* adjust if navbar height bigger */
+    .cat-menu-bar {
+        padding-top: 20px; /* adjust if navbar height bigger */
     }
 
     /* Category menu visible below navbar */
