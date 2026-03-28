@@ -176,9 +176,30 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
         padding: 20px;
 		margin-top: 19px;
         border-radius: 10px;
-        margin-top: 19px;
+        margin-top: 10px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
+}
+
+@media (max-width: 768px) {
+
+    .cat-menu-list {
+        display: flex;
+        overflow-x: auto;   /* 🔥 allows scroll */
+        white-space: nowrap;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .cat-menu-list li {
+        flex: 0 0 auto;
+    }
+
+    .cat-menu-list a {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
 }
 
 /* Hero Section */
