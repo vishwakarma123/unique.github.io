@@ -43,7 +43,7 @@
        NAVBAR
     ═══════════════════════════════════════════ */
     .luxury-nav {
-      background: #2f2204;
+      background: #1a1a1a;
       border-bottom: 1px solid var(--divider);
       box-shadow: 0 4px 40px rgba(0,0,0,0.6), 0 1px 0 var(--divider);
       padding: 0;
@@ -70,7 +70,7 @@
  
     /* SCROLLED STATE */
     .luxury-nav.scrolled {
-        background: #2f2204 !important;
+        background: #1a1a1a !important;
         backdrop-filter: blur(14px);
         box-shadow: 0 4px 20px rgba(0,0,0,0.8);
         padding: 0;
