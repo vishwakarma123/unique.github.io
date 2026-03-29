@@ -215,7 +215,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
 /* HERO FIX */
 #heroSlider,
 .carousel-item {
-    height: 75vh;   /* desktop perfect height */
+    height: 60vh;   /* desktop perfect height */
     min-height: 500px;
     position: relative;
 }
@@ -227,7 +227,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     #heroSlider,
     #heroSlider .carousel-inner,
     #heroSlider .carousel-item {
-        min-height: 383px;
+        min-height: 203px;
     }
 
     #heroSlider video {
