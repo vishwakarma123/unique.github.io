@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="js/main.js" defer></script>
 
+
     <style>
         /* ── CSS Variables ── */
         :root {
@@ -102,7 +103,7 @@
             /* min-height: 520px; */
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2419 50%, #1a1a1a 100%);
             display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden; margin-top: 80px;
+            position: relative; overflow: hidden; 
         }
         .about-hero::before {
             content: ''; position: absolute; inset: 0;
@@ -526,15 +527,8 @@
             .stat-divider { display: none; }
         }
         /* 🔧 GAP FIX - MAKE LAYOUT TIGHT */
-section {
-    margin: 0 !important;
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
-}
 
-.container {
-    margin-bottom: 0 !important;
-}
+
 
 .row {
     margin-bottom: 0 !important;
@@ -542,11 +536,11 @@ section {
 
 /* Remove unwanted spacing */
 .section-title {
-    margin-bottom: 30px !important;
+    margin-bottom: 10px !important;
 }
 .team-section {
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 
 .team-card {
@@ -556,6 +550,9 @@ section {
 .team-card:hover {
     transform: translateY(-5px);
 }
+
+
+
 
     </style>
 </head>
@@ -568,17 +565,14 @@ section {
 
 <!-- Back To Top -->
 <button id="backToTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
-<div class="scroll-bar" id="scrollBar"></div>
-<!-- Toast -->
-<div class="toast-notify" id="toast"><i class="fa-solid fa-check-circle"></i> <span id="toastMsg">Message sent successfully!</span></div>
 
-<!-- ── ANNOUNCEMENT BAR ── -->
+<!-- ── ANNOUNCEMENT BAR ──
 <div class="announcement-bar text-center py-2">
     <div class="marquee-wrap">
         <span class="small text-uppercase">✨ Flat 20% Off on Diamond Making Charges — <a href="offers.html" class="text-dark fw-bold">Shop Now</a> &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; Free Shipping on orders above ₹10,000 &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; 7-Day Easy Returns &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp;</span>
         <span class="small text-uppercase">✨ Flat 20% Off on Diamond Making Charges — <a href="offers.html" class="text-dark fw-bold">Shop Now</a> &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; Free Shipping on orders above ₹10,000 &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; 7-Day Easy Returns &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp;</span>
     </div>
-</div>
+</div> -->
 
 <!-- ── NAVBAR (YOUR EXACT CODE) ── -->
 <nav class="navbar navbar-expand-lg fixed-top luxury-nav">
@@ -588,9 +582,16 @@ section {
         <span class="brand-main">UNIQUE</span>
         <span class="brand-sub">CREATION</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="menu-icon"></span>
-    </button>
+   <button class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="menu-icon"></span>
+</button>
+
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav luxury-menu">
         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
@@ -625,7 +626,7 @@ section {
 <section class="about-hero">
     <div class="hero-inner-ring"></div>
     <div class="about-hero-content" data-aos="fade-up">
-        <nav aria-label="breadcrumb" class="mb-3">
+        <nav aria-label="breadcrumb" class="mb-1">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item active">About Us</li>
@@ -660,10 +661,10 @@ section {
 <!-- ── MISSION & VISION ── -->
 <section class="mv-section reveal-section">
     <div class="container">
-        <div class="section-title text-center mb-2" data-aos="fade-up">
+        <div class="section-title text-center mb-1" data-aos="fade-up">
             <h2 class="font-serif" style="font-size:clamp(2rem,4vw,3rem);">Our <em style="color:var(--gold); font-style:italic;">Purpose</em></h2>
             <div class="gold-divider mx-auto mt-2"></div>
-            <p class="text-muted mt-3 mb-5">The principles that guide every piece we craft</p>
+            <p class="text-muted mt-3 mb-1">The principles that guide every piece we craft</p>
         </div>
         <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
@@ -700,7 +701,7 @@ section {
 <!-- ── OUR VALUES ── -->
 <section class="">
     <div class="container">
-        <div class="section-title text-center mb-5" data-aos="fade-up">
+        <div class="section-title text-center mb-1" data-aos="fade-up">
             <span class="offer-badge">WHAT WE STAND FOR</span>
             <h2 class="font-serif mt-3" style="font-size:clamp(2rem,4vw,3rem);">Our Core <em style="color:var(--gold); font-style:italic;">Values</em></h2>
             <div class="gold-divider mx-auto mt-2"></div>
@@ -756,7 +757,7 @@ section {
 <section class="team-section reveal-section">
     <div class="container">
 
-        <div class="section-title text-center mb-4" data-aos="fade-up">
+        <div class="section-title text-center mb-1" data-aos="fade-up">
             <span class="offer-badge">OUR EXPERTS</span>
             <h2 class="font-serif mt-3">
                 Meet Our <em style="color:var(--gold); font-style:italic;">Team</em>
@@ -827,7 +828,7 @@ section {
 <!-- ── OUR JOURNEY ── -->
 <section class="journey-section reveal-section">
     <div class="container">
-        <div class="section-title text-center mb-5" data-aos="fade-up">
+        <div class="section-title text-center mb-1" data-aos="fade-up">
             <span class="offer-badge">MILESTONES</span>
             <h2 class="font-serif mt-3" style="font-size:clamp(2rem,4vw,3rem);">Our <em style="color:var(--gold); font-style:italic;">Journey</em></h2>
             <div class="gold-divider mx-auto mt-2"></div>
@@ -891,8 +892,8 @@ section {
     <div data-aos="fade-up">
         <span class="offer-badge" style="position:relative;z-index:2;">BEGIN YOUR JOURNEY</span>
         <h2 class="font-serif mt-3">Ready to Find Your <em>Perfect Jewel?</em></h2>
-        <div class="gold-divider mx-auto mt-3 mb-4"></div>
-        <p class="mb-4">Visit us at Ghatkopar, Mumbai or explore our collections online.</p>
+        <div class="gold-divider mx-auto mt-3 mb-1"></div>
+        <p class="mb-1">Visit us at Ghatkopar, Mumbai or explore our collections online.</p>
         <div class="d-flex flex-wrap gap-3 justify-content-center" style="position:relative;z-index:2;">
             <a href="collections.html" class="btn btn-gold">Shop Collections</a>
             <a href="contact.html" class="btn btn-gold" style="background:transparent; border:1px solid var(--gold); color:var(--gold);"
@@ -910,7 +911,7 @@ section {
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-lg-4 col-md-6">
-                <h3 class="font-serif text-gold mb-3">Nano Jewels</h3>
+                <h3 class="font-serif text-gold mb-2">Nano Jewels</h3>
                 <p class="text-light opacity-75">Redefining luxury through handcrafted excellence since 2026. Every piece tells a story of love and art.</p>
                 <div class="mt-4 d-flex gap-3">
                     <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -941,7 +942,7 @@ section {
             </div>
             <div class="col-lg-4 col-md-6">
                 <h6 class="footer-title">Stay Connected</h6>
-                <p class="text-light opacity-75 mb-3">Subscribe for exclusive offers & latest collections</p>
+                <p class="text-light opacity-75 mb-1">Subscribe for exclusive offers & latest collections</p>
                 <div class="input-group newsletter-box">
                     <input type="email" class="form-control" placeholder="Enter your email">
                     <button class="btn btn-gold">Join</button>
@@ -1034,6 +1035,7 @@ section {
             this.style.transform = '';
             this.style.boxShadow = '';
         });
+        
     });
 </script>
 </body>

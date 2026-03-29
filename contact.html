@@ -28,14 +28,14 @@
             --wa-dark: #128C7E;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
         body {
             background: var(--light-bg);
             font-family: 'Jost', sans-serif;
             overflow-x: hidden;
-        }
+        } */
 
         /* ── CURSOR ── */
         .cursor-dot {
@@ -196,7 +196,7 @@
         .pill-icon { font-size: 1rem; }
 
         /* ── MAIN SECTION ── */
-        .contact-section { padding: 90px 0 100px; }
+        .contact-section { padding: 20px 0 100px; }
 
         /* ── INFO CARD ── */
         .info-side {
@@ -543,19 +543,7 @@
 <!-- <div class="cursor-dot" id="cursor"></div> -->
 <!-- Scroll bar -->
 <div class="scroll-bar" id="scrollBar"></div>
-<!-- Toast -->
-<div class="toast-notify" id="toast"><i class="fa-solid fa-check-circle"></i> <span id="toastMsg">Message sent successfully!</span></div>
 
-<!-- Back To Top -->
-<button id="backToTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
-
-<!-- ── ANNOUNCEMENT BAR ── -->
-<div class="announcement-bar text-center py-2">
-    <div class="marquee-wrap">
-        <span class="small text-uppercase">✨ Flat 20% Off on Diamond Making Charges — <a href="offers.html" class="text-dark fw-bold">Shop Now</a> &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; Free Shipping on orders above ₹10,000 &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; 7-Day Easy Returns &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp;</span>
-        <span class="small text-uppercase">✨ Flat 20% Off on Diamond Making Charges — <a href="offers.html" class="text-dark fw-bold">Shop Now</a> &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; Free Shipping on orders above ₹10,000 &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; 7-Day Easy Returns &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp;</span>
-    </div>
-</div>
 
 <!-- ── NAVBAR (YOUR EXACT CODE) ── -->
 <nav class="navbar navbar-expand-lg fixed-top luxury-nav">
@@ -565,9 +553,16 @@
         <span class="brand-main">UNIQUE</span>
         <span class="brand-sub">CREATION</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="menu-icon"></span>
-    </button>
+    <button class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="menu-icon"></span>
+</button>
+      
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav luxury-menu">
         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
