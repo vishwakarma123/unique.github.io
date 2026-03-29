@@ -100,7 +100,7 @@
 
         /* ── Hero Banner ── */
         .about-hero {
-            /* min-height: 520px; */
+            min-height: 520px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2419 50%, #1a1a1a 100%);
             display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden; 
@@ -120,7 +120,7 @@
         @keyframes rotateSlow { to { transform: rotate(360deg); } }
         .hero-inner-ring {
             position: absolute; bottom: -120px; left: -80px;
-            width: 350px; height: 350px;
+            width: 350px; height: 50px;
             border: 1px solid rgba(212,175,55,0.08);
             border-radius: 50%;
             animation: rotateSlow 50s linear infinite reverse;
@@ -523,7 +523,7 @@
             .story-section { padding: 60px 0; }
             .mv-section, .values-section, .journey-section,
             .craft-section, .team-section, .cta-section { padding: 60px 0; }
-            .about-hero { min-height: 380px; }
+            
             .stat-divider { display: none; }
         }
         /* 🔧 GAP FIX - MAKE LAYOUT TIGHT */
@@ -625,7 +625,7 @@
 <!-- ── ABOUT HERO ── -->
 <section class="about-hero">
     <div class="hero-inner-ring"></div>
-    <div class="about-hero-content" data-aos="fade-up">
+    <div class="about-hero-content">
         <nav aria-label="breadcrumb" class="mb-1">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -659,7 +659,7 @@
 
 
 <!-- ── MISSION & VISION ── -->
-<section class="mv-section reveal-section">
+<section class="">
     <div class="container">
         <div class="section-title text-center mb-1" data-aos="fade-up">
             <h2 class="font-serif" style="font-size:clamp(2rem,4vw,3rem);">Our <em style="color:var(--gold); font-style:italic;">Purpose</em></h2>

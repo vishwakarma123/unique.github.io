@@ -1,3 +1,20 @@
+
+/* ── SAFE HELPERS ── */
+function safeEl(id) { return document.getElementById(id); }
+function safeQuery(sel) { return document.querySelector(sel); }
+
+/* ── REGISTER GSAP PLUGINS ── */
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
+
+/* ── SAFE ELEMENT REFS ── */
+const scrollBar = safeEl('scrollBar');
+const backToTop = safeEl('backToTop');
+const brandText = safeEl('brandText');
+const cursorDot  = safeEl('cursorDot');
+const cursorRing = safeEl('cursorRing');
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // ── 1. Loader Animation ──
@@ -67,19 +84,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ── 4. GSAP Reveal Animations ──
-    if (typeof gsap !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
+    // if (typeof gsap !== 'undefined') {
+    //     gsap.registerPlugin(ScrollTrigger);
 
-        const heroTitle = document.querySelector(".hero-title");
-        if (heroTitle) {
-            gsap.from(heroTitle, {
-                y: 100,
-                opacity: 0,
-                duration: 1.2,
-                delay: 2,
-                ease: "power4.out"
-            });
-        }
+    //     const heroTitle = document.querySelector(".hero-title");
+    //     if (heroTitle) {
+    //         gsap.from(heroTitle, {
+    //             y: 100,
+    //             opacity: 0,
+    //             duration: 1.2,
+    //             delay: 2,
+    //             ease: "power4.out"
+    //         });
+    //     }
 
         document.querySelectorAll(".reveal").forEach(el => {
             gsap.from(el, {
@@ -93,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 stagger: 0.2
             });
         });
-    }
+    
 
     // ── VanillaTilt ──
     if (typeof VanillaTilt !== 'undefined') {
