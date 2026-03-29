@@ -1,119 +1,196 @@
-:root {
-    --gold: #D4AF37;
-    --gold-pale: #F4EBD0;
-    --dark-text: #1a1a1a;
-    --light-bg: #FCFBFA;
-}
-
-body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color: var(--dark-text); }
-.font-serif { font-family: 'Cormorant Garamond', serif; }
-
-/* Announcement Bar */
-.announcement-bar { background: var(--gold-pale); font-size: 11px; letter-spacing: 1px; }
-
-
-/* Navbar brand container */
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* space between logo and text */
-  text-decoration: none; /* remove underline if any */
-}
-
-/* Logo image */
-.brand-logo {
-  height: 60px; /* adjust to fit your navbar */
-  width: auto;   /* maintain aspect ratio */
-  object-fit: contain;
-}
-
-/* Brand text container */
-.brand-text {
-  display: flex;
-  flex-direction: column; /* stack main and sub text vertically */
-  line-height: 1;          /* remove extra spacing */
-}
-
-/* Main brand text */
-.brand-main {
-  font-size: 1.5rem;  /* adjust size */
-  font-weight: bold;
-  color: #000;        /* main color */
-}
-
-/* Sub brand text */
-.brand-sub {
-  font-size: 0.9rem;  /* smaller subtext */
-  color: #555;        /* lighter color */
-}
-
-
-/* Navigation */
-/* NAVBAR BASE */
-.luxury-nav {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 5px 30px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-    padding: 15px 0;
-}
-
-/* SCROLL EFFECT */
-.luxury-nav.scrolled {
-    padding: 8px 0;
-    background: #fff;
-}
-
-/* LOGO */
-.navbar-brand {
-    font-family: 'Cormorant Garamond', serif;
-    text-align: center;
-}
-
-.brand-main {
-    display: block;
-    font-size: 20px;
-    letter-spacing: 3px;
-    font-weight: 600;
-}
-
-.brand-sub {
-    display: block;
-    font-size: 12px;
-    letter-spacing: 4px;
-    color: #d09f00;
-}
-
-/* MENU */
-.luxury-menu .nav-link {
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    position: relative;
-    transition: 0.3s;
-}
-
-/* UNDERLINE ANIMATION */
-.luxury-menu .nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: #d4af37;
-    transition: 0.3s;
-}
-
-.luxury-menu .nav-link:hover::after,
-.luxury-menu .nav-link.active::after {
-    width: 100%;
-}
-
-.luxury-menu .nav-link:hover {
-    color: #d4af37;
-}
-
+   /* ═══════════════════════════════════════════
+       COLOR SYSTEM – UNIQUE CREATION
+    ═══════════════════════════════════════════ */
+    :root {
+      --midnight:    #0B0C10;   /* deep background         */
+      --charcoal:    var(--gold-dim) !important;   /* navbar / cards          */
+      --charcoal-2:  #22243A;   /* subtle panels / mobile  */
+      --gold:        #C9A84C;   /* brand accent            */
+      --gold-pale:   #F0D98A;   /* hover glow              */
+      --gold-dim:    rgba(201,168,76,0.15); /* glass glow */
+      --cream:       #D4AF37 ;   /* light text              */
+      --white:       #FFFFFF;   /* nav links               */
+      --divider:     rgba(201,168,76,0.20);
+    }
+ 
+    /* ═══════════════════════════════════════════
+       BASE
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--midnight);
+      color: var(--cream);
+      min-height: 100vh;
+    }
+ 
+    /* ═══════════════════════════════════════════
+       ANNOUNCEMENT BAR
+    ═══════════════════════════════════════════ */
+    .announcement-bar {
+      background: var(--gold);
+      color: var(--midnight);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 8px 16px;
+    }
+    .announcement-bar a { color: var(--midnight); text-decoration: underline; }
+ 
+    /* ═══════════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════════ */
+    .luxury-nav {
+      background: #2f2204;
+      border-bottom: 1px solid var(--divider);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.6), 0 1px 0 var(--divider);
+      padding: 0;
+      transition: all 0.35s ease;
+      position: relative;
+      z-index: 1000;
+       width: 100%;
+      position: fixed !important;
+    }
+ 
+    /* gold shimmer line at very top of navbar */
+    .luxury-nav::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-pale) 50%, var(--gold) 70%, transparent 100%);
+    }
+ 
+    /* .luxury-nav .container {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    } */
+ 
+    /* SCROLLED STATE */
+    .luxury-nav.scrolled {
+        background: #2f2204 !important;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        padding: 0;
+    }
+ 
+    /* ── BRAND ──────────────────────────────── */
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+ 
+    /* Logo circle container (replace with <img> for real logo) */
+    .brand-logo-wrap {
+      width: 110px;
+      height: 82px;
+      /* border-radius: 50%;
+      border: 1.5px solid var(--gold); */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* background: var(--gold-dim); */
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .brand-logo-wrap:hover {
+      box-shadow: 0 0 18px var(--gold);
+    }
+    .brand-logo {
+      height: 115px;
+      width: auto;
+      object-fit: contain;
+    }
+    /* Fallback monogram when no image */
+    .brand-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+ 
+    /* Brand text stack */
+    .brand-text { display: flex; flex-direction: column; line-height: 1; }
+ 
+    .brand-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+ 
+    .brand-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 6px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+ 
+    /* ── NAV LINKS ──────────────────────────── */
+    .luxury-menu .nav-link {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cream) !important;
+      padding: 6px 16px !important;
+      position: relative;
+      transition: color 0.3s;
+    }
+ 
+    .luxury-menu .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transition: width 0.35s ease;
+    }
+ 
+    .luxury-menu .nav-link:hover,
+    .luxury-menu .nav-link.active {
+      color: var(--gold-pale) !important;
+    }
+ 
+    .luxury-menu .nav-link:hover::after,
+    .luxury-menu .nav-link.active::after {
+      width: 60%;
+    }
+ 
+ 
+    /* CART BADGE */
+    .cart-count {
+      position: absolute;
+      top: -4px; right: -4px;
+      background: var(--gold);
+      color: var(--midnight);
+      font-size: 9px;
+      font-weight: 700;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+ 
+    /* ── TOGGLER ────────────────────────────── */
+    .navbar-toggler { border: none; background: none; padding: 4px; }
+    .navbar-toggler:focus { box-shadow: none; }
+ 
+    
 /* ICONS */
 .icon-btn {
     width: 40px;
@@ -142,72 +219,6 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     font-size: 10px;
     padding: 2px 6px;
     border-radius: 50%;
-}
-
-/* TOGGLER CUSTOM */
-.navbar-toggler {
-    border: none;
-}
-
-.menu-icon,
-.menu-icon::before,
-.menu-icon::after {
-    width: 25px;
-    height: 2px;
-    background: #000;
-    display: block;
-    position: relative;
-    transition: 0.3s;
-}
-
-.menu-icon::before,
-.menu-icon::after {
-    content: "";
-    position: absolute;
-}
-
-.menu-icon::before { top: -7px; }
-.menu-icon::after { top: 7px; }
-
-/* MOBILE MENU */
-@media(max-width: 991px) {
-    .luxury-menu {
-        background: #fff;
-        padding: 20px;
-		margin-top: 19px;
-        border-radius: 10px;
-        margin-top: 10px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* Push content below fixed navbar */
-    .cat-menu-bar {
-        padding-top: 20px; /* adjust if navbar height bigger */
-    }
-
-    /* Category menu visible below navbar */
-    .cat-menu-bar {
-        position: relative;
-        z-index: 1000;
-        background: #000;
-    }
-
-    /* Horizontal scroll menu */
-    .cat-menu-list {
-        display: flex;
-        overflow-x: auto;
-        white-space: nowrap;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .cat-menu-list li {
-        flex: 0 0 auto;
-    }
-
 }
 
 
@@ -240,8 +251,10 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
 
 /* IMAGE BACKGROUND FIX */
 .carousel-item {
+    margin-top: 92px;
     background-size: cover !important;
     background-position: center;
+    padding-bottom: 90px;
 }
 
 /* VIDEO FIX */
@@ -251,12 +264,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     object-fit: cover;
 }
 
-/* OVERLAY (Luxury Dark Gradient) */
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-}
+
 
 /* TEXT ALIGNMENT */
 .hero-text {
@@ -1326,16 +1334,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
             100% { transform: translateX(-50%); }
         }
 
-        /* ── Navbar Enhancement ── */
-        .luxury-nav { transition: all 0.4s ease !important; }
-        .luxury-nav.scrolled {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1) !important;
-            padding: 8px 0 !important;
-            background: rgba(255,255,255,0.97) !important;
-        }
-        .navbar-brand { transition: transform 0.3s ease; }
-        .navbar-brand:hover { transform: scale(1.04); }
-
+    
         /* ── Hero Overlay Text Fade In ── */
         .hero-text {
             animation: heroFadeUp 1.1s cubic-bezier(0.22,1,0.36,1) both;
@@ -1606,6 +1605,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
             background: #D4AF37;
             padding: 14px 0;
             overflow: hidden;
+            /* margin-top: 90px; */
         }
         .marquee-band-track {
             display: flex;
@@ -1659,7 +1659,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
         }
 
         /* ── Footer ── */
-        .footer-luxury { background: #1a1a1a; }
+        .footer-luxury { background: #100a00; }
         .footer-glow {
             position: absolute;
             top: 0; left: 50%;

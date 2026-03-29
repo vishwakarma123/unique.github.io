@@ -69,53 +69,58 @@
     </div>
 </div> -->
 
-<!-- ── NAVBAR (YOUR EXACT CODE) ── -->
-<nav class="navbar navbar-expand-lg fixed-top luxury-nav">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">
-        <img src="assets/logo/logo.jpg" alt="Logo" class="brand-logo">
-        <span class="brand-main">UNIQUE</span>
-        <span class="brand-sub">CREATION</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="menu-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav luxury-menu">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
-        <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
-        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<!-- ── CATEGORY MENU BAR ── -->
-<div class="cat-menu-bar">
+<!-- ══════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg luxury-nav" id="mainNav">
     <div class="container">
-        <ul class="cat-menu-list">
-            <li><a href="rings.html"><i class="fa-solid fa-ring"></i> Rings</a></li>
-            <li><a href="bracelets.html"><i class="fa-solid fa-circle-dot"></i> Bracelets</a></li>
-            <li><a href="mangalsutra.html"><i class="fa-solid fa-heart"></i> Mangalsutra</a></li>
-            <li><a href="earrings.html"><i class="fa-solid fa-star"></i> Earrings</a></li>
-            <li><a href="necklaces.html"><i class="fa-solid fa-gem"></i> Necklaces</a></li>
-            <li><a href="jhumka.html"><i class="fa-solid fa-droplet"></i> Jhumka</a></li>
-            <li><a href="collections.html"><i class="fa-solid fa-crown"></i> Bridal</a></li>
-            <li><a href="products.html"><i class="fa-solid fa-diamond"></i> Diamonds</a></li>
-        </ul>
-    </div>
-</div>
+ 
+      <!-- BRAND -->
+      <a class="navbar-brand" href="index.html">
+ 
+        <!-- ► OPTION A: Use this block if you have a logo image -->
+        
+        <div class="brand-logo-wrap">
+          <img src="assets/logo/Unique Creation logo design.png" alt="Unique Creation Logo" class="brand-logo" />
+        </div>
+       
+ 
 
+        <div class="brand-text">
+          <span class="brand-main">Nano</span>
+          <span class="brand-sub">Jewels</span>
+        </div>
+      </a>
+ 
+      <!-- TOGGLER -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false">
+        <span class="menu-icon"></span>
+      </button>
+ 
+      <!-- LINKS -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav luxury-menu">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
+          <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+ 
+
+ 
+    </div>
+  </nav>
 
 <!-- ── HERO SLIDER ── -->
 <header id="heroSlider" class="carousel slide carousel-fade"
     data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
     <div class="carousel-inner">
-
+<!-- 
         <div class="carousel-item active"
             style="background-image: url('assets/hero/carmule-diamonds-2142417_1920.jpg');">
             <div class="hero-overlay"></div>
@@ -126,9 +131,9 @@
                     <a href="products.html" class="btn btn-gold mt-3">Discover More</a>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="carousel-item">
+        <div class="carousel-item active">
             <video autoplay muted loop playsinline>
                 <source src="assets/videos/WhatsApp Video 2026-03-27 at 10.32.34 PM.mp4" type="video/mp4">
             </video>
@@ -142,7 +147,7 @@
             </div>
         </div>
 
-        <div class="carousel-item"
+        <!-- <div class="carousel-item"
             style="background-image: url('assets/hero/5825697.jpg');">
             <div class="hero-overlay"></div>
             <div class="container h-100 d-flex align-items-center">
@@ -152,7 +157,7 @@
                     <a href="products.html" class="btn btn-gold mt-3">Shop Now</a>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="carousel-item">
             <video autoplay muted loop playsinline>
@@ -207,7 +212,7 @@
 <section class="py-1 bg-white reveal-section">
     <div class="container py-2">
         <div class="section-title text-center mb-2" data-aos="fade-up">
-            <h2 class="font-serif">Shop by <em>Category</em></h2>
+            <h2 class="font-serif">Nano Jewels <em>Category</em></h2>
             <div class="gold-divider mx-auto mt-2"></div>
         </div>
         <p class="text-muted text-center mb-5 small" data-aos="fade-up" data-aos-delay="100">Handcrafted with love · Worn with pride</p>
@@ -264,353 +269,6 @@
     </div>
 </section>
 
-<!-- ── OFFER SLIDER ── 
-<section class="offer-slider-section py-5 reveal-section">
-    <div class="container">
-        <div class="section-title text-center mb-5" data-aos="fade-up">
-            <h2 class="font-serif">Exclusive <em>Offers</em></h2>
-            <div class="gold-divider mx-auto mt-2"></div>
-            <p class="text-muted mt-2">Grab the best deals on luxury jewellery</p>
-        </div>
-        <div id="offerSlider" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="offer-slide" style="background-image: url('assets/images/offers/pexels-kaderdygnn-10581483.jpg');">
-                        <div class="offer-overlay-light"></div>
-                        <div class="offer-content text-center text-dark">
-                            <span class="offer-badge">LIMITED TIME</span>
-                            <h2 class="font-serif mt-3">Flat 20% Off</h2>
-                            <p>On Diamond Jewellery Making Charges</p>
-                            <a href="offers.html" class="btn btn-gold mt-3">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="offer-slide" style="background-image: url('assets/images/offers/pexels-mlkbnl-12194360.jpg');">
-                        <div class="offer-overlay-light"></div>
-                        <div class="offer-content text-center text-dark">
-                            <span class="offer-badge">FESTIVE SALE</span>
-                            <h2 class="font-serif mt-3">Buy 1 Get 1</h2>
-                            <p>On Selected Gold Rings & Earrings</p>
-                            <a href="products.html" class="btn btn-gold mt-3">Explore</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="offer-slide" style="background-image: url('assets/images/offers/pexels-zandatsu-29502314.jpg');">
-                        <div class="offer-overlay-light"></div>
-                        <div class="offer-content text-center text-dark">
-                            <span class="offer-badge">NEW ARRIVAL</span>
-                            <h2 class="font-serif mt-3">Bridal Collection</h2>
-                            <p>Exclusive handcrafted wedding jewellery</p>
-                            <a href="collections.html" class="btn btn-gold mt-3">Discover</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#offerSlider" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#offerSlider" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </div>
-</section>   -->
-
-<!-- ── BESTSELLERS ── 
-<section class="py-5 bg-light reveal-section">
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-end mb-2" data-aos="fade-right">
-            <div>
-                <h2 class="font-serif display-5">Bestsellers</h2>
-                <p class="text-muted">Most loved pieces by our community</p>
-            </div>
-            <a href="products.html" class="btn-text">View All <i class="fa-solid fa-arrow-right ms-1"></i></a>
-        </div>
-        <div class="gold-divider mb-5" style="margin-left:0;"></div>
-
-        <div class="row g-4">
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="product-card shadow-sm rounded overflow-hidden">
-                    <div class="product-img-wrap position-relative">
-                        <img src="assets/images/rings/513.jpg" class="main-img w-100" alt="Rose Gold Diamond Ring">
-                        <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-solid fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                    <div class="product-info p-3 text-center">
-                        <h6 class="mb-1 fw-semibold">Rose Gold Diamond Ring</h6>
-                       <p class="price text-gold fw-bold">₹32,500 <span class="old-price text-muted text-decoration-line-through">₹38,000</span></p>  
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="product-card shadow-sm rounded overflow-hidden">
-                    <div class="product-img-wrap position-relative">
-                        <img src="assets/images/bracelets/images (1).jpg" class="main-img w-100" alt="Gold Bracelet">
-                        <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-solid fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                    <div class="product-info p-3 text-center">
-                        <h6 class="mb-1 fw-semibold">Elegant Gold Bracelet</h6>
-                     <p class="price text-gold fw-bold">₹28,000 <span class="old-price text-muted text-decoration-line-through">₹33,000</span></p> 
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="product-card shadow-sm rounded overflow-hidden">
-                    <div class="product-img-wrap position-relative">
-                        <img src="assets/images/mangalsutra/images.png" class="main-img w-100" alt="Mangalsutra">
-                        <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-solid fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                    <div class="product-info p-3 text-center">
-                        <h6 class="mb-1 fw-semibold">Classic Mangalsutra</h6>
-                     <p class="price text-gold fw-bold">₹15,000 <span class="old-price text-muted text-decoration-line-through">₹18,000</span></p> 
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
-                <div class="product-card shadow-sm rounded overflow-hidden">
-                    <div class="product-img-wrap position-relative">
-                        <img src="assets/images/earings/download.jpg" class="main-img w-100" alt="Diamond Earrings">
-                        <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-solid fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                    <div class="product-info p-3 text-center">
-                        <h6 class="mb-1 fw-semibold">Diamond Earrings</h6>
-                        <p class="price text-gold fw-bold">₹22,500 <span class="old-price text-muted text-decoration-line-through">₹26,000</span></p> 
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="500">
-                <div class="product-card shadow-sm rounded overflow-hidden">
-                    <div class="product-img-wrap position-relative">
-                        <img src="assets/images/neklaces/images.jpg" class="main-img w-100" alt="Pearl Necklace">
-                        <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-solid fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                    <div class="product-info p-3 text-center">
-                        <h6 class="mb-1 fw-semibold">Pearl Necklace</h6>
-					 <p class="price text-gold fw-bold">₹35,000 <span class="old-price text-muted text-decoration-line-through">₹40,000</span></p> 
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="600">
-                <div class="product-card shadow-sm rounded overflow-hidden">
-                    <div class="product-img-wrap position-relative">
-                        <img src="assets/images/bracelets/images (1).jpg" class="main-img w-100" alt="Gold Bracelet">
-                        <div class="product-actions position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-regular fa-heart"></i></button>
-                            <button class="action-btn btn btn-light rounded-circle p-2 shadow-sm"><i class="fa-solid fa-cart-plus"></i></button>
-                        </div>
-                    </div>
-                    <div class="product-info p-3 text-center">
-                        <h6 class="mb-1 fw-semibold">Elegant Gold Bracelet</h6>
-                      <p class="price text-gold fw-bold">₹28,000 <span class="old-price text-muted text-decoration-line-through">₹33,000</span></p> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  -->
-
-<!-- ── FEATURED BANNER ── -->
-<section class="featured-banner-advanced reveal-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="featured-content-adv" data-aos="fade-right">
-                    <span class="offer-badge">SIGNATURE COLLECTION</span>
-                    <h2 class="font-serif mt-3">Timeless <em>Bridal Jewellery</em></h2>
-                    <div class="gold-divider mt-3" style="margin-left:0;"></div>
-                    <p class="mt-3 text-muted">Experience handcrafted luxury designed for your unforgettable moments.</p>
-                    <a href="collections.html" class="btn btn-gold mt-4">Explore Collection</a>
-                </div>
-            </div>
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <div class="image-wrapper-adv" data-aos="fade-left" data-aos-delay="200">
-                    <img src="assets/images/offers/pexels-zandatsu-29502969.jpg" class="main-img" alt="Bridal Jewellery">
-                    <div class="floating-shape shape1"></div>
-                    <div class="floating-shape shape2"></div>
-                    <div class="floating-shape shape3"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ── WHY UNIQUE CREATION ──
-<section class="py-5 bg-light reveal-section">
-    <div class="container text-center">
-        <h2 class="font-serif display-5 mb-2" data-aos="fade-up">Why Purchase From Unique Creation Jewellers?</h2>
-        <div class="gold-divider mx-auto mb-3"></div>
-        <p class="text-muted mb-5" data-aos="fade-up" data-aos-delay="100">Experience luxury, trust, and excellence with every piece.</p>
-        <div class="row g-4 justify-content-center">
-            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
-                <div class="flip-card">
-                    <div class="flip-inner">
-                        <div class="flip-front why-card p-4 bg-white rounded shadow-sm h-100">
-                            <i class="fa-solid fa-certificate fa-3x text-gold mb-3"></i>
-                            <h6 class="fw-bold mb-2">Certified Jewellery</h6>
-                            <p class="small text-muted">Authentic and certified gems and metals.</p>
-                        </div>
-                        <div class="flip-back why-card p-4 bg-gold rounded shadow-sm h-100 text-white">
-                            Authentic and certified gems and metals.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
-                <div class="flip-card">
-                    <div class="flip-inner">
-                        <div class="flip-front why-card p-4 bg-white rounded shadow-sm h-100">
-                            <i class="fa-solid fa-arrow-rotate-left fa-3x text-gold mb-3"></i>
-                            <h6 class="fw-bold mb-2">7 Days Money Back</h6>
-                            <p class="small text-muted">Hassle-free returns within 7 days.</p>
-                        </div>
-                        <div class="flip-back why-card p-4 bg-gold rounded shadow-sm h-100 text-white">
-                            Hassle-free returns within 7 days.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
-                <div class="flip-card">
-                    <div class="flip-inner">
-                        <div class="flip-front why-card p-4 bg-white rounded shadow-sm h-100">
-                            <i class="fa-solid fa-truck-fast fa-3x text-gold mb-3"></i>
-                            <h6 class="fw-bold mb-2">Free Shipping</h6>
-                            <p class="small text-muted">Delivered safely to your doorstep at no extra cost.</p>
-                        </div>
-                        <div class="flip-back why-card p-4 bg-gold rounded shadow-sm h-100 text-white">
-                            Delivered safely to your doorstep at no extra cost.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="400">
-                <div class="flip-card">
-                    <div class="flip-inner">
-                        <div class="flip-front why-card p-4 bg-white rounded shadow-sm h-100">
-                            <i class="fa-solid fa-handshake fa-3x text-gold mb-3"></i>
-                            <h6 class="fw-bold mb-2">Easy Exchange & Buyback</h6>
-                            <p class="small text-muted">Seamless exchange and buyback services.</p>
-                        </div>
-                        <div class="flip-back why-card p-4 bg-gold rounded shadow-sm h-100 text-white">
-                            Seamless exchange and buyback services for peace of mind.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="500">
-                <div class="flip-card">
-                    <div class="flip-inner">
-                        <div class="flip-front why-card p-4 bg-white rounded shadow-sm h-100">
-                            <i class="fa-solid fa-shield-halved fa-3x text-gold mb-3"></i>
-                            <h6 class="fw-bold mb-2">Free Jewellery Insurance</h6>
-                            <p class="small text-muted">Protect your valuable jewellery.</p>
-                        </div>
-                        <div class="flip-back why-card p-4 bg-gold rounded shadow-sm h-100 text-white">
-                            Protect your valuable jewellery at no extra cost.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!-- ── TESTIMONIALS ── 
-<section class="py-4 bg-white reveal-section">
-    <div class="container">
-        <div class="section-title text-center mb-2" data-aos="fade-up">
-            <h2 class="font-serif">What Our Customers Say</h2>
-            <div class="gold-divider mx-auto mt-2"></div>
-            <p class="text-muted mt-3">Hear from our happy clients who love our handcrafted jewellery</p>
-        </div>
-        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="testimonial-card text-center p-4 shadow-sm rounded" data-aos="fade-up">
-                                <img src="assets/images/testimonials/Untitled2.jpg" alt="Customer 1" class="rounded-circle mb-3 testimonial-img">
-                                <h6 class="fw-bold mb-1">Anjali Sharma</h6>
-                                <p class="small text-muted mb-2">Mumbai, India</p>
-                                <div class="mb-2">
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star-half-stroke text-gold"></i>
-                                </div>
-                                <p class="text-muted">"Absolutely stunning jewellery! The craftsmanship is exquisite and delivery was super fast."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="testimonial-card text-center p-4 shadow-sm rounded" data-aos="fade-up">
-                                <img src="assets/images/testimonials/Untitled.jpg" alt="Customer 2" class="rounded-circle mb-3 testimonial-img">
-                                <h6 class="fw-bold mb-1">Rohit Mehra</h6>
-                                <p class="small text-muted mb-2">Delhi, India</p>
-                                <div class="mb-2">
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-regular fa-star text-gold"></i>
-                                </div>
-                                <p class="text-muted">"The rings I ordered are beyond beautiful. Excellent quality and value for money!"</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="testimonial-card text-center p-4 shadow-sm rounded" data-aos="fade-up">
-                                <img src="assets/images/testimonials/Untitled1.jpg" alt="Customer 3" class="rounded-circle mb-3 testimonial-img">
-                                <h6 class="fw-bold mb-1">Priya Kapoor</h6>
-                                <p class="small text-muted mb-2">Bangalore, India</p>
-                                <div class="mb-2">
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                    <i class="fa-solid fa-star text-gold"></i>
-                                </div>
-                                <p class="text-muted">"Unique Creation has become my go-to for jewellery. Every piece feels personal and luxurious."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
-            </button>
-        </div>
-    </div>
-</section>
-
--->
 
 <!-- ── CONTACT ── -->
 <section id="contact" class="py-5 reveal-section" style="background-color:#f8f9fa;">
@@ -675,7 +333,6 @@
             <div class="col-lg-2 col-md-6">
                 <h6 class="footer-title">Customer Care</h6>
                 <ul class="list-unstyled footer-links">
-                    <li><a href="#">Shipping & Returns</a></li>
                     <li><a href="#">Terms & Conditions</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">FAQs</a></li>

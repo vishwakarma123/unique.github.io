@@ -73,15 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ── 3. Navbar Scroll Effect ──
-    const nav = document.getElementById("navbar") || document.querySelector(".luxury-nav");
-    if (nav) {
-        window.addEventListener("scroll", () => {
-            nav.classList.toggle("scrolled", window.scrollY > 50);
-            nav.classList.toggle("bg-white", window.scrollY > 50);
-            nav.classList.toggle("shadow-sm", window.scrollY > 50);
-        });
-    }
+
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
 
     // ── 4. GSAP Reveal Animations ──
     // if (typeof gsap !== 'undefined') {

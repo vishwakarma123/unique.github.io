@@ -26,10 +26,14 @@
             --dark: #1a1a1a;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Jost', sans-serif; background: #fff; color: var(--dark); overflow-x: hidden; }
-        .font-serif { font-family: 'Cormorant Garamond', serif; }
-        .text-gold { color: var(--gold) !important; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--light-bg);
+            font-family: 'Jost', sans-serif;
+            overflow-x: hidden;
+        }
 
         /* ── Announcement Bar ── */
         .announcement-bar { background: var(--cream); overflow: hidden; }
@@ -228,20 +232,6 @@
         .tnc-item i { color: var(--gold); margin-top: 3px; flex-shrink: 0; }
         .tnc-item p { font-size: 0.88rem; color: #666; line-height: 1.6; margin: 0; }
 
-        /* Footer */
-        .footer-luxury { background: #1a1a1a; }
-        .footer-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-        .footer-title { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
-        .footer-links li { margin-bottom: 8px; }
-        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.3s, padding-left 0.3s; }
-        .footer-links a:hover { color: var(--gold); padding-left: 5px; }
-        .social-icon { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.8rem; transition: all 0.3s; }
-        .social-icon:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.4); }
-        .newsletter-box .form-control { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 0.85rem; }
-        .newsletter-box .form-control::placeholder { color: rgba(255,255,255,0.3); }
-        .newsletter-box .form-control:focus { box-shadow: none; border-color: var(--gold); background: rgba(255,255,255,0.08); }
-
         /* Back to top */
         #backToTop { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; background: var(--gold); color: #fff; border: none; border-radius: 50%; font-size: 1rem; cursor: pointer; z-index: 9000; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(212,175,55,0.4); }
         #backToTop.visible { opacity: 1; transform: translateY(0); }
@@ -260,56 +250,56 @@
 </head>
 <body>
 
-<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
-<div class="copy-toast" id="copyToast">✓ Code Copied!</div>
-
 <!-- Scroll progress bar -->
 <div class="scroll-bar" id="scrollBar"></div>
 
 <!-- Back To Top -->
 <button id="backToTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
 
-
-<!-- ── NAVBAR (YOUR EXACT CODE) ── -->
-<nav class="navbar navbar-expand-lg fixed-top luxury-nav">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">
-        <img src="assets/logo/logo.jpg" alt="Logo" class="brand-logo">
-        <span class="brand-main">UNIQUE</span>
-        <span class="brand-sub">CREATION</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="menu-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav luxury-menu">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
-        <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
-        <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<!-- ── CATEGORY MENU BAR ── -->
-<div class="cat-menu-bar">
+<!-- ══════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg luxury-nav" id="mainNav">
     <div class="container">
-        <ul class="cat-menu-list">
-            <li><a href="rings.html"><i class="fa-solid fa-ring"></i> Rings</a></li>
-            <li><a href="bracelets.html"><i class="fa-solid fa-circle-dot"></i> Bracelets</a></li>
-            <li><a href="mangalsutra.html"><i class="fa-solid fa-heart"></i> Mangalsutra</a></li>
-            <li><a href="earrings.html"><i class="fa-solid fa-star"></i> Earrings</a></li>
-            <li><a href="necklaces.html"><i class="fa-solid fa-gem"></i> Necklaces</a></li>
-            <li><a href="jhumka.html"><i class="fa-solid fa-droplet"></i> Jhumka</a></li>
-            <li><a href="collections.html"><i class="fa-solid fa-crown"></i> Bridal</a></li>
-            <li><a href="products.html"><i class="fa-solid fa-diamond"></i> Diamonds</a></li>
+ 
+      <!-- BRAND -->
+      <a class="navbar-brand" href="index.html">
+ 
+        <!-- ► OPTION A: Use this block if you have a logo image -->
+        
+        <div class="brand-logo-wrap">
+          <img src="assets/logo/Unique Creation logo design.png" alt="Unique Creation Logo" class="brand-logo" />
+        </div>
+       
+ 
+
+        <div class="brand-text">
+          <span class="brand-main">Nano</span>
+          <span class="brand-sub">Jewels</span>
+        </div>
+      </a>
+ 
+      <!-- TOGGLER -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false">
+        <span class="menu-icon"></span>
+      </button>
+ 
+      <!-- LINKS -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav luxury-menu">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
+          <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
+      </div>
     </div>
-</div>
+  </nav>
+
 <!-- Hero -->
 <section class="offers-hero">
     <div class="hero-ring2"></div>
@@ -618,65 +608,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
 
-    // Navbar scroll
-    window.addEventListener('scroll', () => {
-        document.querySelector('.luxury-nav').classList.toggle('scrolled', window.scrollY > 60);
-        document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
-    });
-
-    document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Gold divider reveal
-    const divObs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.gold-divider').forEach(d => divObs.observe(d));
-
-    // Scroll reveal
-    const revObs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revObs.unobserve(e.target); } });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal-section').forEach(s => revObs.observe(s));
-
-    // Countdown — target: 31 March 2026
-    function updateCountdown() {
-        const end = new Date('2026-03-31T23:59:59');
-        const now = new Date();
-        const diff = end - now;
-        if (diff <= 0) {
-            document.getElementById('cd-days').textContent = '00';
-            document.getElementById('cd-hrs').textContent = '00';
-            document.getElementById('cd-min').textContent = '00';
-            document.getElementById('cd-sec').textContent = '00';
-            return;
-        }
-        const d = Math.floor(diff / 86400000);
-        const h = Math.floor((diff % 86400000) / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
-        document.getElementById('cd-hrs').textContent = String(h).padStart(2,'0');
-        document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
-        document.getElementById('cd-sec').textContent = String(s).padStart(2,'0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // Copy code
-    function copyCode(code) {
-        navigator.clipboard.writeText(code).catch(() => {
-            const el = document.createElement('textarea');
-            el.value = code; document.body.appendChild(el);
-            el.select(); document.execCommand('copy');
-            document.body.removeChild(el);
-        });
-        const toast = document.getElementById('copyToast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
-    }
 </script>
 </body>
 </html>

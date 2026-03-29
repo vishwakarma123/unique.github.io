@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Unique Creation Jewellers</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js" defer></script>
+
+    <style>
+        /* ══════════════════════════════════
+           CSS VARIABLES
+        ══════════════════════════════════ */
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #f0d060;
+            --gold-dark: #b8962e;
+            --gold-pale: #F4EBD0;
+            --cream: #F4EBD0;
+            --off-white: #FCFBFA;
+            --dark: #1a1a1a;
+            --dark-2: #111;
+            --text-muted-c: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--off-white);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* ══════════════════════════════════
+           SCROLL BAR
+        ══════════════════════════════════ */
+        .scroll-bar {
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            z-index: 99999; width: 0%; transition: width 0.1s linear;
+        }
+
+        /* ══════════════════════════════════
+           BACK TO TOP
+        ══════════════════════════════════ */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 46px; height: 46px; background: var(--gold);
+            color: #fff; border: none; border-radius: 50%;
+            font-size: 1rem; cursor: pointer; z-index: 9000;
+            opacity: 0; transform: translateY(20px);
+            transition: all 0.4s ease;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 20px rgba(212,175,55,0.45);
+        }
+        #backToTop.visible { opacity: 1; transform: translateY(0); }
+        #backToTop:hover { background: var(--gold-dark); transform: translateY(-3px); }
+
+        /* ══════════════════════════════════
+           ANNOUNCEMENT BAR
+        ══════════════════════════════════ */
+        /* .announcement-bar {
+            background: var(--gold-pale);
+            font-size: 11px;
+            letter-spacing: 1px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1100;
+        }
+        .marquee-wrap {
+            display: flex;
+            width: max-content;
+            animation: marqueeRun 28s linear infinite;
+        }
+        @keyframes marqueeRun {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        } */
+
+        /* ══════════════════════════════════
+           NAVBAR — from style.css (inline safe)
+        ══════════════════════════════════ */
+        .luxury-nav {
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        .luxury-nav.scrolled { padding: 8px 0; background: #fff; }
+
+        .navbar-brand {
+            display: flex; align-items: center; gap: 10px; text-decoration: none;
+        }
+        .brand-logo { height: 50px; width: auto; object-fit: contain; }
+        .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .brand-main {
+            display: block; font-family: 'Cormorant Garamond', serif;
+            font-size: 20px; letter-spacing: 3px; font-weight: 600; color: #1a1a1a;
+        }
+        .brand-sub {
+            display: block; font-family: 'Cormorant Garamond', serif;
+            font-size: 12px; letter-spacing: 4px; color: var(--gold);
+        }
+
+        .luxury-menu .nav-link {
+            font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+            position: relative; transition: 0.3s; color: var(--dark);
+        }
+        .luxury-menu .nav-link::after {
+            content: ""; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--gold); transition: 0.3s;
+        }
+        .luxury-menu .nav-link:hover::after,
+        .luxury-menu .nav-link.active::after { width: 100%; }
+        .luxury-menu .nav-link:hover { color: var(--gold); }
+
+        /* HAMBURGER */
+        .navbar-toggler { border: none !important; box-shadow: none !important; padding: 6px 8px; background: transparent !important; }
+        .navbar-toggler:focus { box-shadow: none !important; }
+        .menu-icon { display: block !important; width: 25px !important; height: 2px !important; background: #000 !important; position: relative !important; transition: 0.3s; }
+        .menu-icon::before, .menu-icon::after { content: "" !important; display: block !important; position: absolute !important; left: 0 !important; width: 25px !important; height: 2px !important; background: #000 !important; transition: 0.3s; }
+        .menu-icon::before { top: -7px !important; }
+        .menu-icon::after { top: 7px !important; }
+
+        @media(max-width:991px) {
+            .luxury-menu { background:#fff; padding:20px; border-radius:10px; margin-top:10px; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+            .brand-logo { height: 38px; }
+            .brand-main { font-size: 16px; letter-spacing: 2px; }
+            .brand-sub { font-size: 10px; letter-spacing: 3px; }
+        }
+
+        /* ══════════════════════════════════
+           CATEGORY MENU BAR
+        ══════════════════════════════════ */
+        .cat-menu-bar {
+            position: fixed; top: 55px; left: 0; right: 0;
+            background: #fff;
+            border-bottom: 1px solid rgba(212,175,55,0.15);
+            z-index: 999; transition: top 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .luxury-nav.scrolled ~ .cat-menu-bar { top: 56px; }
+        .cat-menu-list {
+            display: flex; align-items: center; justify-content: center;
+            list-style: none; margin: 0; padding: 0;
+            overflow-x: auto; scrollbar-width: none;
+            gap: 0; flex-wrap: nowrap; white-space: nowrap;
+        }
+        .cat-menu-list::-webkit-scrollbar { display: none; }
+        .cat-menu-list li a {
+            display: flex; align-items: center; gap: 6px; padding: 10px 18px;
+            font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 2px; text-transform: uppercase; color: #555;
+            text-decoration: none; position: relative; transition: color 0.3s;
+        }
+        .cat-menu-list li a i { font-size: 0.65rem; color: var(--gold); transition: transform 0.3s; }
+        .cat-menu-list li a::after {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            width: 0; height: 2px; background: var(--gold);
+            transform: translateX(-50%); transition: width 0.3s ease;
+        }
+        .cat-menu-list li a:hover { color: var(--gold); }
+        .cat-menu-list li a:hover::after { width: 70%; }
+        .cat-menu-list li a:hover i { transform: scale(1.2); }
+
+        @media(max-width:768px) {
+            .cat-menu-bar { top: 55px; }
+            .luxury-nav.scrolled ~ .cat-menu-bar { top: 37px; }
+            .cat-menu-list { justify-content: flex-start; padding: 0 10px; }
+            .cat-menu-list li a { padding: 9px 12px; font-size: 0.68rem; letter-spacing: 1px; }
+        }
+
+        /* ══════════════════════════════════
+           HERO SECTION
+        ══════════════════════════════════ */
+        .gallery-hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #0d0d0d 0%, #1e160a 50%, #0d0d0d 100%);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            padding-top: 170px; padding-bottom: 80px;
+        }
+
+        /* Animated geometric rings */
+        .geo-ring {
+            position: absolute; border-radius: 50%;
+            border: 1px solid rgba(212,175,55,0.1);
+            animation: spinRing 40s linear infinite;
+        }
+        .geo-ring:nth-child(1) { width: 700px; height: 700px; animation-duration: 50s; }
+        .geo-ring:nth-child(2) { width: 500px; height: 500px; border-color: rgba(212,175,55,0.07); animation-duration: 35s; animation-direction: reverse; }
+        .geo-ring:nth-child(3) { width: 320px; height: 320px; border-color: rgba(212,175,55,0.13); animation-duration: 25s; }
+        .geo-ring::before {
+            content: ''; position: absolute; top: -4px; left: 50%;
+            width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+            transform: translateX(-50%); box-shadow: 0 0 15px var(--gold);
+        }
+        @keyframes spinRing { to { transform: rotate(360deg); } }
+
+        /* Gold dust particles */
+        .dust { position: absolute; width: 2px; height: 2px; background: var(--gold); border-radius: 50%; animation: dustFloat linear infinite; opacity: 0; }
+        @keyframes dustFloat {
+            0% { transform: translateY(80px) scale(0); opacity: 0; }
+            15% { opacity: 0.8; }
+            85% { opacity: 0.3; }
+            100% { transform: translateY(-200px) scale(2); opacity: 0; }
+        }
+
+        .hero-inner { position: relative; z-index: 3; text-align: center; }
+        .hero-tag {
+            font-family: 'Jost', sans-serif; font-size: 0.68rem;
+            letter-spacing: 8px; text-transform: uppercase; color: var(--gold);
+            margin-bottom: 1.5rem; opacity: 0;
+            animation: slideUp 0.9s ease 0.3s forwards;
+        }
+        .gallery-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            font-weight: 400; color: #fff; line-height: 1;
+            opacity: 0; animation: slideUp 0.9s ease 0.5s forwards;
+            letter-spacing: 4px;
+        }
+        .gallery-hero h1 span {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic; color: var(--gold); font-size: 1.1em;
+            display: block; margin-top: -0.1em;
+        }
+        .hero-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic; font-size: 1.2rem;
+            color: rgba(255,255,255,0.55); margin-top: 1.5rem;
+            opacity: 0; animation: slideUp 0.9s ease 0.7s forwards;
+        }
+        .hero-line {
+            width: 0; height: 1px; margin: 2rem auto;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0; animation: expandLine 1.2s ease 0.9s forwards;
+        }
+        @keyframes slideUp { from { opacity:0; transform:translateY(35px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes expandLine { to { width: 140px; opacity: 1; } }
+
+        /* Stats row in hero */
+        .hero-stats {
+            display: flex; justify-content: center; gap: 60px;
+            margin-top: 3rem; flex-wrap: wrap;
+            opacity: 0; animation: slideUp 0.9s ease 1.1s forwards;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-num {
+            font-family: 'Cinzel', serif; font-size: 2rem;
+            color: var(--gold); line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 0.65rem; letter-spacing: 3px;
+            text-transform: uppercase; color: rgba(255,255,255,0.45);
+            margin-top: 5px; font-family: 'Jost', sans-serif;
+        }
+
+        /* ══════════════════════════════════
+           GALLERY FILTER TABS
+        ══════════════════════════════════ */
+        .gallery-filter-wrap {
+            position: sticky; top: 130px; z-index: 90;
+            background: rgba(252,251,250,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212,175,55,0.12);
+            padding: 0;
+        }
+        .filter-tabs {
+            display: flex; overflow-x: auto; scrollbar-width: none;
+            gap: 0; list-style: none; margin: 0; padding: 0;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .filter-tabs::-webkit-scrollbar { display: none; }
+        .filter-tab {
+            display: flex; align-items: center; gap: 8px;
+            padding: 18px 28px; cursor: pointer; border: none;
+            background: transparent;
+            font-family: 'Jost', sans-serif; font-size: 0.72rem;
+            letter-spacing: 2.5px; text-transform: uppercase; color: #888;
+            position: relative; transition: color 0.3s;
+            white-space: nowrap;
+        }
+        .filter-tab i { font-size: 0.7rem; color: var(--gold); }
+        .filter-tab::after {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            width: 0; height: 2px; background: var(--gold);
+            transform: translateX(-50%); transition: width 0.35s ease;
+        }
+        .filter-tab:hover { color: var(--dark); }
+        .filter-tab.active { color: var(--dark); }
+        .filter-tab.active::after { width: 70%; }
+        .filter-count {
+            background: var(--gold-pale); color: var(--gold-dark);
+            font-size: 9px; padding: 2px 6px; border-radius: 20px;
+            font-family: 'Jost', sans-serif; letter-spacing: 0;
+            font-weight: 600;
+        }
+        .filter-tab.active .filter-count { background: var(--gold); color: #fff; }
+
+        /* ══════════════════════════════════
+           GALLERY SECTION
+        ══════════════════════════════════ */
+        .gallery-section { padding: 70px 0 100px; }
+
+        .gallery-section-title {
+            margin-bottom: 50px; position: relative;
+        }
+        .gallery-section-title .eyebrow {
+            font-family: 'Jost', sans-serif; font-size: 0.68rem;
+            letter-spacing: 6px; text-transform: uppercase; color: var(--gold);
+            display: block; margin-bottom: 8px;
+        }
+        .gallery-section-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 400; color: var(--dark);
+        }
+        .gallery-section-title h2 em {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic; color: var(--gold-dark); font-size: 1.15em;
+        }
+        .gold-rule {
+            width: 60px; height: 1px; margin-top: 18px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        /* ── Masonry Grid ── */
+        .masonry-grid {
+            columns: 4; column-gap: 16px;
+        }
+        @media(max-width:1199px) { .masonry-grid { columns: 3; } }
+        @media(max-width:767px) { .masonry-grid { columns: 2; column-gap: 10px; } }
+        @media(max-width:420px) { .masonry-grid { columns: 2; column-gap: 8px; } }
+
+        .masonry-item {
+            break-inside: avoid; margin-bottom: 16px;
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        @media(max-width:767px) { .masonry-item { margin-bottom: 10px; } }
+        .masonry-item.visible { opacity: 1; transform: translateY(0); }
+        .masonry-item.hidden { display: none; }
+
+        /* ── Gallery Card ── */
+        .gallery-card {
+            position: relative; overflow: hidden;
+            border-radius: 6px; cursor: pointer;
+            background: #eee;
+        }
+        .gallery-card img {
+            width: 100%; display: block;
+            transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+            filter: brightness(0.95);
+        }
+        .gallery-card:hover img { transform: scale(1.08); filter: brightness(1.02); }
+
+        /* shimmer on hover */
+        .gallery-card::before {
+            content: ''; position: absolute; inset: 0; z-index: 2;
+            background: linear-gradient(135deg, transparent 30%, rgba(212,175,55,0.07) 50%, transparent 70%);
+            background-size: 300% 300%; opacity: 0; transition: opacity 0.4s;
+        }
+        .gallery-card:hover::before { opacity: 1; animation: cardShimmer 1.8s ease infinite; }
+        @keyframes cardShimmer {
+            0% { background-position: 200% 200%; }
+            100% { background-position: -50% -50%; }
+        }
+
+        /* Gold corner brackets */
+        .gallery-card .corner {
+            position: absolute; width: 18px; height: 18px;
+            opacity: 0; z-index: 4; transition: all 0.35s ease;
+        }
+        .gallery-card .corner-tl { top: 8px; left: 8px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); transform: translate(-4px,-4px); }
+        .gallery-card .corner-br { bottom: 8px; right: 8px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); transform: translate(4px,4px); }
+        .gallery-card:hover .corner { opacity: 1; transform: translate(0,0); }
+
+        /* Overlay info */
+        .gallery-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+            padding: 40px 18px 18px;
+            background: linear-gradient(to top, rgba(10,8,5,0.88) 0%, transparent 100%);
+            transform: translateY(105%);
+            transition: transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .gallery-card:hover .gallery-overlay { transform: translateY(0); }
+        .gallery-overlay .g-tag {
+            font-size: 0.58rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--gold); font-family: 'Jost', sans-serif; display: block; margin-bottom: 4px;
+        }
+        .gallery-overlay .g-name {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+            color: #fff; margin: 0;
+        }
+        .gallery-overlay .g-actions {
+            display: flex; gap: 8px; margin-top: 12px;
+        }
+        .g-btn {
+            flex: 1; padding: 8px 10px; border: none; cursor: pointer;
+            font-family: 'Jost', sans-serif; font-size: 0.62rem;
+            letter-spacing: 2px; text-transform: uppercase;
+            transition: all 0.3s; border-radius: 3px;
+        }
+        .g-btn-zoom { background: var(--gold); color: var(--dark); font-weight: 600; }
+        .g-btn-zoom:hover { background: var(--gold-light); }
+        .g-btn-wish { background: transparent; border: 1px solid rgba(255,255,255,0.3) !important; color: #fff; flex: none; width: 36px; padding: 8px; }
+        .g-btn-wish:hover { border-color: var(--gold) !important; color: var(--gold); }
+
+        /* Badge */
+        .g-badge {
+            position: absolute; top: 10px; left: 10px; z-index: 5;
+            font-family: 'Jost', sans-serif; font-size: 0.6rem;
+            letter-spacing: 2px; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 2px;
+            background: var(--gold); color: #fff;
+        }
+        .g-badge.new-badge { background: #2d6a4f; }
+        .g-badge.bridal-badge { background: #8B1A1A; }
+
+        /* ══════════════════════════════════
+           FEATURED SPOTLIGHT (wide card)
+        ══════════════════════════════════ */
+        .spotlight-section {
+            padding: 0 0 80px;
+        }
+        .spotlight-card {
+            position: relative; overflow: hidden; border-radius: 8px;
+            min-height: 500px; display: flex; align-items: flex-end;
+            cursor: pointer;
+        }
+        .spotlight-card img {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; transition: transform 0.8s ease;
+        }
+        .spotlight-card:hover img { transform: scale(1.05); }
+        .spotlight-overlay {
+            position: relative; z-index: 2; padding: 50px 40px;
+            background: linear-gradient(to top, rgba(5,4,2,0.92) 0%, rgba(5,4,2,0.3) 60%, transparent 100%);
+            width: 100%;
+        }
+        .spotlight-tag {
+            font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase;
+            color: var(--gold); font-family: 'Jost', sans-serif; margin-bottom: 10px;
+        }
+        .spotlight-card h3 {
+            font-family: 'Cinzel', serif; font-size: clamp(1.8rem,3.5vw,2.8rem);
+            color: #fff; font-weight: 400; margin-bottom: 12px;
+        }
+        .spotlight-card p { color: rgba(255,255,255,0.65); font-size: 0.9rem; max-width: 380px; line-height: 1.7; }
+        .spotlight-btn {
+            display: inline-flex; align-items: center; gap: 10px; margin-top: 25px;
+            padding: 13px 30px; background: var(--gold); color: var(--dark);
+            font-family: 'Jost', sans-serif; font-size: 0.72rem;
+            letter-spacing: 3px; text-transform: uppercase;
+            text-decoration: none; transition: all 0.35s ease; border-radius: 3px;
+            font-weight: 600;
+        }
+        .spotlight-btn:hover { background: var(--gold-light); transform: translateY(-2px); color: var(--dark); }
+
+        /* ══════════════════════════════════
+           CATEGORY FEATURE BLOCKS
+        ══════════════════════════════════ */
+        .cat-blocks { padding: 0 0 90px; }
+        .cat-block {
+            position: relative; overflow: hidden; border-radius: 6px;
+            height: 320px; cursor: pointer;
+        }
+        .cat-block img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .cat-block:hover img { transform: scale(1.1); }
+        .cat-block-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(10,8,5,0.75) 0%, rgba(10,8,5,0.2) 100%);
+            display: flex; flex-direction: column;
+            justify-content: flex-end; padding: 30px;
+            transition: background 0.4s;
+        }
+        .cat-block:hover .cat-block-overlay {
+            background: linear-gradient(135deg, rgba(10,8,5,0.85) 0%, rgba(10,8,5,0.35) 100%);
+        }
+        .cat-block-icon {
+            width: 48px; height: 48px; border: 1px solid rgba(212,175,55,0.5);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 15px; transition: all 0.4s;
+        }
+        .cat-block:hover .cat-block-icon { background: var(--gold); border-color: var(--gold); }
+        .cat-block-icon i { color: var(--gold); font-size: 0.9rem; transition: color 0.4s; }
+        .cat-block:hover .cat-block-icon i { color: var(--dark); }
+        .cat-block h5 {
+            font-family: 'Cinzel', serif; font-size: 1rem;
+            color: #fff; letter-spacing: 2px; margin-bottom: 6px;
+        }
+        .cat-block span {
+            font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--gold); font-family: 'Jost', sans-serif;
+        }
+        .cat-block-arrow {
+            position: absolute; top: 20px; right: 20px;
+            width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.6); font-size: 0.75rem;
+            transform: translateX(10px); opacity: 0; transition: all 0.4s;
+        }
+        .cat-block:hover .cat-block-arrow { opacity: 1; transform: translateX(0); }
+
+        /* ══════════════════════════════════
+           LIGHTBOX
+        ══════════════════════════════════ */
+        .lightbox-overlay {
+            position: fixed; inset: 0; z-index: 99998;
+            background: rgba(5,4,2,0.96);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+        .lightbox-overlay.open { opacity: 1; pointer-events: all; }
+        .lightbox-inner {
+            position: relative; max-width: 900px; width: 100%;
+            transform: scale(0.9); transition: transform 0.4s ease;
+        }
+        .lightbox-overlay.open .lightbox-inner { transform: scale(1); }
+        .lightbox-inner img {
+            width: 100%; max-height: 80vh; object-fit: contain;
+            border-radius: 4px;
+        }
+        .lightbox-info {
+            padding: 20px 0 5px; text-align: center;
+        }
+        .lightbox-info .l-tag {
+            font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;
+            color: var(--gold); font-family: 'Jost', sans-serif;
+        }
+        .lightbox-info .l-name {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
+            color: #fff; margin: 5px 0 0; font-weight: 300;
+        }
+        .lightbox-close {
+            position: fixed; top: 25px; right: 25px;
+            width: 46px; height: 46px; background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15); border-radius: 50%;
+            color: #fff; font-size: 1rem; cursor: pointer; z-index: 99999;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s;
+        }
+        .lightbox-close:hover { background: var(--gold); border-color: var(--gold); }
+        .lightbox-nav {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            width: 48px; height: 48px; background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12); border-radius: 50%;
+            color: #fff; font-size: 0.9rem; cursor: pointer; z-index: 99999;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s;
+        }
+        .lightbox-nav:hover { background: var(--gold); border-color: var(--gold); }
+        .lightbox-prev { left: 15px; }
+        .lightbox-next { right: 15px; }
+
+        /* ══════════════════════════════════
+           GOLD STRIP MARQUEE
+        ══════════════════════════════════ */
+        .gold-strip {
+            background: var(--dark); padding: 14px 0;
+            overflow: hidden; border-top: 1px solid rgba(212,175,55,0.12);
+            border-bottom: 1px solid rgba(212,175,55,0.12);
+        }
+        .gold-strip-track {
+            display: flex; gap: 50px; width: max-content;
+            animation: stripScroll 22s linear infinite;
+        }
+        @keyframes stripScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .strip-item {
+            font-family: 'Jost', sans-serif; font-size: 0.68rem;
+            letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.45);
+            display: flex; align-items: center; gap: 20px; white-space: nowrap;
+        }
+        .strip-item .dot { color: var(--gold); font-size: 0.5rem; }
+
+        /* ══════════════════════════════════
+           FOOTER
+        ══════════════════════════════════ */
+        .footer-luxury { background: #1a1a1a; position: relative; overflow: hidden; }
+        .footer-glow {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 70%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .footer-title {
+            font-family: 'Cinzel', serif; font-size: 0.72rem;
+            letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+        }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            color: rgba(255,255,255,0.55); text-decoration: none;
+            font-size: 0.88rem; transition: 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); padding-left: 5px; }
+        .social-icon {
+            width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .social-icon:hover { background: var(--gold); border-color: var(--gold); color: #fff; transform: translateY(-3px); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.35); }
+        .newsletter-box .form-control {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; font-size: 0.85rem; border-radius: 0;
+        }
+        .newsletter-box .form-control::placeholder { color: rgba(255,255,255,0.3); }
+        .newsletter-box .form-control:focus { box-shadow: none; border-color: var(--gold); background: rgba(255,255,255,0.08); color: #fff; }
+        .btn-gold-footer {
+            background: var(--gold); color: var(--dark); border: none;
+            font-family: 'Jost', sans-serif; font-size: 0.75rem;
+            letter-spacing: 2px; text-transform: uppercase; padding: 10px 20px;
+            font-weight: 600; transition: 0.3s; border-radius: 0;
+        }
+        .btn-gold-footer:hover { background: var(--gold-dark); color: #fff; }
+
+        /* No results */
+        .no-results {
+            text-align: center; padding: 80px 20px; display: none;
+        }
+        .no-results i { font-size: 3rem; color: rgba(212,175,55,0.3); margin-bottom: 20px; }
+        .no-results h5 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #ccc; }
+
+        /* ══════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════ */
+        @media(max-width:576px) {
+            .gallery-hero h1 { font-size: 3rem; }
+            .hero-stats { gap: 30px; }
+            .spotlight-card { min-height: 360px; }
+            .spotlight-overlay { padding: 30px 20px; }
+            .cat-block { height: 240px; }
+            .filter-tab { padding: 14px 16px; font-size: 0.65rem; letter-spacing: 1.5px; }
+            .lightbox-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-bar" id="scrollBar"></div>
+
+<!-- Back To Top -->
+<button id="backToTop" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+    <div class="lightbox-inner">
+        <img src="" alt="" id="lightboxImg">
+        <div class="lightbox-info">
+            <span class="l-tag" id="lightboxTag"></span>
+            <h4 class="l-name" id="lightboxName"></h4>
+        </div>
+    </div>
+</div>
+
+<!-- ── ANNOUNCEMENT BAR ──
+<div class="announcement-bar text-center py-2">
+    <div class="marquee-wrap">
+        <span class="small text-uppercase">✨ Flat 20% Off on Diamond Making Charges — <a href="offers.html" class="text-dark fw-bold">Shop Now</a> &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; Free Shipping on orders above ₹10,000 &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; 7-Day Easy Returns &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp;</span>
+        <span class="small text-uppercase">✨ Flat 20% Off on Diamond Making Charges — <a href="offers.html" class="text-dark fw-bold">Shop Now</a> &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; Free Shipping on orders above ₹10,000 &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp; 7-Day Easy Returns &nbsp;&nbsp;&nbsp; ◆ &nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div> -->
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar navbar-expand-lg fixed-top luxury-nav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html" id="brandText">
+            <img src="assets/logo/logo.jpg" alt="Logo" class="brand-logo">
+            <span class="brand-text">
+                <span class="brand-main">UNIQUE</span>
+                <span class="brand-sub">CREATION</span>
+            </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="menu-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav luxury-menu">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+                <li class="nav-item"><a class="nav-link" href="products.html">New Arrivals</a></li>
+                <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ── CATEGORY MENU BAR ── -->
+<div class="cat-menu-bar">
+    <div class="container">
+        <ul class="cat-menu-list">
+            <li><a href="rings.html"><i class="fa-solid fa-ring"></i> Rings</a></li>
+            <li><a href="bracelets.html"><i class="fa-solid fa-circle-dot"></i> Bracelets</a></li>
+            <li><a href="mangalsutra.html"><i class="fa-solid fa-heart"></i> Mangalsutra</a></li>
+            <li><a href="earrings.html"><i class="fa-solid fa-star"></i> Earrings</a></li>
+            <li><a href="necklaces.html"><i class="fa-solid fa-gem"></i> Necklaces</a></li>
+            <li><a href="jhumka.html"><i class="fa-solid fa-droplet"></i> Jhumka</a></li>
+            <li><a href="collections.html"><i class="fa-solid fa-crown"></i> Bridal</a></li>
+            <li><a href="products.html"><i class="fa-solid fa-diamond"></i> Diamonds</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section class="gallery-hero">
+    <!-- Animated rings -->
+    <div class="geo-ring"></div>
+    <div class="geo-ring"></div>
+    <div class="geo-ring"></div>
+
+    <!-- Gold dust particles -->
+    <div class="dust" style="left:10%;animation-duration:7s;animation-delay:0s;"></div>
+    <div class="dust" style="left:25%;animation-duration:5s;animation-delay:1.2s;"></div>
+    <div class="dust" style="left:42%;animation-duration:8s;animation-delay:0.5s;"></div>
+    <div class="dust" style="left:60%;animation-duration:6s;animation-delay:2s;"></div>
+    <div class="dust" style="left:75%;animation-duration:9s;animation-delay:0.8s;"></div>
+    <div class="dust" style="left:88%;animation-duration:5.5s;animation-delay:1.5s;"></div>
+
+    <div class="hero-inner">
+        <p class="hero-tag">Unique Creation Jewellers</p>
+        <h1>The Art of
+            <span>Jewellery</span>
+        </h1>
+        <div class="hero-line"></div>
+        <p class="hero-sub">Every piece tells a story of love, craft &amp; timeless beauty</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-num">500+</div>
+                <div class="hero-stat-label">Unique Pieces</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">8</div>
+                <div class="hero-stat-label">Collections</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">100%</div>
+                <div class="hero-stat-label">Handcrafted</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════
+     GOLD MARQUEE STRIP
+══════════════════════════════════ -->
+<div class="gold-strip">
+    <div class="gold-strip-track">
+        <span class="strip-item">Rings <span class="dot">◆</span></span>
+        <span class="strip-item">Necklaces <span class="dot">◆</span></span>
+        <span class="strip-item">Earrings <span class="dot">◆</span></span>
+        <span class="strip-item">Bracelets <span class="dot">◆</span></span>
+        <span class="strip-item">Mangalsutra <span class="dot">◆</span></span>
+        <span class="strip-item">Jhumka <span class="dot">◆</span></span>
+        <span class="strip-item">Bridal Sets <span class="dot">◆</span></span>
+        <span class="strip-item">Diamonds <span class="dot">◆</span></span>
+        <span class="strip-item">Rings <span class="dot">◆</span></span>
+        <span class="strip-item">Necklaces <span class="dot">◆</span></span>
+        <span class="strip-item">Earrings <span class="dot">◆</span></span>
+        <span class="strip-item">Bracelets <span class="dot">◆</span></span>
+        <span class="strip-item">Mangalsutra <span class="dot">◆</span></span>
+        <span class="strip-item">Jhumka <span class="dot">◆</span></span>
+        <span class="strip-item">Bridal Sets <span class="dot">◆</span></span>
+        <span class="strip-item">Diamonds <span class="dot">◆</span></span>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════
+     CATEGORY FEATURE BLOCKS
+══════════════════════════════════ -->
+<section class="cat-blocks">
+    <div class="container pt-5">
+        <div class="gallery-section-title text-center mb-5" data-aos="fade-up">
+            <span class="eyebrow">Browse By Category</span>
+            <h2>Explore Our <em>Collections</em></h2>
+            <div class="gold-rule mx-auto"></div>
+        </div>
+        <div class="row g-3">
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="0">
+                <a href="rings.html" class="cat-block d-block text-decoration-none">
+                    <img src="assets/images/rings/yellow.avif" alt="Rings">
+                    <div class="cat-block-overlay">
+                        <div class="cat-block-icon"><i class="fa-solid fa-ring text-gold"></i></div>
+                        <h5>Rings</h5>
+                        <span>View Collection</span>
+                    </div>
+                    <div class="cat-block-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="80">
+                <a href="earrings.html" class="cat-block d-block text-decoration-none">
+                    <img src="assets/images/earrings/earring1.jpg" alt="Earrings">
+                    <div class="cat-block-overlay">
+                        <div class="cat-block-icon"><i class="fa-solid fa-star text-gold"></i></div>
+                        <h5>Earrings</h5>
+                        <span>View Collection</span>
+                    </div>
+                    <div class="cat-block-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="160">
+                <a href="necklaces.html" class="cat-block d-block text-decoration-none">
+                    <img src="assets/images/necklaces/necklace1.jpg" alt="Necklaces">
+                    <div class="cat-block-overlay">
+                        <div class="cat-block-icon"><i class="fa-solid fa-gem text-gold"></i></div>
+                        <h5>Necklaces</h5>
+                        <span>View Collection</span>
+                    </div>
+                    <div class="cat-block-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="240">
+                <a href="bracelets.html" class="cat-block d-block text-decoration-none">
+                    <img src="assets/images/bracelets/bracelet1.jpg" alt="Bracelets">
+                    <div class="cat-block-overlay">
+                        <div class="cat-block-icon"><i class="fa-solid fa-circle-dot text-gold"></i></div>
+                        <h5>Bracelets</h5>
+                        <span>View Collection</span>
+                    </div>
+                    <div class="cat-block-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="0">
+                <a href="mangalsutra.html" class="cat-block d-block text-decoration-none">
+                    <img src="assets/images/mangalsutra/mangal1.jpg" alt="Mangalsutra">
+                    <div class="cat-block-overlay">
+                        <div class="cat-block-icon"><i class="fa-solid fa-heart text-gold"></i></div>
+                        <h5>Mangalsutra</h5>
+                        <span>View Collection</span>
+                    </div>
+                    <div class="cat-block-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="80">
+                <a href="jhumka.html" class="cat-block d-block text-decoration-none">
+                    <img src="assets/images/jhumka/jhumka1.jpg" alt="Jhumka">
+                    <div class="cat-block-overlay">
+                        <div class="cat-block-icon"><i class="fa-solid fa-droplet text-gold"></i></div>
+                        <h5>Jhumka</h5>
+                        <span>View Collection</span>
+                    </div>
+                    <div class="cat-block-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+            <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="160">
+                <a href="collections.html" class="cat-block d-block text-decoration-none">
+                    <img src="assets/images/bridal/bridal1.jpg" alt="Bridal">
+                    <div class="cat-block-overlay">
+                        <div class="cat-block-icon"><i class="fa-solid fa-crown text-gold"></i></div>
+                        <h5>Bridal Sets</h5>
+                        <span>View Collection</span>
+                    </div>
+                    <div class="cat-block-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FEATURED SPOTLIGHT
+══════════════════════════════════ -->
+<section class="spotlight-section">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-7" data-aos="fade-right">
+                <div class="spotlight-card" style="min-height:480px;">
+                    <img src="assets/images/rings/Untitled3.jpg" alt="Bridal Collection">
+                    <div class="spotlight-overlay">
+                        <p class="spotlight-tag">Featured Collection</p>
+                        <h3>Bridal <br>Jewellery</h3>
+                        <p>Crafted for the most important day of your life — our bridal sets are timeless, radiant, and made for eternity.</p>
+                        <a href="collections.html" class="spotlight-btn">Explore Bridal <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 d-flex flex-column gap-3" data-aos="fade-left">
+                <div class="spotlight-card" style="min-height:230px;">
+                    <img src="assets/images/rings/Untitled.jpg" alt="Diamond Collection">
+                    <div class="spotlight-overlay" style="padding:25px;">
+                        <p class="spotlight-tag">New Arrivals</p>
+                        <h3 style="font-size:1.5rem;">Diamond <br>Solitaires</h3>
+                        <a href="products.html" class="spotlight-btn" style="padding:10px 22px;font-size:0.65rem;margin-top:15px;">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="spotlight-card" style="min-height:230px;">
+                    <img src="assets/images/rings/Untitled1.jpg" alt="Rose Gold">
+                    <div class="spotlight-overlay" style="padding:25px;">
+                        <p class="spotlight-tag">Trending</p>
+                        <h3 style="font-size:1.5rem;">Rose Gold <br>Elegance</h3>
+                        <a href="rings.html" class="spotlight-btn" style="padding:10px 22px;font-size:0.65rem;margin-top:15px;">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════
+     MAIN GALLERY WITH FILTERS
+══════════════════════════════════ -->
+<div class="gallery-filter-wrap" id="galleryFilterWrap">
+    <div class="container">
+        <ul class="filter-tabs" id="filterTabs">
+            <li>
+                <button class="filter-tab active" data-filter="all">
+                    <i class="fa-solid fa-border-all"></i> All
+                    <span class="filter-count">24</span>
+                </button>
+            </li>
+            <li>
+                <button class="filter-tab" data-filter="rings">
+                    <i class="fa-solid fa-ring"></i> Rings
+                    <span class="filter-count">6</span>
+                </button>
+            </li>
+            <li>
+                <button class="filter-tab" data-filter="necklaces">
+                    <i class="fa-solid fa-gem"></i> Necklaces
+                    <span class="filter-count">4</span>
+                </button>
+            </li>
+            <li>
+                <button class="filter-tab" data-filter="earrings">
+                    <i class="fa-solid fa-star"></i> Earrings
+                    <span class="filter-count">4</span>
+                </button>
+            </li>
+            <li>
+                <button class="filter-tab" data-filter="bracelets">
+                    <i class="fa-solid fa-circle-dot"></i> Bracelets
+                    <span class="filter-count">3</span>
+                </button>
+            </li>
+            <li>
+                <button class="filter-tab" data-filter="mangalsutra">
+                    <i class="fa-solid fa-heart"></i> Mangalsutra
+                    <span class="filter-count">3</span>
+                </button>
+            </li>
+            <li>
+                <button class="filter-tab" data-filter="bridal">
+                    <i class="fa-solid fa-crown"></i> Bridal
+                    <span class="filter-count">4</span>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<section class="gallery-section">
+    <div class="container">
+        <div class="gallery-section-title" data-aos="fade-up">
+            <span class="eyebrow">Our Gallery</span>
+            <h2>Crafted with <em>Passion</em></h2>
+            <div class="gold-rule"></div>
+        </div>
+
+        <!-- No results -->
+        <div class="no-results" id="noResults">
+            <i class="fa-solid fa-gem d-block"></i>
+            <h5>No pieces found in this category</h5>
+        </div>
+
+        <!-- MASONRY GRID -->
+        <div class="masonry-grid" id="galleryGrid">
+
+            <!-- RINGS (6) -->
+            <div class="masonry-item" data-category="rings" data-name="Elegant Gold Ring" data-tag="22K Yellow Gold">
+                <div class="gallery-card">
+                    <span class="g-badge">Bestseller</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/rings/yellow.avif" alt="Elegant Gold Ring">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">22K Yellow Gold</span>
+                        <p class="g-name">Elegant Gold Ring</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="rings" data-name="Diamond Solitaire Ring" data-tag="GIA Certified Diamond">
+                <div class="gallery-card">
+                    <span class="g-badge new-badge">New</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/rings/Untitled.jpg" alt="Diamond Solitaire Ring">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">GIA Certified Diamond</span>
+                        <p class="g-name">Diamond Solitaire Ring</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="rings" data-name="Rose Gold Ring" data-tag="18K Rose Gold">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/rings/Untitled1.jpg" alt="Rose Gold Ring">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">18K Rose Gold</span>
+                        <p class="g-name">Rose Gold Ring</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="rings bridal" data-name="White Diamond Ring" data-tag="White Gold · Diamond">
+                <div class="gallery-card">
+                    <span class="g-badge bridal-badge">Bridal</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/rings/Untitled3.jpg" alt="White Diamond Ring">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">White Gold · Diamond</span>
+                        <p class="g-name">White Diamond Ring</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="rings bridal" data-name="Bridal Gold Ring" data-tag="22K Gold · Bridal">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/rings/Untitled4.jpg" alt="Bridal Gold Ring">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">22K Gold · Bridal</span>
+                        <p class="g-name">Bridal Gold Ring</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="rings" data-name="Classic Diamond Ring" data-tag="Platinum · Diamond">
+                <div class="gallery-card">
+                    <span class="g-badge">Sale</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/rings/Untitled5.jpg" alt="Classic Diamond Ring">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Platinum · Diamond</span>
+                        <p class="g-name">Classic Diamond Ring</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NECKLACES (4) -->
+            <div class="masonry-item" data-category="necklaces" data-name="Gold Chain Necklace" data-tag="22K Gold Chain">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/necklaces/necklace1.jpg" alt="Gold Chain Necklace">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">22K Gold Chain</span>
+                        <p class="g-name">Gold Chain Necklace</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="necklaces bridal" data-name="Diamond Pendant Set" data-tag="Diamond · Gold">
+                <div class="gallery-card">
+                    <span class="g-badge bridal-badge">Bridal</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/necklaces/necklace2.jpg" alt="Diamond Pendant">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Diamond · Gold</span>
+                        <p class="g-name">Diamond Pendant Set</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="necklaces" data-name="Layered Gold Set" data-tag="18K Gold · Layered">
+                <div class="gallery-card">
+                    <span class="g-badge new-badge">New</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/necklaces/necklace3.jpg" alt="Layered Gold Set">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">18K Gold · Layered</span>
+                        <p class="g-name">Layered Gold Set</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="necklaces" data-name="Ruby Pendant Necklace" data-tag="Gold · Ruby">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/necklaces/necklace4.jpg" alt="Ruby Pendant Necklace">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Gold · Ruby</span>
+                        <p class="g-name">Ruby Pendant Necklace</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EARRINGS (4) -->
+            <div class="masonry-item" data-category="earrings" data-name="Gold Drop Earrings" data-tag="22K Gold">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/earrings/earring1.jpg" alt="Gold Drop Earrings">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">22K Gold</span>
+                        <p class="g-name">Gold Drop Earrings</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="earrings" data-name="Diamond Stud Earrings" data-tag="GIA Diamond Studs">
+                <div class="gallery-card">
+                    <span class="g-badge">Bestseller</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/earrings/earring2.jpg" alt="Diamond Stud Earrings">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">GIA Diamond Studs</span>
+                        <p class="g-name">Diamond Stud Earrings</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="earrings bridal" data-name="Pearl Chandelier Earrings" data-tag="Gold · Pearl">
+                <div class="gallery-card">
+                    <span class="g-badge bridal-badge">Bridal</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/earrings/earring3.jpg" alt="Pearl Chandelier Earrings">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Gold · Pearl</span>
+                        <p class="g-name">Pearl Chandelier Earrings</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="earrings" data-name="Rose Gold Hoops" data-tag="18K Rose Gold">
+                <div class="gallery-card">
+                    <span class="g-badge new-badge">New</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/earrings/earring4.jpg" alt="Rose Gold Hoops">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">18K Rose Gold</span>
+                        <p class="g-name">Rose Gold Hoops</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BRACELETS (3) -->
+            <div class="masonry-item" data-category="bracelets" data-name="Gold Bangle Set" data-tag="22K Gold Bangles">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/bracelets/bracelet1.jpg" alt="Gold Bangle Set">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">22K Gold Bangles</span>
+                        <p class="g-name">Gold Bangle Set</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="bracelets" data-name="Diamond Tennis Bracelet" data-tag="Platinum · Diamond">
+                <div class="gallery-card">
+                    <span class="g-badge">Bestseller</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/bracelets/bracelet2.jpg" alt="Diamond Tennis Bracelet">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Platinum · Diamond</span>
+                        <p class="g-name">Diamond Tennis Bracelet</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="bracelets bridal" data-name="Bridal Kada Set" data-tag="22K Gold · Bridal">
+                <div class="gallery-card">
+                    <span class="g-badge bridal-badge">Bridal</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/bracelets/bracelet3.jpg" alt="Bridal Kada Set">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">22K Gold · Bridal</span>
+                        <p class="g-name">Bridal Kada Set</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MANGALSUTRA (3) -->
+            <div class="masonry-item" data-category="mangalsutra" data-name="Traditional Mangalsutra" data-tag="22K Gold · Black Beads">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/mangalsutra/mangal1.jpg" alt="Traditional Mangalsutra">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">22K Gold · Black Beads</span>
+                        <p class="g-name">Traditional Mangalsutra</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="mangalsutra" data-name="Diamond Mangalsutra" data-tag="Gold · Diamond Pendant">
+                <div class="gallery-card">
+                    <span class="g-badge new-badge">New</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/mangalsutra/mangal2.jpg" alt="Diamond Mangalsutra">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Gold · Diamond Pendant</span>
+                        <p class="g-name">Diamond Mangalsutra</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="mangalsutra" data-name="Short Mangalsutra" data-tag="18K Gold · Modern">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/mangalsutra/mangal3.jpg" alt="Short Mangalsutra">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">18K Gold · Modern</span>
+                        <p class="g-name">Short Mangalsutra</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BRIDAL (4) -->
+            <div class="masonry-item" data-category="bridal" data-name="Bridal Full Set" data-tag="22K Gold · Bridal">
+                <div class="gallery-card">
+                    <span class="g-badge bridal-badge">Bridal</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/bridal/bridal1.jpg" alt="Bridal Full Set">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">22K Gold · Bridal</span>
+                        <p class="g-name">Bridal Full Set</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="bridal" data-name="Kundan Bridal Set" data-tag="Kundan · Gold">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/bridal/bridal2.jpg" alt="Kundan Bridal Set">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Kundan · Gold</span>
+                        <p class="g-name">Kundan Bridal Set</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="bridal" data-name="Diamond Bridal Choker" data-tag="Diamond · Gold Choker">
+                <div class="gallery-card">
+                    <span class="g-badge new-badge">New</span>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/bridal/bridal3.jpg" alt="Diamond Bridal Choker">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Diamond · Gold Choker</span>
+                        <p class="g-name">Diamond Bridal Choker</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="masonry-item" data-category="bridal" data-name="Polki Bridal Necklace" data-tag="Polki · Gold">
+                <div class="gallery-card">
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-br"></div>
+                    <img src="assets/images/bridal/bridal4.jpg" alt="Polki Bridal Necklace">
+                    <div class="gallery-overlay">
+                        <span class="g-tag">Polki · Gold</span>
+                        <p class="g-name">Polki Bridal Necklace</p>
+                        <div class="g-actions">
+                            <button class="g-btn g-btn-zoom zoom-btn"><i class="fas fa-expand me-1"></i> View</button>
+                            <button class="g-btn g-btn-wish border-0"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /masonry-grid -->
+    </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer class="footer-luxury text-white pt-5">
+    <div class="footer-glow"></div>
+    <div class="container py-4">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <h3 style="font-family:'Cinzel',serif;font-size:1.4rem;letter-spacing:2px;color:var(--gold);">Unique Creation</h3>
+                <p class="mt-3" style="font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.8;">
+                    Redefining luxury through handcrafted excellence. Every piece is a masterpiece of love, art, and timeless elegance.
+                </p>
+                <div class="mt-4 d-flex gap-3">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-title mb-4">Collections</h6>
+                <ul class="footer-links">
+                    <li><a href="rings.html">Rings</a></li>
+                    <li><a href="necklaces.html">Necklaces</a></li>
+                    <li><a href="earrings.html">Earrings</a></li>
+                    <li><a href="bracelets.html">Bracelets</a></li>
+                    <li><a href="collections.html">Bridal Sets</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="footer-title mb-4">Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="offers.html">Offers</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h6 class="footer-title mb-4">Stay Connected</h6>
+                <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;" class="mb-3">Subscribe for exclusive offers &amp; new arrivals</p>
+                <div class="input-group newsletter-box">
+                    <input type="email" class="form-control" placeholder="Your email address">
+                    <button class="btn btn-gold-footer">Join</button>
+                </div>
+                <div class="mt-4 d-flex flex-wrap gap-3" style="font-size:0.78rem;color:rgba(255,255,255,0.4);">
+                    <span><i class="fas fa-shield-alt me-2" style="color:var(--gold);"></i>BIS Hallmarked</span>
+                    <span><i class="fas fa-gem me-2" style="color:var(--gold);"></i>GIA Certified</span>
+                    <span><i class="fas fa-truck me-2" style="color:var(--gold);"></i>Free Shipping</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center py-3">
+        <p class="m-0 small">&copy; 2026 Unique Creation Jewellers. All Rights Reserved. Crafted with <i class="fas fa-heart" style="color:var(--gold);"></i> in India.</p>
+    </div>
+</footer>
+
+<!-- ══════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════ -->
+<script>
+(function() {
+    'use strict';
+
+    /* ── AOS Init ── */
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 800, once: true, offset: 60 });
+    }
+
+    /* ── Scroll Bar ── */
+    const scrollBar = document.getElementById('scrollBar');
+    window.addEventListener('scroll', function() {
+        if (scrollBar) {
+            const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            scrollBar.style.width = pct + '%';
+        }
+    });
+
+    /* ── Navbar scroll ── */
+    const nav = document.querySelector('.luxury-nav');
+    window.addEventListener('scroll', function() {
+        if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* ── Back To Top ── */
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (btt) btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    if (btt) btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ── Masonry items reveal ── */
+    const items = document.querySelectorAll('.masonry-item');
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                setTimeout(function() {
+                    entry.target.classList.add('visible');
+                }, 60);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    items.forEach(function(item) { observer.observe(item); });
+
+    /* ── Gallery Filter ── */
+    const tabs = document.querySelectorAll('.filter-tab');
+    const grid = document.getElementById('galleryGrid');
+    const noResults = document.getElementById('noResults');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            // update active tab
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+
+            const filter = tab.dataset.filter;
+            let visibleCount = 0;
+
+            items.forEach(function(item) {
+                const cats = item.dataset.category || '';
+                const matches = filter === 'all' || cats.split(' ').includes(filter);
+
+                if (matches) {
+                    item.classList.remove('hidden');
+                    // re-trigger reveal animation
+                    item.classList.remove('visible');
+                    setTimeout(function() { item.classList.add('visible'); }, 80);
+                    visibleCount++;
+                } else {
+                    item.classList.add('hidden');
+                    item.classList.remove('visible');
+                }
+            });
+
+            // show/hide no results
+            if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        });
+    });
+
+    /* ── Lightbox ── */
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightboxImg');
+    const lightboxTag  = document.getElementById('lightboxTag');
+    const lightboxName = document.getElementById('lightboxName');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    let currentLightboxItems = [];
+    let currentIndex = 0;
+
+    function openLightbox(item) {
+        const img  = item.querySelector('img');
+        const tag  = item.dataset.tag  || '';
+        const name = item.dataset.name || '';
+
+        lightboxImg.src  = img ? img.src : '';
+        lightboxTag.textContent  = tag;
+        lightboxName.textContent = name;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function buildVisibleItems() {
+        currentLightboxItems = Array.from(items).filter(function(i) {
+            return !i.classList.contains('hidden');
+        });
+    }
+
+    document.querySelectorAll('.zoom-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const item = btn.closest('.masonry-item');
+            buildVisibleItems();
+            currentIndex = currentLightboxItems.indexOf(item);
+            openLightbox(item);
+        });
+    });
+
+    // Also open on card click
+    document.querySelectorAll('.gallery-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('.g-btn-wish')) return;
+            const item = card.closest('.masonry-item');
+            buildVisibleItems();
+            currentIndex = currentLightboxItems.indexOf(item);
+            openLightbox(item);
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(function() { lightboxImg.src = ''; }, 400);
+    }
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+
+    if (lightboxPrev) lightboxPrev.addEventListener('click', function() {
+        if (!currentLightboxItems.length) return;
+        currentIndex = (currentIndex - 1 + currentLightboxItems.length) % currentLightboxItems.length;
+        openLightbox(currentLightboxItems[currentIndex]);
+    });
+
+    if (lightboxNext) lightboxNext.addEventListener('click', function() {
+        if (!currentLightboxItems.length) return;
+        currentIndex = (currentIndex + 1) % currentLightboxItems.length;
+        openLightbox(currentLightboxItems[currentIndex]);
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
+        if (e.key === 'ArrowRight' && lightboxNext) lightboxNext.click();
+    });
+
+    /* ── Wishlist heart toggle ── */
+    document.querySelectorAll('.g-btn-wish').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-regular');
+                icon.classList.toggle('fa-solid');
+                icon.style.color = icon.classList.contains('fa-solid') ? 'var(--gold)' : '';
+            }
+        });
+    });
+
+    /* ── GSAP ScrollTrigger (safe) ── */
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from('.gallery-section-title', {
+            scrollTrigger: { trigger: '.gallery-section', start: 'top 80%' },
+            opacity: 0, y: 30, duration: 1, ease: 'power2.out'
+        });
+    }
+
+})();
+</script>
+
+</body>
+</html>
