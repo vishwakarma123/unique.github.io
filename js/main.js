@@ -208,7 +208,7 @@ function showLetters() {
         letters[index].classList.add("show");
         index++;
 
-        setTimeout(showLetters, 150);
+        setTimeout(showLetters, 50);
     } else {
         // Step 2: Combine effect
         setTimeout(() => {
@@ -221,6 +221,16 @@ window.addEventListener("load", () => {
     showLetters();
 });
 
+// Should already exist in main.js — confirm it's there:
+const cards = document.querySelectorAll('.product-card');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+cards.forEach(card => observer.observe(card));
 
 
 });

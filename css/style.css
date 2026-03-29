@@ -81,7 +81,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     display: block;
     font-size: 12px;
     letter-spacing: 4px;
-    color: #d4af37;
+    color: #d09f00;
 }
 
 /* MENU */
@@ -393,7 +393,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
 .loader-title span {
     display: inline-block;
     opacity: 0;
-    transform: translateY(30px) scale(1.2);
+    transform: translateY(15px) scale(1.2);
     transition: 0.4s ease;
 }
 
@@ -425,7 +425,7 @@ body { font-family: 'Jost', sans-serif; background-color: var(--light-bg); color
     }
 
     .loader-title span {
-        transform: translateY(20px) scale(1.1);
+        transform: translateY(15px) scale(1.1);
     }
 
     .loader-title .space {
