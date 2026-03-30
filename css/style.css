@@ -43,7 +43,7 @@
        NAVBAR
     ═══════════════════════════════════════════ */
     .luxury-nav {
-      background: #1a1a1a;
+      background: #03233eeb;
       border-bottom: 1px solid var(--divider);
       box-shadow: 0 4px 40px rgba(0,0,0,0.6), 0 1px 0 var(--divider);
       padding: 0;
@@ -924,7 +924,7 @@
 /* Footer Bottom */
 .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.1);
-    background: #000;
+    background: #03233eeb;
     font-size: 0.85rem;
     color: #aaa;
 }
@@ -1667,7 +1667,7 @@
         }
 
         /* ── Footer ── */
-        .footer-luxury { background: #100a00; }
+        .footer-luxury { background: #03233eeb; }
         .footer-glow {
             position: absolute;
             top: 0; left: 50%;
