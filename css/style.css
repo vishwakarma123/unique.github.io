@@ -70,7 +70,7 @@
  
     /* SCROLLED STATE */
     .luxury-nav.scrolled {
-        background: #1a1a1a !important;
+        background: #03233eeb !important;
         backdrop-filter: blur(14px);
         box-shadow: 0 4px 20px rgba(0,0,0,0.8);
         padding: 0;
