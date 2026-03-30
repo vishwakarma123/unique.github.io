@@ -3,6 +3,46 @@
 function safeEl(id) { return document.getElementById(id); }
 function safeQuery(sel) { return document.querySelector(sel); }
 
+document.addEventListener("DOMContentLoaded", function () {
+
+  function loadHTML(id, file, callback) {
+    fetch(file)
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById(id).innerHTML = data;
+        if (callback) callback();
+      })
+      .catch(err => console.log("Error loading:", err));
+  }
+
+  // Load header first, then run navbar JS
+  loadHTML("header", "header.html", function () {
+    initNavbar(); // run AFTER header loads
+  });
+
+  // Load footer
+  loadHTML("footer", "footer.html");
+
+});
+
+
+/* =========================
+   NAVBAR FUNCTION
+========================= */
+// function initNavbar() {
+//   const nav = document.querySelector("#mainNav");
+
+//   if (!nav) return; // IMPORTANT (prevents crash)
+
+//   window.addEventListener("scroll", function () {
+//     if (window.scrollY > 50) {
+//       nav.classList.add("scrolled");
+//     } else {
+//       nav.classList.remove("scrolled");
+//     }
+//   });
+// }
+
 /* ── REGISTER GSAP PLUGINS ── */
 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -74,10 +114,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
+    // const nav = document.getElementById('mainNav');
+    // window.addEventListener('scroll', () => {
+    //     nav.classList.toggle('scrolled', window.scrollY > 60);
+    // });
 
 
     // ── 4. GSAP Reveal Animations ──
