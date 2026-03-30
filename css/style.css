@@ -187,8 +187,16 @@
     }
  
     /* ── TOGGLER ────────────────────────────── */
-    .navbar-toggler { border: none; background: none; padding: 4px; }
-    .navbar-toggler:focus { box-shadow: none; }
+    /* MAKE ICON VISIBLE */
+    .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='gold' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* HOVER EFFECT */
+    .navbar-toggler:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease;
+    }
  
     
 /* ICONS */
