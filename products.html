@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop All | Unique Creation Jewellers</title>
+    <title>Shop All | nano Jewels</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -380,15 +380,15 @@
         .btn-wish-float:hover, .btn-wish-float.active { color: #e74c3c; }
 
         /* Overlay panel */
-        .card-overlay {
+        /* .card-overlay {
             position: absolute; bottom: 0; left: 0; right: 0;
             background: linear-gradient(to top, rgba(14,13,11,0.9) 0%, transparent 100%);
             padding: 28px 16px 16px;
             transform: translateY(100%);
             transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-        }
+        } */
         .product-card:hover .card-overlay { transform: translateY(0); }
-        .overlay-actions { display: flex; gap: 8px; }
+        /* .overlay-actions { display: flex; gap: 8px; } */
         .overlay-btn {
             flex: 1; padding: 9px; font-family: 'Jost';
             font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
@@ -475,28 +475,33 @@
     <div class="particle" style="left:72%;animation-duration:8s;animation-delay:0.5s;"></div>
     <div class="particle" style="left:86%;animation-duration:10s;animation-delay:1.8s;"></div>
     <div class="hero-content">
-        <p class="hero-eyebrow">Unique Creation Jewellers</p>
+        <p class="hero-eyebrow">nano Jewels</p>
         <h1 class="hero-title">Shop <span>All Jewellery</span></h1>
         <p class="hero-sub">420 handcrafted pieces · Certified gemstones</p>
         <div class="hero-divider"></div>
     </div>
 </section>
 
-<!-- ── MARQUEE ── -->
-<div class="marquee-strip">
-    <div class="marquee-track">
-        <span class="marquee-item">New Arrivals <span class="dot">◆</span></span>
-        <span class="marquee-item">Bridal Collection <span class="dot">◆</span></span>
-        <span class="marquee-item">Diamond Rings <span class="dot">◆</span></span>
-        <span class="marquee-item">Rose Gold <span class="dot">◆</span></span>
-        <span class="marquee-item">22K Gold Sets <span class="dot">◆</span></span>
-        <span class="marquee-item">Platinum Series <span class="dot">◆</span></span>
-        <span class="marquee-item">New Arrivals <span class="dot">◆</span></span>
-        <span class="marquee-item">Bridal Collection <span class="dot">◆</span></span>
-        <span class="marquee-item">Diamond Rings <span class="dot">◆</span></span>
-        <span class="marquee-item">Rose Gold <span class="dot">◆</span></span>
-        <span class="marquee-item">22K Gold Sets <span class="dot">◆</span></span>
-        <span class="marquee-item">Platinum Series <span class="dot">◆</span></span>
+<!-- ── GOLD MARQUEE STRIP ── -->
+<div class="marquee-band">
+    <div class="marquee-band-track">
+        <span class="marquee-band-item">Rings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bracelets <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Earrings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Necklaces <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Jhumka <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bridal Collection <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Diamond Jewellery <span class="dot">◆</span></span>
+        <!-- duplicate -->
+        <span class="marquee-band-item">Rings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bracelets <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Earrings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Necklaces <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Jhumka <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bridal Collection <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Diamond Jewellery <span class="dot">◆</span></span>
     </div>
 </div>
 
@@ -517,162 +522,10 @@
 <div class="container-fluid px-0">
     <div class="shop-layout">
 
-        <!-- ── SIDEBAR ── -->
-        <aside class="shop-sidebar" id="shopSidebar">
-            <button class="clear-filters mb-4" onclick="clearAllFilters()">
-                <i class="fa-solid fa-rotate-left me-1"></i> Clear All Filters
-            </button>
-
-            <div class="sidebar-title">Refine By</div>
-
-            <!-- Category -->
-            <div class="filter-section">
-                <div class="filter-label-head open" onclick="toggleFilter(this)">
-                    Category <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="filter-body">
-                    <div class="filter-option" onclick="toggleCheck(this,'rings')" data-val="rings">
-                        <div class="f-check"></div>
-                        <span class="f-text">Rings</span>
-                        <span class="f-count">120</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'earrings')" data-val="earrings">
-                        <div class="f-check"></div>
-                        <span class="f-text">Earrings</span>
-                        <span class="f-count">95</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'bracelets')" data-val="bracelets">
-                        <div class="f-check"></div>
-                        <span class="f-text">Bracelets</span>
-                        <span class="f-count">80</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'necklaces')" data-val="necklaces">
-                        <div class="f-check"></div>
-                        <span class="f-text">Necklaces</span>
-                        <span class="f-count">110</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'mangalsutra')" data-val="mangalsutra">
-                        <div class="f-check"></div>
-                        <span class="f-text">Mangalsutra</span>
-                        <span class="f-count">15</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Metal -->
-            <div class="filter-section">
-                <div class="filter-label-head open" onclick="toggleFilter(this)">
-                    Metal <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="filter-body">
-                    <div class="d-flex gap-2 flex-wrap mt-1">
-                        <div class="metal-swatch swatch-gold" title="22K Gold" onclick="toggleSwatch(this,'22k-gold')"></div>
-                        <div class="metal-swatch swatch-rose" title="Rose Gold" onclick="toggleSwatch(this,'rose-gold')"></div>
-                        <div class="metal-swatch swatch-white" title="White Gold" onclick="toggleSwatch(this,'white-gold')"></div>
-                        <div class="metal-swatch swatch-platinum" title="Platinum" onclick="toggleSwatch(this,'platinum')"></div>
-                        <div class="metal-swatch swatch-silver" title="Silver" onclick="toggleSwatch(this,'silver')"></div>
-                    </div>
-                    <p class="mt-3 mb-0" id="metalLabel" style="font-family:'Jost';font-size:0.72rem;color:#888;letter-spacing:1px;">Select a metal</p>
-                </div>
-            </div>
-
-            <!-- Price Range -->
-            <div class="filter-section">
-                <div class="filter-label-head open" onclick="toggleFilter(this)">
-                    Price Range <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="filter-body">
-                    <div class="price-range-wrap">
-                        <input type="range" class="custom-range" min="0" max="500000" value="300000" id="priceRange" oninput="updatePrice(this.value)">
-                        <div class="price-labels">
-                            <span>₹0</span>
-                            <span id="priceVal">₹3,00,000</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Occasion -->
-            <div class="filter-section">
-                <div class="filter-label-head open" onclick="toggleFilter(this)">
-                    Occasion <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="filter-body">
-                    <div class="filter-option" onclick="toggleCheck(this,'bridal')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Bridal</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'daily')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Everyday Wear</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'festive')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Festive</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'gifting')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Gifting</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gemstone -->
-            <div class="filter-section">
-                <div class="filter-label-head open" onclick="toggleFilter(this)">
-                    Gemstone <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="filter-body">
-                    <div class="filter-option" onclick="toggleCheck(this,'diamond')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Diamond</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'ruby')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Ruby</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'emerald')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Emerald</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'sapphire')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Sapphire</span>
-                    </div>
-                    <div class="filter-option" onclick="toggleCheck(this,'pearl')">
-                        <div class="f-check"></div>
-                        <span class="f-text">Pearl</span>
-                    </div>
-                </div>
-            </div>
-
-        </aside>
-
         <!-- ── MAIN ── -->
         <main class="shop-main">
 
-            <!-- Toolbar -->
-            <div class="shop-toolbar">
-                <div class="toolbar-left">
-                    <button class="filter-toggle-btn" id="filterToggleBtn">
-                        <i class="fa-solid fa-sliders"></i> Filters
-                    </button>
-                    <span class="result-count"><strong>420</strong> Pieces</span>
-                    <div class="active-filters" id="activeTags"></div>
-                </div>
-                <div class="toolbar-right">
-                    <select class="sort-select" id="sortSelect">
-                        <option value="popular">Sort: Popularity</option>
-                        <option value="low">Price: Low to High</option>
-                        <option value="high">Price: High to Low</option>
-                        <option value="new">Newest First</option>
-                    </select>
-                    <div class="view-toggle">
-                        <button class="view-btn active" id="gridBtn" title="Grid view"><i class="fa-solid fa-grip"></i></button>
-                        <button class="view-btn" id="listBtn" title="List view"><i class="fa-solid fa-list"></i></button>
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- Grid -->
             <div class="row g-4" id="product-grid">
