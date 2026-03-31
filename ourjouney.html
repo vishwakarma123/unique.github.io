@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Journey | Unique Creation Jewellers</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/main.js" defer></script>
+
+<style>
+:root {
+    --gold:#D4AF37;
+    --gold-dark:#b8962e;
+    --dark:#1a1a1a;
+    --midnight: #ffffff;
+}
+
+/* HERO */
+.hero{
+height:400px;
+background:linear-gradient(135deg,#1a1a1a,#2d2419);
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+}
+.hero h1{
+font-family:'Cormorant Garamond';
+font-size:3rem;
+}
+.gold-line{
+width:100px;height:2px;background:var(--gold);margin:10px auto;
+}
+
+/* TIMELINE */
+.timeline{
+position:relative;
+padding:80px 0;
+background:var(--light);
+}
+.timeline::before{
+content:'';
+position:absolute;
+left:50%;
+top:0;
+width:2px;
+height:100%;
+background:var(--gold);
+transform:translateX(-50%);
+}
+
+.timeline-item{
+position:relative;
+width:50%;
+padding:20px 40px;
+}
+
+.timeline-item:nth-child(odd){
+left:0;
+text-align:right;
+}
+.timeline-item:nth-child(even){
+left:50%;
+}
+
+.timeline-content{
+background:#fff;
+padding:25px;
+border-radius:8px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+.timeline-content:hover{
+transform:translateY(-5px);
+}
+
+.timeline-dot{
+position:absolute;
+top:30px;
+right:-8px;
+width:15px;height:15px;
+background:var(--gold);
+border-radius:50%;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+left:-8px;
+}
+
+.year{
+font-family:'Cinzel';
+font-size:0.8rem;
+letter-spacing:2px;
+color:var(--gold);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.timeline::before{left:20px;}
+.timeline-item{
+width:100%;
+padding-left:60px;
+text-align:left !important;
+left:0 !important;
+}
+.timeline-dot{left:12px !important;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="hero">
+<div>
+<h1>Our <em style="color:var(--gold)">Journey</em></h1>
+<div class="gold-line"></div>
+<p>From a dream to a trusted jewellery destination</p>
+</div>
+</section>
+
+<!-- ── GOLD MARQUEE STRIP ── -->
+<div class="marquee-band">
+    <div class="marquee-band-track">
+        <span class="marquee-band-item">Rings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bracelets <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Earrings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Necklaces <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Jhumka <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bridal Collection <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Diamond Jewellery <span class="dot">◆</span></span>
+        <!-- duplicate -->
+        <span class="marquee-band-item">Rings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bracelets <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Earrings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Necklaces <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Jhumka <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bridal Collection <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Diamond Jewellery <span class="dot">◆</span></span>
+    </div>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline">
+
+<!-- ITEM -->
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<div class="year">2026 · January</div>
+<h5>The Beginning</h5>
+<p>Unique Creation Jewellers opened its first boutique in Ghatkopar, Mumbai with handcrafted jewellery and a vision to redefine trust.</p>
+</div>
+</div>
+
+<!-- ITEM -->
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<div class="year">2026 · April</div>
+<h5>500 Customers</h5>
+<p>Within months, we proudly served 500+ happy families through quality and personal service.</p>
+</div>
+</div>
+
+<!-- ITEM -->
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<div class="year">2026 · August</div>
+<h5>Diamond Collection</h5>
+<p>Launched certified diamond jewellery collection with transparency and elegance.</p>
+</div>
+</div>
+
+<!-- ITEM -->
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<div class="year">2025 · February</div>
+<h5>Bridal Collection</h5>
+<p>Introduced exclusive bridal jewellery, becoming a preferred wedding destination.</p>
+</div>
+</div>
+
+<!-- ITEM -->
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<div class="year">2025 · October</div>
+<h5>Online Launch</h5>
+<p>Expanded digitally to serve customers across India with ease.</p>
+</div>
+</div>
+
+<!-- ITEM -->
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<div class="year">Present</div>
+<h5>5000+ Customers</h5>
+<p>Serving thousands of happy families with trust, quality, and timeless jewellery.</p>
+</div>
+</div>
+
+</section>
+
+<div id="footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Us | Unique Creation Jewellers</title>
+
+<!-- CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/main.js" defer></script>
+
+
+<style>
+:root {
+    --gold:#D4AF37;
+    --gold-dark:#b8962e;
+    --dark:#1a1a1a;
+    --midnight: #ffffff;
+}
+
+/* HERO */
+.about-hero {
+    min-height: 350px;
+    background: linear-gradient(135deg,#473838,#473825);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+.about-hero h1 { color:#fff; font-family:'Cormorant Garamond'; }
+.hero-gold-line {
+    width:120px;height:1px;background:var(--gold);margin:15px auto;
+}
+
+/* MAP SECTION */
+.map-container {
+    width:100%;
+    height:450px;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* CONTACT INFO BOX */
+.contact-info {
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom:50px;
+}
+.contact-info h4 {
+    font-family:'Cinzel', serif;
+    margin-bottom:20px;
+}
+.contact-info p {
+    font-family:'Jost', sans-serif;
+    font-size:0.95rem;
+    margin-bottom:10px;
+}
+.contact-info i {
+    color:var(--gold);
+    margin-right:10px;
+}
+
+/* BUTTON */
+.btn-contact {
+    background:var(--dark);
+    color:#fff;
+    padding:12px 20px;
+    border:none;
+    border-radius:5px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-top:10px;
+}
+.btn-contact:hover { background:var(--gold-dark); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="about-hero">
+    <div>
+        <h1>Locate <em style="color:var(--gold)">Us</em></h1>
+        <div class="hero-gold-line"></div>
+        <p class="text-white">Visit our store or contact us directly</p>
+    </div>
+</section>
+
+<!-- ── GOLD MARQUEE STRIP ── -->
+<div class="marquee-band">
+    <div class="marquee-band-track">
+        <span class="marquee-band-item">Rings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bracelets <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Earrings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Necklaces <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Jhumka <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bridal Collection <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Diamond Jewellery <span class="dot">◆</span></span>
+        <!-- duplicate -->
+        <span class="marquee-band-item">Rings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bracelets <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Mangalsutra <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Earrings <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Necklaces <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Jhumka <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Bridal Collection <span class="dot">◆</span></span>
+        <span class="marquee-band-item">Diamond Jewellery <span class="dot">◆</span></span>
+    </div>
+</div>
+
+<!-- MAP & CONTACT SECTION -->
+<section class="py-5">
+<div class="container">
+<div class="row g-4">
+
+<!-- MAP -->
+<div class="col-lg-8" data-aos="fade-up">
+<div class="map-container">
+<iframe src="https://www.google.com/maps?q=Shreyas+Cinema+Ghatkopar+Mumbai&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+
+<!-- CONTACT INFO -->
+<div class="col-lg-4" data-aos="fade-up">
+<div class="contact-info">
+<h4>Contact Information</h4>
+<p><i class="fa-solid fa-location-dot"></i> 123 Gold Street, Mumbai, India</p>
+<p><i class="fa-solid fa-phone"></i> +91 9136102060</p>
+<p><i class="fa-solid fa-envelope"></i> info@uniquecreation.com</p>
+<a href="enquiry.html" class="btn-contact">Send Enquiry</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init();
+</script>
+
+</body>
+</html>
