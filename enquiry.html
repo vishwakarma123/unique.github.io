@@ -187,9 +187,13 @@
 
 <hr>
 
-<a id="waBtn" class="btn-wa" target="_blank">
+<!-- <a id="waBtn" class="btn-wa" target="_blank">
 <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-</a>
+</a> -->
+ <a href="https://wa.me/919136102060?text=Hello%20Unique%20Creation%2C%20I%20filled%20your%20contact%20form%20and%20would%20like%20to%20connect." class="btn-wa" target="_blank">
+                        <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i>
+                        Continue on WhatsApp
+                    </a>
 
 </div>
 
@@ -215,24 +219,93 @@ const params = new URLSearchParams(window.location.search);
     }
 });
 
-/* FORM SUBMIT */
-document.getElementById("contactForm").addEventListener("submit",function(e){
-    e.preventDefault();
-    alert("Enquiry Submitted Successfully!");
-});
+ // ── Custom Cursor ──
+const cursor = document.getElementById('cursor');
 
-/* WHATSAPP AUTO MESSAGE */
-function updateWhatsApp(){
-    let name=document.getElementById("name").value;
-    let phone=document.getElementById("phone").value;
-    let msg=`Hello, I'm ${name}. Phone: ${phone}`;
-    document.getElementById("waBtn").href =
-    `https://wa.me/919136102060?text=${encodeURIComponent(msg)}`;
+if (cursor) {
+    // Make cursor follow mouse
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Hover effects
+    document.querySelectorAll('a, button, .info-block, .wa-card, .s-icon').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%,-50%) scale(1.6)';
+            cursor.style.borderColor = 'rgba(212,175,55,0.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+            cursor.style.borderColor = 'var(--gold)';
+        });
+    });
 }
 
-document.querySelectorAll("#contactForm input, #contactForm textarea").forEach(el=>{
-    el.addEventListener("input",updateWhatsApp);
-});
+// ── Scroll Reveal ──
+const revealEls = [document.getElementById('infoSide'), document.getElementById('formSide')];
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+revealEls.forEach(el => el && obs.observe(el));
+
+// ── Toast ──
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    const msgEl = document.getElementById('toastMsg');
+    if (!t || !msgEl) return;
+
+    msgEl.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ── Form Submit ──
+function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    if (!btn) return;
+
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+        btn.style.background = '#25a244';
+        showToast("Your message has been sent! We'll call you back soon.");
+
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Request a Callback';
+            btn.style.background = '';
+            btn.disabled = false;
+            e.target.reset();
+        }, 3000);
+    }, 1800);
+}
+
+// Attach form submit handler
+const contactForm = document.getElementById('contactForm');
+if (contactForm) contactForm.addEventListener('submit', handleSubmit);
+
+// ── Live WhatsApp prefill from form ──
+if (contactForm) {
+    contactForm.addEventListener('input', function() {
+        const name = this.querySelector('input[type="text"]')?.value || 'a customer';
+        const phone = this.querySelector('input[type="tel"]')?.value || 'N/A';
+        const msg = encodeURIComponent(
+            `Hello Unique Creation,\nMy name is ${name}.\nPhone: ${phone}\nI'd like to enquire about your jewellery.`
+        );
+
+        const waBtn = document.querySelector('.btn-wa-submit');
+        if (waBtn) waBtn.href = `https://wa.me/919998887766?text=${msg}`;
+    });
+}
 </script>
 
 </body>
