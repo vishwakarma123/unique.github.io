@@ -73,41 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1500);
     }
 
-    // ── 2. Custom Cursor Movement ──
-    const dot = document.querySelector(".cursor-dot");
-    const outline = document.querySelector(".cursor-outline");
-    const ring = document.getElementById("cursorRing");
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-    if (dot && outline) {
-        window.addEventListener("mousemove", e => {
-            gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.1 });
-            gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.3 });
-
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            dot.style.left = mouseX + 'px';
-            dot.style.top = mouseY + 'px';
-        });
-
-        function animateRing() {
-            if (ring) {
-                ringX += (mouseX - ringX) * 0.12;
-                ringY += (mouseY - ringY) * 0.12;
-                ring.style.left = ringX + 'px';
-                ring.style.top = ringY + 'px';
-            }
-            requestAnimationFrame(animateRing);
-        }
-        animateRing();
-
-        document.querySelectorAll('a, button, .product-card, .cat-card, .flip-card').forEach(el => {
-            if (ring) {
-                el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
-                el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
-            }
-        });
-    }
 
 
     // const nav = document.getElementById('mainNav');
@@ -115,7 +80,44 @@ document.addEventListener("DOMContentLoaded", () => {
     //     nav.classList.toggle('scrolled', window.scrollY > 60);
     // });
 
+    const cursorDot  = document.getElementById("cursorDot");
+const cursorRing = document.getElementById("cursorRing");
 
+if (cursorDot && cursorRing) {
+    window.addEventListener("mousemove", (e) => {
+        cursorDot.style.left = e.clientX + "px";
+        cursorDot.style.top  = e.clientY + "px";
+
+        // optional smooth ring movement
+        let ringX = 0, ringY = 0;
+        ringX += (e.clientX - ringX) * 0.12;
+        ringY += (e.clientY - ringY) * 0.12;
+        cursorRing.style.left = ringX + "px";
+        cursorRing.style.top  = ringY + "px";
+    });
+
+    document.querySelectorAll("a, button, .product-card, .cat-card, .flip-card")
+        .forEach(el => {
+            el.addEventListener("mouseenter", () => cursorRing.classList.add("hovered"));
+            el.addEventListener("mouseleave", () => cursorRing.classList.remove("hovered"));
+        });
+}
+
+
+
+    const cursor = document.getElementById("cursorDot");
+const ring = document.getElementById("cursorRing");
+
+if (cursor && ring) {
+    window.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+        // Example ring animation
+        ring.style.left = e.clientX + "px";
+        ring.style.top = e.clientY + "px";
+    });
+}
     // ── 4. GSAP Reveal Animations ──
     // if (typeof gsap !== 'undefined') {
     //     gsap.registerPlugin(ScrollTrigger);

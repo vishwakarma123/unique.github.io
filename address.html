@@ -342,7 +342,7 @@
         .f-group { margin-bottom: 20px; position: relative; }
         .f-label {
             font-family: 'Jost'; font-size: 0.65rem; letter-spacing: 3px;
-            text-transform: uppercase; color: #888; margin-bottom: 6px; display: block;
+            text-transform: uppercase; color: #4a4444; margin-bottom: 6px; display: block;
         }
         .f-input {
             width: 100%; padding: 13px 16px;
@@ -749,13 +749,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-AOS.init();
- // ── Cursor ──
-    const cursor = document.getElementById('cursor');
+
+  // ── Custom Cursor ──
+const cursor = document.getElementById('cursor');
+
+if (cursor) {
+    // Make cursor follow mouse
     document.addEventListener('mousemove', e => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
+
+    // Hover effects
     document.querySelectorAll('a, button, .info-block, .wa-card, .s-icon').forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.style.transform = 'translate(-50%,-50%) scale(1.6)';
@@ -766,58 +771,72 @@ AOS.init();
             cursor.style.borderColor = 'var(--gold)';
         });
     });
+}
 
-    // ── Scroll ──
-    window.addEventListener('scroll', () => {
-        const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-        document.getElementById('scrollBar').style.width = pct + '%';
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+// ── Scroll Reveal ──
+const revealEls = [document.getElementById('infoSide'), document.getElementById('formSide')];
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+        }
     });
+}, { threshold: 0.1 });
 
-    // ── Scroll Reveal ──
-    const revealEls = [document.getElementById('infoSide'), document.getElementById('formSide')];
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => el && obs.observe(el));
+revealEls.forEach(el => el && obs.observe(el));
 
-    // ── Toast ──
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        document.getElementById('toastMsg').textContent = msg;
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 4000);
-    }
+// ── Toast ──
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    const msgEl = document.getElementById('toastMsg');
+    if (!t || !msgEl) return;
 
-    // ── Form Submit ──
-    function handleSubmit(e) {
-        e.preventDefault();
-        const btn = e.target.querySelector('.btn-submit');
-        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-        btn.disabled = true;
+    msgEl.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ── Form Submit ──
+function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    if (!btn) return;
+
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+        btn.style.background = '#25a244';
+        showToast("Your message has been sent! We'll call you back soon.");
+
         setTimeout(() => {
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-            btn.style.background = '#25a244';
-            showToast('Your message has been sent! We\'ll call you back soon.');
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Request a Callback';
-                btn.style.background = '';
-                btn.disabled = false;
-                e.target.reset();
-            }, 3000);
-        }, 1800);
-    }
+            btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Request a Callback';
+            btn.style.background = '';
+            btn.disabled = false;
+            e.target.reset();
+        }, 3000);
+    }, 1800);
+}
 
-    // ── Live WhatsApp prefill from form ──
-    document.getElementById('contactForm').addEventListener('input', function() {
-        const name = this.querySelector('input[type="text"]').value;
-        const phone = this.querySelector('input[type="tel"]').value;
+// Attach form submit handler
+const contactForm = document.getElementById('contactForm');
+if (contactForm) contactForm.addEventListener('submit', handleSubmit);
+
+// ── Live WhatsApp prefill from form ──
+if (contactForm) {
+    contactForm.addEventListener('input', function() {
+        const name = this.querySelector('input[type="text"]')?.value || 'a customer';
+        const phone = this.querySelector('input[type="tel"]')?.value || 'N/A';
         const msg = encodeURIComponent(
-            `Hello Unique Creation,\nMy name is ${name || 'a customer'}.\nPhone: ${phone || 'N/A'}\nI'd like to enquire about your jewellery.`
+            `Hello Unique Creation,\nMy name is ${name}.\nPhone: ${phone}\nI'd like to enquire about your jewellery.`
         );
+
         const waBtn = document.querySelector('.btn-wa-submit');
-        waBtn.href = `https://wa.me/919998887766?text=${msg}`;
+        if (waBtn) waBtn.href = `https://wa.me/919998887766?text=${msg}`;
     });
+}
 </script>
 
 </body>
