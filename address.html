@@ -76,6 +76,434 @@
     font-size:0.85rem;
     text-decoration:none;
 }
+ :root {
+            --gold: #D4AF37;
+            --gold-light: #ffcc66;
+            --gold-dark: #b8962e;
+            --gold-pale: #F4EBD0;
+            --light-bg: #FCFBFA;
+            --dark-text: #1a1a1a;
+            --dark: #1a1a1a;
+            --text-light: #ccc;
+            --wa-green: #25D366;
+            --wa-dark: #128C7E;
+        }
+
+        /* * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--light-bg);
+            font-family: 'Jost', sans-serif;
+            overflow-x: hidden;
+        } */
+
+        /* ── CURSOR ── */
+        .cursor-dot {
+            position: fixed; width: 36px; height: 36px;
+            border: 1.5px solid var(--gold); border-radius: 50%;
+            pointer-events: none; z-index: 9999;
+            transform: translate(-50%,-50%);
+            transition: all 0.12s ease; mix-blend-mode: multiply;
+        }
+
+        /* ── SCROLL BAR ── */
+        .scroll-bar {
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            z-index: 9998; width: 0%;
+        }
+
+       
+
+        /* ── MARQUEE ── */
+        .marquee-strip {
+            background: var(--dark); padding: 14px 0; overflow: hidden;
+            position: relative;
+        }
+        .marquee-strip::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .marquee-track {
+            display: flex; gap: 50px;
+            animation: marquee 22s linear infinite; white-space: nowrap;
+        }
+        .marquee-item {
+            font-family: 'Jost'; font-size: 0.65rem; letter-spacing: 3px;
+            color: rgba(212,175,55,0.55); text-transform: uppercase;
+            display: flex; align-items: center; gap: 16px;
+        }
+        .marquee-item .dot { color: var(--gold); }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── QUICK CONNECT PILLS ── */
+        .quick-connect {
+            background: #fff;
+            padding: 22px 0;
+            border-bottom: 1px solid #f0ece2;
+        }
+        .quick-pill {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 10px 22px; border-radius: 50px;
+            font-family: 'Jost'; font-size: 0.78rem; letter-spacing: 1.5px;
+            text-transform: uppercase; text-decoration: none;
+            transition: all 0.3s; cursor: pointer; border: none;
+        }
+        .pill-wa {
+            background: var(--wa-green); color: #fff;
+            box-shadow: 0 4px 18px rgba(37,211,102,0.25);
+        }
+        .pill-wa:hover {
+            background: var(--wa-dark); color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+        }
+        .pill-call {
+            background: var(--gold); color: #000;
+            box-shadow: 0 4px 18px rgba(212,175,55,0.25);
+        }
+        .pill-call:hover {
+            background: var(--gold-dark); color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(212,175,55,0.35);
+        }
+        .pill-mail {
+            background: var(--dark); color: #fff;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+        }
+        .pill-mail:hover {
+            background: #333; color: var(--gold);
+            transform: translateY(-3px);
+        }
+        .pill-icon { font-size: 1rem; }
+
+        /* ── MAIN SECTION ── */
+        /* .contact-section { padding: 20px 0 100px; } */
+
+        /* ── INFO CARD ── */
+        .info-side {
+            opacity: 0; transform: translateX(-40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .info-side.visible { opacity: 1; transform: translateX(0); }
+
+        .section-label {
+            font-family: 'Jost'; font-size: 0.7rem; letter-spacing: 5px;
+            text-transform: uppercase; color: var(--gold);
+            display: block; margin-bottom: 0.5rem;
+        }
+        .section-heading {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--dark-text); font-weight: 400; line-height: 1.2;
+        }
+        .section-heading em {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic; font-size: 1.2em; color: var(--gold-dark);
+        }
+
+        .info-divider {
+            width: 50px; height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin: 1.8rem 0;
+        }
+
+        /* Info blocks */
+        .info-block {
+            display: flex; gap: 18px; align-items: flex-start;
+            padding: 20px; border-radius: 10px;
+            border: 1px solid #f0ece2; background: #fff;
+            margin-bottom: 14px;
+            transition: all 0.35s;
+        }
+        .info-block:hover {
+            border-color: rgba(212,175,55,0.35);
+            box-shadow: 0 6px 22px rgba(212,175,55,0.1);
+            transform: translateX(6px);
+        }
+        .info-icon {
+            width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%;
+            border: 1px solid rgba(212,175,55,0.4);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .info-block:hover .info-icon { background: var(--gold); color: #000; }
+        .info-label {
+            font-family: 'Jost'; font-size: 0.65rem; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--gold-dark); margin-bottom: 4px;
+        }
+        .info-text {
+            font-family: 'Cormorant Garamond'; font-size: 1.05rem;
+            color: var(--dark-text); line-height: 1.5;
+        }
+        .info-text a { color: var(--dark-text); text-decoration: none; transition: color 0.2s; }
+        .info-text a:hover { color: var(--gold); }
+
+        /* WhatsApp big card */
+        .wa-card {
+            background: linear-gradient(135deg, #075E54 0%, #128C7E 50%, #25D366 100%);
+            border-radius: 14px; padding: 28px 24px;
+            display: flex; align-items: center; gap: 20px;
+            cursor: pointer; text-decoration: none;
+            transition: all 0.35s;
+            box-shadow: 0 8px 30px rgba(37,211,102,0.2);
+            margin-top: 20px;
+            position: relative; overflow: hidden;
+        }
+        .wa-card::before {
+            content: '';
+            position: absolute; top: -30px; right: -30px;
+            width: 120px; height: 120px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+        .wa-card::after {
+            content: '';
+            position: absolute; bottom: -20px; right: 60px;
+            width: 80px; height: 80px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .wa-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(37,211,102,0.3);
+        }
+        .wa-icon-big {
+            width: 60px; height: 60px; background: rgba(255,255,255,0.15);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; color: #fff; flex-shrink: 0;
+            animation: wa-pulse 2.5s ease infinite;
+        }
+        @keyframes wa-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+            50% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+        }
+        .wa-info-label {
+            font-family: 'Jost'; font-size: 0.65rem; letter-spacing: 3px;
+            text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 4px;
+        }
+        .wa-number {
+            font-family: 'Cinzel', serif; font-size: 1.35rem;
+            color: #fff; letter-spacing: 1px;
+        }
+        .wa-sub {
+            font-family: 'Cormorant Garamond'; font-style: italic;
+            font-size: 0.95rem; color: rgba(255,255,255,0.8); margin-top: 2px;
+        }
+        .wa-arrow {
+            margin-left: auto; color: rgba(255,255,255,0.7);
+            font-size: 1.1rem; transition: transform 0.3s;
+            position: relative; z-index: 1;
+        }
+        .wa-card:hover .wa-arrow { transform: translateX(5px); color: #fff; }
+
+        /* Social row */
+        .social-row { display: flex; gap: 12px; margin-top: 24px; }
+        .s-icon {
+            width: 42px; height: 42px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; text-decoration: none; transition: all 0.3s;
+            border: 1px solid #e8e4da; color: #888;
+        }
+        .s-icon:hover { background: var(--gold); border-color: var(--gold); color: #000; transform: translateY(-4px); }
+
+        /* ── FORM SIDE ── */
+        .form-side {
+            opacity: 0; transform: translateX(40px);
+            transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
+        }
+        .form-side.visible { opacity: 1; transform: translateX(0); }
+
+        .form-card {
+            background: #fff; border-radius: 16px;
+            padding: 50px 46px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+            border: 1px solid #f0ece2;
+            position: relative; overflow: hidden;
+        }
+        .form-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+        }
+        .form-card-title {
+            font-family: 'Cinzel', serif; font-size: 1.15rem;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: var(--dark-text); margin-bottom: 4px;
+        }
+        .form-card-sub {
+            font-family: 'Cormorant Garamond'; font-style: italic;
+            font-size: 0.95rem; color: #999; margin-bottom: 2rem;
+        }
+
+        /* Form fields */
+        .f-group { margin-bottom: 20px; position: relative; }
+        .f-label {
+            font-family: 'Jost'; font-size: 0.65rem; letter-spacing: 3px;
+            text-transform: uppercase; color: #888; margin-bottom: 6px; display: block;
+        }
+        .f-input {
+            width: 100%; padding: 13px 16px;
+            border: 1px solid #e8e4da; border-radius: 6px;
+            font-family: 'Cormorant Garamond'; font-size: 1rem; color: var(--dark-text);
+            background: #fafaf8; outline: none; transition: all 0.3s;
+            appearance: none;
+        }
+        .f-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.08);
+            background: #fff;
+        }
+        .f-input::placeholder { color: #bbb; font-style: italic; }
+        select.f-input { cursor: pointer; }
+
+        textarea.f-input { resize: none; min-height: 120px; line-height: 1.6; }
+
+        /* Input icon */
+        .f-icon {
+            position: absolute; right: 14px; top: 35px;
+            color: #ccc; font-size: 0.85rem; pointer-events: none;
+            transition: color 0.3s;
+        }
+        .f-group:focus-within .f-icon { color: var(--gold); }
+
+        /* Submit */
+        .btn-submit {
+            width: 100%; padding: 15px;
+            background: var(--dark); color: #fff; border: none;
+            font-family: 'Jost'; font-size: 0.75rem; letter-spacing: 3px;
+            text-transform: uppercase; cursor: pointer;
+            border-radius: 6px; position: relative; overflow: hidden;
+            transition: all 0.3s;
+        }
+        .btn-submit::before {
+            content: '';
+            position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .btn-submit:hover { background: var(--gold-dark); }
+        .btn-submit:hover::before { left: 100%; }
+        .btn-submit i { margin-right: 8px; }
+
+        /* OR divider */
+        .or-divider {
+            display: flex; align-items: center; gap: 14px; margin: 20px 0;
+        }
+        .or-line { flex: 1; height: 1px; background: #f0ece2; }
+        .or-text { font-family: 'Jost'; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: #bbb; }
+
+        /* WhatsApp submit */
+        .btn-wa-submit {
+            width: 100%; padding: 14px;
+            background: var(--wa-green); color: #fff; border: none;
+            font-family: 'Jost'; font-size: 0.75rem; letter-spacing: 2px;
+            text-transform: uppercase; cursor: pointer;
+            border-radius: 6px; display: flex; align-items: center;
+            justify-content: center; gap: 10px;
+            transition: all 0.3s; text-decoration: none;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.2);
+        }
+        .btn-wa-submit:hover {
+            background: var(--wa-dark); color: #fff;
+            box-shadow: 0 8px 24px rgba(37,211,102,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* ── MAP SECTION ── */
+        .map-section { padding: 0 0 90px; }
+        .map-wrap {
+            border-radius: 16px; overflow: hidden;
+            border: 1px solid #f0ece2;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+            position: relative;
+        }
+        .map-wrap iframe { display: block; width: 100%; height: 420px; border: 0; filter: grayscale(20%) contrast(1.05); }
+        .map-badge {
+            position: absolute; top: 20px; left: 20px; z-index: 5;
+            background: #fff; border: 1px solid #f0ece2;
+            border-radius: 10px; padding: 14px 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .map-badge-title {
+            font-family: 'Cinzel', serif; font-size: 0.75rem;
+            letter-spacing: 2px; text-transform: uppercase; color: var(--dark-text);
+        }
+        .map-badge-addr {
+            font-family: 'Cormorant Garamond'; font-style: italic;
+            font-size: 0.9rem; color: #888; margin-top: 3px;
+        }
+        .map-badge-dot {
+            display: inline-block; width: 8px; height: 8px;
+            background: var(--wa-green); border-radius: 50;
+            margin-right: 6px; animation: blink 1.5s ease infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+        /* ── HOURS STRIP ── */
+        .hours-strip {
+            background: var(--dark); padding: 50px 0;
+            position: relative; overflow: hidden;
+        }
+        .hours-strip::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .hours-strip::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .hours-item {
+            text-align: center; padding: 0 20px;
+            border-right: 1px solid rgba(212,175,55,0.15);
+        }
+        .hours-item:last-child { border-right: none; }
+        .hours-day {
+            font-family: 'Jost'; font-size: 0.65rem; letter-spacing: 3px;
+            text-transform: uppercase; color: rgba(212,175,55,0.6); margin-bottom: 6px;
+        }
+        .hours-time {
+            font-family: 'Cinzel', serif; font-size: 1rem;
+            color: #fff; font-weight: 400;
+        }
+        .hours-open {
+            display: inline-block; font-family: 'Jost'; font-size: 0.6rem;
+            letter-spacing: 2px; text-transform: uppercase;
+            background: rgba(37,211,102,0.15); color: var(--wa-green);
+            border: 1px solid rgba(37,211,102,0.3); padding: 3px 8px;
+            border-radius: 20px; margin-top: 5px;
+        }
+
+        /* Toast notification */
+        .toast-notify {
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+            background: var(--dark); color: #fff;
+            border: 1px solid rgba(212,175,55,0.3);
+            border-left: 3px solid var(--gold);
+            padding: 16px 22px; border-radius: 8px;
+            font-family: 'Jost'; font-size: 0.82rem; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            transform: translateY(80px); opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            max-width: 320px;
+        }
+        .toast-notify.show { transform: translateY(0); opacity: 1; }
+        .toast-notify i { color: var(--gold); font-size: 1rem; }
+
+        
+        @media(max-width:767px) {
+            .form-card { padding: 32px 22px; }
+            .hours-item { border-right: none; border-bottom: 1px solid rgba(212,175,55,0.1); padding: 16px 0; }
+            .hours-item:last-child { border-bottom: none; }
+        }
+        @media(max-width:576px) {
+            .quick-pill span { display: none; }
+            .quick-pill { padding: 10px 14px; }
+        }
+        
 .btn-action:hover { background:var(--gold-dark); text-decoration:none; }
 
 </style>
@@ -84,12 +512,22 @@
 
 <div id="header"></div>
 
-<!-- HERO -->
-<section class="about-hero">
-    <div>
-        <h1>Our <em style="color:var(--gold)">Stores</em></h1>
-        <div class="hero-gold-line"></div>
-        <p class="text-white">Find your nearest store or contact us directly</p>
+<!-- ── HERO ── -->
+<section class="contact-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-orbit hero-orbit-1"></div>
+    <div class="hero-orbit hero-orbit-2"></div>
+    <div class="particle" style="left:12%;animation-duration:7s;animation-delay:0s;"></div>
+    <div class="particle" style="left:28%;animation-duration:9s;animation-delay:1s;"></div>
+    <div class="particle" style="left:52%;animation-duration:6s;animation-delay:2s;"></div>
+    <div class="particle" style="left:72%;animation-duration:8s;animation-delay:0.5s;"></div>
+    <div class="particle" style="left:87%;animation-duration:10s;animation-delay:1.8s;"></div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">Unique Creation</p>
+        <h1 class="hero-title">Let's Create <span>Something</span><br>Unique Together</h1>
+        <p class="hero-sub">We'd love to hear from you · Open every day</p>
+        <div class="hero-divider"></div>
     </div>
 </section>
 
@@ -116,8 +554,162 @@
     </div>
 </div>
 
+
+<!-- ── CONTACT MAIN ── -->
+<section class="contact-section">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+
+            <!-- LEFT INFO -->
+            <div class="col-lg-5 info-side" id="infoSide">
+                <span class="section-label">Reach Us</span>
+                <h2 class="section-heading">We Are <em>Here For You</em></h2>
+                <div class="info-divider"></div>
+
+                <!-- Store -->
+                <div class="info-block">
+                    <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <p class="info-label">Unique Creation</p>
+                        <p class="info-text">714, 7th Floor Swastik Disa Corporate Park,LBS Marg, Opp Shreyas Cinema <br>Ghatkoper West 400086 </p>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="info-block">
+                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <p class="info-label">Direct Line</p>
+                        <p class="info-text">
+                            <a href="tel:+919136102060">919136102060</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="info-block">
+                    <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <p class="info-label">Email</p>
+                        <p class="info-text">
+                            <a href="mailto:anand@uniquecreation.biz">anand@uniquecreation.biz</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hours -->
+                <div class="info-block">
+                    <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                    <div>
+                        <p class="info-label">Business Hours</p>
+                        <p class="info-text">Monday – Sunday<br>10:30 AM to 08:30 PM</p>
+                        <span style="display:inline-block;margin-top:6px;font-family:'Jost';font-size:0.65rem;letter-spacing:2px;background:rgba(37,211,102,0.1);color:#25D366;border:1px solid rgba(37,211,102,0.3);padding:3px 10px;border-radius:20px;">
+                            <span style="display:inline-block;width:6px;height:6px;background:#25D366;border-radius:50%;margin-right:6px;animation:blink 1.5s ease infinite;"></span>Open Today
+                        </span>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Big Card
+                <a href="https://wa.me/919136102060?text=Hello%20Unique%20Creation%2C%20I%27d%20like%20to%20enquire%20about%20your%20jewellery." target="_blank" class="wa-card">
+                    <div class="wa-icon-big"><i class="fab fa-whatsapp"></i></div>
+                    <div style="position:relative;z-index:1;">
+                        <p class="wa-info-label">WhatsApp Direct</p>
+                        <p class="wa-number">+91 9136102060</p>
+                        <p class="wa-sub">Tap to chat instantly</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right wa-arrow"></i>
+                </a> -->
+
+                <!-- Social -->
+                <!-- <div class="social-row">
+                    <a href="#" class="s-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="s-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="s-icon" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="s-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/919136102060" target="_blank" class="s-icon" title="WhatsApp" style="background:rgba(37,211,102,0.08);border-color:rgba(37,211,102,0.3);color:var(--wa-green);">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div> -->
+            </div>
+
+            <!-- RIGHT FORM -->
+            <div class="col-lg-7 form-side" id="formSide">
+                <div class="form-card">
+                    <h3 class="form-card-title">Send a Message</h3>
+                    <p class="form-card-sub">We'll get back to you within 2 hours</p>
+
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="f-group">
+                                    <label class="f-label">Full Name *</label>
+                                    <input type="text" class="f-input" placeholder="Your full name" required>
+                                    <i class="fa-regular fa-user f-icon"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="f-group">
+                                    <label class="f-label">Phone Number *</label>
+                                    <input type="tel" class="f-input" placeholder="+91 __ __ __ ____" required>
+                                    <i class="fa-solid fa-phone f-icon"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="f-group">
+                                    <label class="f-label">Email Address</label>
+                                    <input type="email" class="f-input" placeholder="your@email.com">
+                                    <i class="fa-regular fa-envelope f-icon"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="f-group">
+                                    <label class="f-label">Enquiry Type</label>
+                                    <select class="f-input">
+                                        <option value="" disabled selected>Select enquiry</option>
+                                        <option>Custom Order</option>
+                                        <option>Bridal Consultation</option>
+                                        <option>Product Enquiry</option>
+                                        <option>Gold Exchange</option>
+                                        <option>Repair &amp; Service</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down f-icon" style="top:37px;"></i>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="f-group">
+                                    <label class="f-label">Your Message</label>
+                                    <textarea class="f-input" placeholder="Tell us about the piece you're looking for, your budget, occasion..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-submit">
+                                    <i class="fa-solid fa-paper-plane"></i> Request a Callback
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="or-divider">
+                        <div class="or-line"></div>
+                        <span class="or-text">or connect instantly</span>
+                        <div class="or-line"></div>
+                    </div>
+
+                    <a href="https://wa.me/919136102060?text=Hello%20Unique%20Creation%2C%20I%20filled%20your%20contact%20form%20and%20would%20like%20to%20connect." target="_blank" class="btn-wa-submit">
+                        <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i>
+                        Continue on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
 <!-- ADDRESSES SECTION -->
-<section class="py-5">
+<section class="py-2">
 <div class="container">
 <div class="row">
 
@@ -128,18 +720,6 @@
 <p><i class="fa-solid fa-location-dot"></i> 123 Gold Street, Mumbai, Maharashtra, India</p>
 <p><i class="fa-solid fa-phone"></i> +91 9136102060</p>
 <p><i class="fa-solid fa-envelope"></i> info@uniquecreation.com</p>
-<a href="map.html" class="btn-action mt-2"><i class="fa-solid fa-map-location-dot"></i> View on Map</a>
-<a href="enquiry.html" class="btn-action mt-2"><i class="fa-solid fa-envelope"></i> Send Enquiry</a>
-</div>
-</div>
-
-<!-- STORE 2 -->
-<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-<div class="address-card">
-<h5>Delhi Store</h5>
-<p><i class="fa-solid fa-location-dot"></i> 456 Diamond Lane, Delhi, India</p>
-<p><i class="fa-solid fa-phone"></i> +91 9876543210</p>
-<p><i class="fa-solid fa-envelope"></i> delhi@uniquecreation.com</p>
 <a href="map.html" class="btn-action mt-2"><i class="fa-solid fa-map-location-dot"></i> View on Map</a>
 <a href="enquiry.html" class="btn-action mt-2"><i class="fa-solid fa-envelope"></i> Send Enquiry</a>
 </div>
@@ -170,6 +750,74 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init();
+ // ── Cursor ──
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .info-block, .wa-card, .s-icon').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%,-50%) scale(1.6)';
+            cursor.style.borderColor = 'rgba(212,175,55,0.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+            cursor.style.borderColor = 'var(--gold)';
+        });
+    });
+
+    // ── Scroll ──
+    window.addEventListener('scroll', () => {
+        const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        document.getElementById('scrollBar').style.width = pct + '%';
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Scroll Reveal ──
+    const revealEls = [document.getElementById('infoSide'), document.getElementById('formSide')];
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => el && obs.observe(el));
+
+    // ── Toast ──
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        document.getElementById('toastMsg').textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 4000);
+    }
+
+    // ── Form Submit ──
+    function handleSubmit(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('.btn-submit');
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+            btn.style.background = '#25a244';
+            showToast('Your message has been sent! We\'ll call you back soon.');
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Request a Callback';
+                btn.style.background = '';
+                btn.disabled = false;
+                e.target.reset();
+            }, 3000);
+        }, 1800);
+    }
+
+    // ── Live WhatsApp prefill from form ──
+    document.getElementById('contactForm').addEventListener('input', function() {
+        const name = this.querySelector('input[type="text"]').value;
+        const phone = this.querySelector('input[type="tel"]').value;
+        const msg = encodeURIComponent(
+            `Hello Unique Creation,\nMy name is ${name || 'a customer'}.\nPhone: ${phone || 'N/A'}\nI'd like to enquire about your jewellery.`
+        );
+        const waBtn = document.querySelector('.btn-wa-submit');
+        waBtn.href = `https://wa.me/919998887766?text=${msg}`;
+    });
 </script>
 
 </body>

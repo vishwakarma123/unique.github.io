@@ -2,7 +2,7 @@
        COLOR SYSTEM – UNIQUE CREATION
     ═══════════════════════════════════════════ */
     :root {
-      --midnight:    #0B0C10;   /* deep background         */
+     
       --charcoal:    var(--gold-dim) !important;   /* navbar / cards          */
       --charcoal-2:  #22243A;   /* subtle panels / mobile  */
       --gold:        #C9A84C;   /* brand accent            */
@@ -121,7 +121,7 @@
  
     .brand-main {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
+      font-size: 25px;
       font-weight: 600;
       letter-spacing: 4px;
       color: var(--white);
@@ -130,8 +130,8 @@
  
     .brand-sub {
       font-family: 'Jost', sans-serif;
-      font-size: 10px;
-      font-weight: 400;
+      font-size: 20px;
+      font-weight: 500;
       letter-spacing: 6px;
       color: var(--gold);
       text-transform: uppercase;
@@ -141,8 +141,8 @@
     /* ── NAV LINKS ──────────────────────────── */
     .luxury-menu .nav-link {
       font-family: 'Jost', sans-serif;
-      font-size: 12px;
-      font-weight: 400;
+      font-size: 16px;
+      font-weight: 500;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--cream) !important;
@@ -197,7 +197,62 @@
     transform: scale(1.1);
     transition: 0.3s ease;
     }
+
+    /* ═══════════════════════════════════════════
+   SEARCH BAR – LUXURY STYLE
+═══════════════════════════════════════════ */
+
+.luxury-search {
+  align-items: center;
+  position: relative;
+}
+
+.luxury-search-input {
+  background: transparent;
+  border: 1px solid var(--divider);
+  color: var(--cream);
+  font-size: 16px;
+  padding: 6px 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  width: 180px;
+  transition: all 0.3s ease;
+}
+
+/* placeholder color */
+.luxury-search-input::placeholder {
+  color: rgba(212,175,55,0.6);
+  letter-spacing: 1px;
+}
+
+/* focus effect */
+.luxury-search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 10px var(--gold-dim);
+  background: rgba(255,255,255,0.02);
+}
+
+/* SEARCH BUTTON */
+.luxury-search-btn {
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  font-size: 14px;
+  margin-left: -32px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* hover glow */
+.luxury-search-btn:hover {
+  color: var(--gold-pale);
+  transform: scale(1.1);
+}
  
+
+
+
     
 /* ICONS */
 .icon-btn {
@@ -234,7 +289,7 @@
 /* HERO FIX */
 #heroSlider,
 .carousel-item {
-    height: 60vh;   /* desktop perfect height */
+    /* height: 60vh;   desktop perfect height */
     min-height: 500px;
     position: relative;
 }
@@ -253,6 +308,11 @@
         height: 100%;
         object-fit: cover;
     }
+
+     .luxury-menu .nav-link {
+    font-size: 14px;
+    padding: 10px 0 !important;
+  }
 }
 
 
@@ -1665,9 +1725,86 @@
             border-color: #D4AF37;
             box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
         }
+         /* ── HERO ── */
+        .contact-hero {
+            background: var(--dark);
+            /* min-height: 62vh; */
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; padding-top: 80px;
+        }
+        .contact-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(212,175,55,0.09) 0%, transparent 70%);
+        }
+        .hero-grid {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212,175,55,0.04) 1px, transparent 1px);
+            background-size: 55px 55px;
+            animation: grid-drift 25s linear infinite;
+        }
+        @keyframes grid-drift { 100% { transform: translateY(55px); } }
+
+        .hero-orbit {
+            position: absolute; border-radius: 50%;
+            border: 1px solid rgba(212,175,55,0.1);
+            animation: orbit-spin 30s linear infinite;
+            top: 50%; left: 50%;
+        }
+        .hero-orbit-1 { width: 460px; height: 460px; margin: -230px 0 0 -230px; }
+        .hero-orbit-2 { width: 290px; height: 290px; margin: -145px 0 0 -145px; border-color: rgba(212,175,55,0.06); animation-duration: 18s; animation-direction: reverse; }
+        .hero-orbit::before {
+            content: ''; position: absolute; top: -4px; left: 50%;
+            width: 7px; height: 7px; background: var(--gold);
+            border-radius: 50%; transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--gold);
+        }
+        @keyframes orbit-spin { to { transform: rotate(360deg); } }
+
+        .particle {
+            position: absolute; width: 2px; height: 2px;
+            background: var(--gold); border-radius: 50%;
+            animation: float-up linear infinite; opacity: 0;
+        }
+        @keyframes float-up {
+            0% { transform: translateY(60px) scale(0); opacity: 0; }
+            20% { opacity: 0.7; } 80% { opacity: 0.3; }
+            100% { transform: translateY(-250px) scale(1.5); opacity: 0; }
+        }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; }
+        .hero-eyebrow {
+            font-family: 'Jost'; font-size: 0.7rem; letter-spacing: 6px;
+            text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+            opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
+        }
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            font-weight: 400; color: #fff; line-height: 1.05;
+            opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
+        }
+        .hero-title span { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+        .hero-sub {
+            font-family: 'Cormorant Garamond'; font-style: italic;
+            font-size: 1.1rem; color: #aaa; margin-top: 1rem;
+            opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards;
+        }
+        .hero-divider {
+            width: 50px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1.5rem auto 0;
+            opacity: 0; animation: fadeIn 1s ease 0.9s forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
 
         /* ── Footer ── */
-        .footer-luxury { background: #03233eeb; }
+        .footer-luxury { background: #03233eeb; font-size: 18px;}
         .footer-glow {
             position: absolute;
             top: 0; left: 50%;
@@ -1860,6 +1997,7 @@
   border: 1px solid var(--divider);
   border-radius: 10px;
   padding: 8px 0;
+  font-size: 25px;
   min-width: 220px;
 }
 
@@ -1872,6 +2010,7 @@
 .luxury-dropdown-menu .dropdown-item {
   color: var(--cream);
   padding: 10px 18px;
+  font-size: 20px;
   transition: 0.3s;
 }
 

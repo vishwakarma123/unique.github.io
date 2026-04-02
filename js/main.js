@@ -29,19 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
 /* =========================
    NAVBAR FUNCTION
 ========================= */
-// function initNavbar() {
-//   const nav = document.querySelector("#mainNav");
+function initNavbar() {
+  const nav = document.querySelector("#mainNav");
 
-//   if (!nav) return; // IMPORTANT (prevents crash)
+  if (!nav) return; // IMPORTANT (prevents crash)
 
-//   window.addEventListener("scroll", function () {
-//     if (window.scrollY > 50) {
-//       nav.classList.add("scrolled");
-//     } else {
-//       nav.classList.remove("scrolled");
-//     }
-//   });
-// }
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 50) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  });
+}
 
 /* ── REGISTER GSAP PLUGINS ── */
 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -49,11 +49,7 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 }
 
 /* ── SAFE ELEMENT REFS ── */
-const scrollBar = safeEl('scrollBar');
-const backToTop = safeEl('backToTop');
-const brandText = safeEl('brandText');
-const cursorDot  = safeEl('cursorDot');
-const cursorRing = safeEl('cursorRing');
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -246,33 +242,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 const letters = document.querySelectorAll("#brandText span");
+
 let index = 0;
 
-// Step 1: Show letters one by one
 function showLetters() {
+    
+    if (!letters || letters.length === 0) return;
+
     if (index < letters.length) {
 
-        // skip space
-        if (letters[index].classList.contains("space")) {
+        // skip space safely
+        if (letters[index] && letters[index].classList.contains("space")) {
             index++;
             showLetters();
             return;
         }
 
-        letters[index].classList.add("show");
-        index++;
+        if (letters[index]) {
+            letters[index].classList.add("show");
+        }
 
+        index++;
         setTimeout(showLetters, 50);
+
     } else {
-        // Step 2: Combine effect
-        setTimeout(() => {
-            document.getElementById("brandText").classList.add("combine");
-        }, 400);
+        // ✅ safe check for brandText
+        const brand = document.getElementById("brandText");
+        if (brand) {
+            setTimeout(() => {
+                brand.classList.add("combine");
+            }, 400);
+        }
     }
 }
 
 window.addEventListener("load", () => {
-    showLetters();
+    // ✅ only run if letters exist on this page
+    if (typeof letters !== "undefined" && letters.length > 0) {
+        showLetters();
+    }
 });
 
 // Should already exist in main.js — confirm it's there:
@@ -285,6 +293,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 cards.forEach(card => observer.observe(card));
+
 
 
 });
