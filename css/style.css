@@ -290,8 +290,10 @@
 #heroSlider,
 .carousel-item {
     /* height: 60vh;   desktop perfect height */
-    min-height: 500px;
-    position: relative;
+    background: var(--dark);
+            /* min-height: 62vh; */
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; 
 }
 
 /* MOBILE FIX */
@@ -1341,7 +1343,7 @@
         }
 
         /* ── Custom Cursor ── */
-        .cursor-dot {
+        /* .cursor-dot {
             position: fixed;
             width: 8px; height: 8px;
             background: #D4AF37;
@@ -1350,21 +1352,9 @@
             z-index: 10000;
             transform: translate(-50%, -50%);
             transition: transform 0.1s;
-        }
-        .cursor-ring {
-            position: fixed;
-            width: 34px; height: 34px;
-            border: 1.5px solid rgba(212,175,55,0.6);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: all 0.18s ease;
-        }
-        .cursor-ring.hovered {
-            transform: translate(-50%,-50%) scale(1.6);
-            background: rgba(212,175,55,0.08);
-        }
+        } */
+       
+        
         @media (max-width: 768px) {
             .cursor-dot, .cursor-ring { display: none; }
         }
@@ -1802,6 +1792,25 @@
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn { to { opacity: 1; } }
+
+        
+/* HERO */
+.hero{
+height:365px;
+background:linear-gradient(135deg,#1a1a1a,#2d2419);
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+}
+.hero h1{
+font-family:'Cormorant Garamond';
+font-size:3rem;
+}
+.gold-line{
+width:100px;height:2px;background:var(--gold);margin:10px auto;
+}
 
         /* ── Footer ── */
         .footer-luxury { background: #03233eeb; font-size: 18px;}
