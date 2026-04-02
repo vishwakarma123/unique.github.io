@@ -49,108 +49,7 @@
             mix-blend-mode: multiply;
         }
 
-       
-        /* ── HERO BANNER ── */
-        .Necklaces-hero {
-            background: var(--dark);
-            /* min-height: 60vh; */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-        .Necklaces-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%);
-        }
-        /* Orbiting decorative Necklaces */
-        .hero-orbit {
-            position: absolute;
-            width: 500px; height: 500px;
-            border: 1px solid rgba(212,175,55,0.12);
-            border-radius: 50%;
-            animation: orbit-spin 30s linear infinite;
-        }
-        .hero-orbit::before {
-            content: '';
-            position: absolute;
-            top: -4px; left: 50%;
-            width: 8px; height: 8px;
-            background: var(--gold);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 12px var(--gold);
-        }
-        .hero-orbit-2 {
-            width: 320px; height: 320px;
-            border-color: rgba(212,175,55,0.07);
-            animation: orbit-spin 20s linear infinite reverse;
-        }
-        @keyframes orbit-spin { to { transform: rotate(360deg); } }
-
-        /* Floating particles */
-        .particle {
-            position: absolute;
-            width: 3px; height: 3px;
-            background: var(--gold);
-            border-radius: 50%;
-            animation: float-up linear infinite;
-            opacity: 0;
-        }
-        @keyframes float-up {
-            0% { transform: translateY(100px) scale(0); opacity: 0; }
-            20% { opacity: 0.6; }
-            80% { opacity: 0.3; }
-            100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
-        }
-
-        .hero-content { position: relative; z-index: 2; text-align: center; }
-        .hero-eyebrow {
-            font-family: 'Jost', sans-serif;
-            font-size: 0.72rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeSlideUp 0.8s ease 0.3s forwards;
-        }
-        .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 8vw, 6.5rem);
-            font-weight: 400;
-            color: #fff;
-            line-height: 1.05;
-            opacity: 0;
-            animation: fadeSlideUp 0.9s ease 0.5s forwards;
-        }
-        .hero-title span { color: var(--gold); font-style: italic; font-family: 'Cormorant Garamond', serif; }
-        .hero-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            font-style: italic;
-            color: var(--text-light);
-            margin-top: 1.2rem;
-            opacity: 0;
-            animation: fadeSlideUp 0.9s ease 0.7s forwards;
-        }
-        .hero-divider {
-            width: 60px; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 2rem auto;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.9s forwards;
-        }
-
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn { to { opacity: 1; } }
+    
 
         /* ── FILTER BAR ── */
         .filter-bar {
@@ -408,8 +307,7 @@
 
 <div id="header"></div>
 
-<!-- ── HERO ── -->
-<section class="Necklaces-hero">
+<section class="rings-hero">
     <div class="hero-orbit"></div>
     <div class="hero-orbit hero-orbit-2"></div>
 
