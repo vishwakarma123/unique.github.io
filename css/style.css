@@ -527,7 +527,7 @@
 
 /* IMAGE BACKGROUND FIX */
 .carousel-item {
-    margin-top: 92px;
+    margin-top: 35px;
     background-size: cover !important;
     background-position: center;
     padding-bottom: 90px;
