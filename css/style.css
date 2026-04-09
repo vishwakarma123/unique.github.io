@@ -499,7 +499,7 @@
             /* min-height: 62vh; */
             display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden; 
-            padding-top: 91px;
+            padding-top: 50px;
 }
 
 /* MOBILE FIX */
@@ -530,7 +530,7 @@
     margin-top: 35px;
     background-size: cover !important;
     background-position: center;
-    padding-bottom: 90px;
+    
 }
 
 /* VIDEO FIX */
