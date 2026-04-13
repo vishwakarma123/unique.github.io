@@ -93,7 +93,7 @@
         .breadcrumb-item + .breadcrumb-item::before { color: #ccc; }
 
         /* ── SECTION HEADING ── */
-        .section-head { text-align: center; padding: 60px 20px 40px; }
+        .section-head { text-align: center;  }
         .section-head .eyebrow { font-family: 'Jost'; font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
         .section-head h2 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 400; color: var(--dark-text); }
         .section-head h2 em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold-dark); }
@@ -103,7 +103,7 @@
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3px;
+            gap: 53px;
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 20px 80px;
@@ -113,7 +113,7 @@
 
         .cat-card {
             position: relative; overflow: hidden; cursor: pointer;
-            aspect-ratio: 3/4; 
+            /* aspect-ratio: 3/4;  */
             opacity: 0; transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
