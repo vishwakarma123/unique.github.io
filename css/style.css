@@ -525,6 +525,30 @@
 
 
 
+.contact-hero {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Video Background */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+}
+
+
+
+
 /* IMAGE BACKGROUND FIX */
 .carousel-item {
     margin-top: 35px;
