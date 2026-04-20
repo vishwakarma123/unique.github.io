@@ -56,21 +56,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── 1. Loader Animation ──
     const loader = document.getElementById("loader");
     if (loader) {
+        // Primary: Hide after window load + delay
         window.addEventListener("load", () => {
-            gsap.to(loader, {
-                opacity: 0,
-                duration: 1,
-                delay: 1.5,
-                onComplete: () => loader.style.display = "none"
-            });
+            setTimeout(() => {
+                loader.style.opacity = "0";
+                loader.style.transition = "opacity 0.8s ease";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                    loader.style.visibility = "hidden";
+                }, 800);
+            }, 1500);
         });
 
-        // fallback preloader animation
+        // Fallback: Force hide after 3 seconds regardless
         setTimeout(() => {
-            loader.style.opacity = "0";
-            loader.style.transition = "0.5s";
-            setTimeout(() => loader.style.display = "none", 500);
-        }, 1500);
+            if (loader && loader.style.display !== "none") {
+                loader.style.opacity = "0";
+                loader.style.transition = "opacity 0.5s ease";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                    loader.style.visibility = "hidden";
+                }, 500);
+            }
+        }, 3000);
     }
 
 
@@ -243,59 +251,300 @@ if (cursor && ring) {
         });
     }
 
-const letters = document.querySelectorAll("#brandText span");
+    window.addEventListener("load", () => {
+        const letters = document.querySelectorAll("#brandText span");
+        let index = 0;
 
-let index = 0;
+        function showLetters() {
+            if (!letters || letters.length === 0) return;
 
-function showLetters() {
-    
-    if (!letters || letters.length === 0) return;
+            if (index < letters.length) {
+                // skip space safely
+                if (letters[index] && letters[index].classList.contains("space")) {
+                    index++;
+                    showLetters();
+                    return;
+                }
 
-    if (index < letters.length) {
+                if (letters[index]) {
+                    letters[index].classList.add("show");
+                }
 
-        // skip space safely
-        if (letters[index] && letters[index].classList.contains("space")) {
-            index++;
+                index++;
+                setTimeout(showLetters, 50);
+            } else {
+                // Animation complete - safe check for brandText
+                const brand = document.getElementById("brandText");
+                if (brand) {
+                    setTimeout(() => {
+                        brand.classList.add("combine");
+                    }, 400);
+                }
+            }
+        }
+
+        // Run letters animation if they exist
+        if (letters.length > 0) {
             showLetters();
-            return;
-        }
-
-        if (letters[index]) {
-            letters[index].classList.add("show");
-        }
-
-        index++;
-        setTimeout(showLetters, 50);
-
-    } else {
-        // ✅ safe check for brandText
-        const brand = document.getElementById("brandText");
-        if (brand) {
-            setTimeout(() => {
-                brand.classList.add("combine");
-            }, 400);
-        }
-    }
-}
-
-window.addEventListener("load", () => {
-    // ✅ only run if letters exist on this page
-    if (typeof letters !== "undefined" && letters.length > 0) {
-        showLetters();
-    }
-});
-
-// Should already exist in main.js — confirm it's there:
-const cards = document.querySelectorAll('.product-card');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
         }
     });
-}, { threshold: 0.1 });
-cards.forEach(card => observer.observe(card));
 
-
+    // Product cards observer
+    const cards = document.querySelectorAll('.product-card');
+    if (cards.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        cards.forEach(card => observer.observe(card));
+    }
 
 });
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PHASE 2 & 3: MODERN ENHANCEMENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ── 1. Dark Mode Toggle ──
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (darkModeToggle) {
+        // Check for saved preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+    }
+
+    // ── 2. Scroll Reveal Animation ──
+    const revealElements = document.querySelectorAll('.reveal');
+    if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
+
+    // ── 3. Lazy Loading Images with Shimmer Effect ──
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    if (lazyImages.length > 0) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+    }
+
+    // ── 4. Lightbox Gallery ──
+    const lightboxTriggers = document.querySelectorAll('[data-lightbox]');
+    if (lightboxTriggers.length > 0) {
+        // Create lightbox HTML
+        const lightboxHTML = `
+            <div id="lightbox" class="lightbox">
+                <button class="lightbox-close"><i class="fas fa-times"></i></button>
+                <img src="" alt="Gallery Image">
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+        lightboxTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const imgSrc = trigger.getAttribute('href') || trigger.getAttribute('data-src');
+                lightboxImg.src = imgSrc;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // ── 5. Newsletter Popup ──
+    const newsletterPopup = document.getElementById('newsletterPopup');
+    if (newsletterPopup) {
+        // Show after 5 seconds
+        setTimeout(() => {
+            if (!localStorage.getItem('newsletterClosed')) {
+                newsletterPopup.classList.add('active');
+            }
+        }, 5000);
+
+        // Close button
+        const closeBtn = newsletterPopup.querySelector('.modal-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                newsletterPopup.classList.remove('active');
+                localStorage.setItem('newsletterClosed', 'true');
+            });
+        }
+
+        // Close on overlay click
+        newsletterPopup.addEventListener('click', (e) => {
+            if (e.target === newsletterPopup) {
+                newsletterPopup.classList.remove('active');
+                localStorage.setItem('newsletterClosed', 'true');
+            }
+        });
+    }
+
+    // ── 6. Sticky Announcement Bar ──
+    const announcementBar = document.getElementById('announcementBar');
+    if (announcementBar) {
+        // Show after scrolling down a bit
+        let showed = false;
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200 && !showed) {
+                announcementBar.classList.add('visible');
+                showed = true;
+            }
+        });
+
+        // Close button
+        const closeBtn = announcementBar.querySelector('.announcement-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                announcementBar.classList.remove('visible');
+            });
+        }
+    }
+
+    // ── 7. Button Ripple Effect ──
+    const rippleButtons = document.querySelectorAll('.btn-ripple');
+    rippleButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const ripple = document.createElement('span');
+            ripple.style.cssText = `
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                animation: rippleEffect 0.6s ease-out;
+                left: ${x}px;
+                top: ${y}px;
+            `;
+
+            this.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    // Add ripple animation keyframes
+    if (!document.getElementById('rippleStyles')) {
+        const style = document.createElement('style');
+        style.id = 'rippleStyles';
+        style.textContent = `
+            @keyframes rippleEffect {
+                to {
+                    width: 200px;
+                    height: 200px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // ── 8. Smooth Scroll for Anchor Links ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // ── 9. 3D Card Tilt Effect ──
+    const cards3D = document.querySelectorAll('.card-3d');
+    cards3D.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+    });
+
+    // ── 10. Page Transition ──
+    document.body.classList.add('page-transition');
+
+});
+
+/* ── END OF MODERN ENHANCEMENTS ── */

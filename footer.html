@@ -1,40 +1,93 @@
-
+<!-- ═══════════════════════════════════════════════════════════════
+   FOOTER - UNIQUE CREATION JEWELLERS
+   ═══════════════════════════════════════════════════════════════ -->
 <footer class="footer-luxury text-white pt-5 position-relative">
+    <!-- Top Glow Effect -->
     <div class="footer-glow"></div>
+
     <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-4 col-md-6">
-                <h3 class="font-serif text-gold mb-3"> nano Jewels</h3>
-                <p class="text-light opacity-75">Redefining luxury through handcrafted excellence since 2026. Every piece tells a story of love and art.</p>
-                <div class="mt-4 d-flex gap-3">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Brand Column -->
+            <div class="col-lg-4 col-md-6 text-center text-md-start">
+                <h3 class="font-serif text-gold mb-3">nano Jewels</h3>
+                <p class="text-white-50 mb-4" style="font-size: 0.95rem; line-height: 1.7;">
+                    Redefining luxury through handcrafted excellence since 2026. Every piece tells a story of love and art.
+                </p>
+                <!-- Social Icons -->
+                <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Pinterest">
+                        <i class="fab fa-pinterest-p"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6">
+
+            <!-- Quick Links Column -->
+            <div class="col-lg-3 col-md-6 text-center text-md-start">
                 <h6 class="footer-title">Quick Links</h6>
                 <ul class="list-unstyled footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="management.html">Management</a></li>
-                    <li><a href="products.html">Collections</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>About Us</a></li>
+                    <li><a href="management.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Management</a></li>
+                    <li><a href="products.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Collections</a></li>
+                    <li><a href="enquiry.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Contact</a></li>
                 </ul>
             </div>
-            
-            <div class="col-lg-4 col-md-6">
-                <h6 class="footer-title">Stay Connected</h6>
-                <p class="text-light opacity-75 mb-3">Subscribe for exclusive offers & latest collections</p>
-                <div class="input-group newsletter-box">
-                    <input type="email" class="form-control" placeholder="Enter your email">
-                    <button class="btn btn-gold">Send</button>
-                </div>
+
+            <!-- Collections Column -->
+            <div class="col-lg-3 col-md-6 text-center text-md-start">
+                <h6 class="footer-title">Collections</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="rings.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Rings</a></li>
+                    <li><a href="necklaces.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Necklaces</a></li>
+                    <li><a href="earrings.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Earrings</a></li>
+                    <li><a href="bracelets.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Bracelets</a></li>
+                    <li><a href="mangalsutra.html"><i class="fas fa-chevron-right me-2 d-none d-md-inline-block" style="font-size: 0.7rem; color: var(--gold);"></i>Mangalsutra</a></li>
+                </ul>
             </div>
+
+            <!-- Newsletter Column -->
+            <div class="col-lg-2 col-md-6 text-center text-md-start">
+                <h6 class="footer-title">Stay Connected</h6>
+                <p class="text-white-50 mb-3" style="font-size: 0.85rem;">
+                    Subscribe for exclusive offers & latest collections
+                </p>
+                <form class="newsletter-box" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Enter email" required 
+                               aria-label="Email for newsletter">
+                        <button class="btn btn-gold" type="submit" aria-label="Subscribe">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
+
+    <!-- Footer Bottom -->
     <div class="footer-bottom text-center py-3">
-        <p class="m-0 small">&copy; 2026 Unique Creation. All Rights Reserved.</p>
+        <div class="container">
+            <p class="m-0 small">
+                &copy; 2026 Unique Creation Jewellers. All Rights Reserved. 
+                <span class="d-none d-md-inline">|</span>
+                <br class="d-md-none">
+                <span style="color: var(--gold);">Crafted with</i> in India</span>
+            </p>
+        </div>
     </div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   END FOOTER
+   ═══════════════════════════════════════════════════════════════ -->

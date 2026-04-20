@@ -1,16 +1,1070 @@
-@media(max-width: 900px){
-  .grid {
-    grid-template-columns: 1fr 1fr;
-  }
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE STYLES - UNIQUE CREATION JEWELLERS
+   Mobile-first approach with comprehensive breakpoints
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────────────────────────────────────────────
+   LARGE DEVICES (1200px and up)
+   ─────────────────────────────────────────────────────────────── */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .col-xl-5ths {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
 }
 
-@media(max-width: 600px){
-  .grid {
-    grid-template-columns: 1fr;
-  }
+/* ───────────────────────────────────────────────────────────────
+   DESKTOP (992px - 1199px)
+   ─────────────────────────────────────────────────────────────── */
+@media (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
 
-  .navbar {
-    flex-direction: column;
-    text-align: center;
-  }
+    /* Hero adjustments */
+    .hero-section {
+        min-height: 60vh;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 3.5rem);
+    }
+
+    /* Category cards */
+    .cat-img-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Product grid */
+    .product-card {
+        margin-bottom: 20px;
+    }
+
+    /* Footer columns */
+    .footer-luxury .col-lg-4,
+    .footer-luxury .col-lg-2 {
+        margin-bottom: 30px;
+    }
 }
+
+/* ───────────────────────────────────────────────────────────────
+   TABLET (768px - 991px)
+   ─────────────────────────────────────────────────────────────── */
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+
+    /* Navbar adjustments */
+    .luxury-nav {
+        padding: 10px 0;
+    }
+
+    .navbar-collapse {
+        background: rgba(3, 35, 62, 0.98);
+        padding: 15px;
+        border-radius: 0 0 12px 12px;
+        margin-top: 10px;
+        border-top: 1px solid var(--divider);
+    }
+
+    .luxury-menu {
+        text-align: center;
+    }
+
+    .luxury-menu .nav-link {
+        padding: 12px 0 !important;
+        border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .luxury-menu .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Dropdown in mobile */
+    .luxury-dropdown-menu {
+        background: rgba(3, 35, 62, 0.95);
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
+
+    /* Hide sidebar on tablet */
+    .sidebar-filters {
+        display: none;
+    }
+
+    /* Hero section */
+    .hero-section {
+        min-height: 50vh;
+        padding-top: 70px;
+    }
+
+    .hero-orbit {
+        width: 350px;
+        height: 350px;
+    }
+
+    .hero-orbit-2 {
+        width: 250px;
+        height: 250px;
+    }
+
+    /* Category grid adjustments */
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Collection items */
+    .collection-item.tall {
+        height: 350px;
+    }
+
+    /* Footer mobile layout */
+    .footer-luxury .row > div {
+        text-align: center;
+    }
+
+    .footer-links {
+        display: inline-block;
+    }
+
+    .social-icon {
+        margin: 0 5px;
+    }
+
+    .newsletter-box {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* Category menu bar */
+    .cat-menu-bar {
+        top: 80px;
+    }
+
+    .luxury-nav.scrolled ~ .cat-menu-bar {
+        top: 70px;
+    }
+
+    /* Testimonial carousel */
+    #testimonialCarousel .carousel-control-prev {
+        left: -10px;
+    }
+
+    #testimonialCarousel .carousel-control-next {
+        right: -10px;
+    }
+
+    /* Featured banner */
+    .featured-content-adv {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .featured-content-adv p {
+        margin: 0 auto;
+    }
+
+    .image-wrapper-adv {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* Flip cards */
+    .flip-card {
+        height: 200px;
+    }
+
+    /* Offer slider */
+    .offer-slide {
+        height: 350px;
+    }
+
+    #offerSlider .carousel-control-prev {
+        left: 10px;
+    }
+
+    #offerSlider .carousel-control-next {
+        right: 10px;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   MOBILE LANDSCAPE & SMALL TABLET (576px - 767px)
+   ─────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 540px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Section spacing */
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .section-padding-sm {
+        padding: 25px 0;
+    }
+
+    /* Navbar mobile */
+    .brand-logo-wrap {
+        width: 80px;
+        height: 60px;
+    }
+
+    .brand-logo {
+        height: 80px;
+    }
+
+    .brand-main {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .brand-sub {
+        font-size: 14px;
+        letter-spacing: 3px;
+    }
+
+    .navbar-toggler {
+        padding: 6px 10px;
+    }
+
+    /* Hero mobile */
+    .hero-section {
+        min-height: 45vh;
+        padding-top: 65px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 4px;
+    }
+
+    .hero-orbit {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-orbit-2 {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* Category cards mobile */
+    .cat-card {
+        padding: 10px;
+    }
+
+    .cat-img-circle {
+        width: 80px;
+        height: 80px;
+        border-width: 2px;
+    }
+
+    .cat-card p {
+        font-size: 0.8rem;
+        margin-top: 8px;
+    }
+
+    /* Product cards */
+    .product-card {
+        margin-bottom: 15px;
+    }
+
+    .product-info {
+        padding: 12px;
+    }
+
+    .product-info h5 {
+        font-size: 0.9rem;
+    }
+
+    .price {
+        font-size: 1rem;
+    }
+
+    .action-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Why cards */
+    .why-card {
+        padding: 1.5rem 1rem;
+        margin-bottom: 15px;
+    }
+
+    .why-card i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .why-card h6 {
+        font-size: 0.9rem;
+    }
+
+    .why-card p {
+        font-size: 0.8rem;
+    }
+
+    /* Flip cards mobile */
+    .flip-card {
+        height: 160px;
+    }
+
+    .flip-front, .flip-back {
+        padding: 15px;
+    }
+
+    /* Collection items */
+    .collection-item {
+        height: 220px;
+        margin-bottom: 15px;
+    }
+
+    .collection-item.tall {
+        height: 220px;
+    }
+
+    .collection-content {
+        padding: 15px;
+    }
+
+    .collection-content h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Offer cards */
+    .offer-slide {
+        height: 280px;
+        border-radius: 12px;
+    }
+
+    .offer-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .offer-content p {
+        font-size: 0.9rem;
+    }
+
+    .offer-badge {
+        font-size: 10px;
+        padding: 4px 12px;
+    }
+
+    .offer-card-luxe {
+        padding: 25px 20px;
+        margin-bottom: 15px;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+        padding: 1.25rem;
+        margin: 0 10px;
+    }
+
+    .testimonial-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Footer mobile */
+    .footer-luxury {
+        text-align: center;
+    }
+
+    .footer-title {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .footer-glow {
+        width: 80%;
+    }
+
+    .newsletter-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .newsletter-box input,
+    .newsletter-box button {
+        width: 100%;
+    }
+
+    .payment-icon {
+        width: 40px;
+    }
+
+    /* Category menu bar mobile */
+    .cat-menu-bar {
+        top: 70px;
+    }
+
+    .cat-menu-list {
+        justify-content: flex-start;
+        padding: 0 10px;
+    }
+
+    .cat-menu-list li a {
+        padding: 10px 12px;
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+    }
+
+    .cat-menu-list li a i {
+        font-size: 0.6rem;
+    }
+
+    /* Marquee */
+    .marquee-band {
+        padding: 10px 0;
+    }
+
+    .marquee-band-item {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+        padding-right: 30px;
+    }
+
+    /* Section headings */
+    .section-head {
+        margin-bottom: 2rem;
+    }
+
+    .section-head h2 {
+        font-size: clamp(1.3rem, 4vw, 1.8rem);
+    }
+
+    .section-head .eyebrow {
+        font-size: 0.65rem;
+    }
+
+    /* Gold divider */
+    .gold-divider {
+        width: 60px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-wrap {
+        padding: 10px 0;
+    }
+
+    .breadcrumb {
+        font-size: 0.75rem;
+    }
+
+    /* Buttons mobile */
+    .btn-gold {
+        padding: 10px 20px;
+        font-size: 0.7rem;
+    }
+
+    .btn-luxury {
+        padding: 12px 25px;
+        font-size: 11px;
+    }
+
+    /* Slider controls mobile */
+    #offerSlider .carousel-control-prev,
+    #offerSlider .carousel-control-next {
+        width: 32px;
+        height: 32px;
+        left: 5px;
+    }
+
+    #offerSlider .carousel-control-next {
+        left: auto;
+        right: 5px;
+    }
+
+    #testimonialCarousel .carousel-control-prev,
+    #testimonialCarousel .carousel-control-next {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Featured banner mobile */
+    .featured-banner-advanced {
+        padding: 50px 0;
+    }
+
+    .featured-content-adv h2 {
+        font-size: 1.5rem;
+    }
+
+    .featured-content-adv p {
+        font-size: 0.9rem;
+    }
+
+    .image-wrapper-adv {
+        max-width: 100%;
+    }
+
+    .main-img {
+        border-radius: 12px;
+    }
+
+    /* Floating shapes mobile */
+    .floating-shape {
+        display: none;
+    }
+
+    /* Preloader mobile */
+    .loader-title {
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+    }
+
+    .loader-title .space {
+        width: 6px;
+    }
+
+    .diamond-loader span {
+        width: 8px;
+        height: 8px;
+    }
+
+    .loading-text {
+        font-size: 0.75rem;
+    }
+
+    .progress-bar-wrap {
+        width: 140px;
+    }
+
+    /* Back to top mobile */
+    #backToTop {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 0.85rem;
+    }
+
+    /* Grid layouts mobile */
+    .row {
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+
+    .row > [class*="col-"] {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    /* Contact section */
+    .map-container iframe {
+        height: 250px;
+    }
+
+    /* Shop hero */
+    .shop-hero {
+        padding: 120px 0 40px;
+    }
+
+    /* Hero grids */
+    .hero-grid {
+        background-size: 30px 30px;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   SMALL MOBILE (up to 575px)
+   ─────────────────────────────────────────────────────────────── */
+@media (max-width: 575px) {
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Brand extra small */
+    .brand-logo-wrap {
+        width: 65px;
+        height: 50px;
+    }
+
+    .brand-logo {
+        height: 65px;
+    }
+
+    .brand-main {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .brand-sub {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    /* Hero extra small */
+    .hero-section {
+        min-height: 40vh;
+    }
+
+    .hero-title {
+        font-size: 1.4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem;
+    }
+
+    /* Category 2 columns tight */
+    .categories-grid {
+        gap: 10px;
+        padding: 0 5px 30px;
+    }
+
+    .cat-card {
+        padding: 8px;
+    }
+
+    .cat-img-circle {
+        width: 70px;
+        height: 70px;
+    }
+
+    .cat-card p {
+        font-size: 0.75rem;
+    }
+
+    /* Product card extra small */
+    .product-card {
+        border-radius: 8px;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-info h5 {
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+    }
+
+    .price {
+        font-size: 0.9rem;
+    }
+
+    .old-price {
+        font-size: 0.75rem;
+    }
+
+    /* Collection 1 column on very small */
+    .collection-item,
+    .collection-item.tall {
+        height: 200px;
+    }
+
+    .collection-content h3 {
+        font-size: 1rem;
+    }
+
+    .collection-content p {
+        font-size: 0.8rem;
+    }
+
+    /* Offer card extra small */
+    .offer-slide {
+        height: 250px;
+        border-radius: 10px;
+    }
+
+    .offer-content {
+        padding: 20px;
+    }
+
+    .offer-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .offer-content p {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+
+    /* Why cards extra small */
+    .why-card {
+        padding: 1rem;
+    }
+
+    .why-card i {
+        font-size: 1.75rem;
+    }
+
+    /* Flip card extra small */
+    .flip-card {
+        height: 140px;
+    }
+
+    .flip-inner h4 {
+        font-size: 1rem;
+    }
+
+    .flip-back p {
+        font-size: 0.8rem;
+    }
+
+    /* Testimonial extra small */
+    .testimonial-card {
+        padding: 1rem;
+        margin: 0 5px;
+    }
+
+    .testimonial-img {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+    }
+
+    .testimonial-card h6 {
+        font-size: 0.9rem;
+    }
+
+    .testimonial-card p {
+        font-size: 0.8rem;
+    }
+
+    /* Marquee extra small */
+    .marquee-band {
+        padding: 8px 0;
+    }
+
+    .marquee-band-item {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+        padding-right: 20px;
+    }
+
+    /* Footer extra small */
+    .footer-luxury {
+        padding-top: 30px !important;
+    }
+
+    .footer-title {
+        font-size: 0.75rem;
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        font-size: 0.85rem;
+    }
+
+    .social-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+
+    /* Section heading extra small */
+    .section-head h2 {
+        font-size: 1.25rem;
+    }
+
+    .section-head .eyebrow {
+        font-size: 0.6rem;
+    }
+
+    /* Gold divider extra small */
+    .gold-divider {
+        width: 50px;
+        height: 2px;
+    }
+
+    /* Buttons extra small */
+    .btn-gold {
+        padding: 8px 16px;
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+    }
+
+    /* Form elements extra small */
+    .form-control-custom,
+    #contact .form-control {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Category menu extra small */
+    .cat-menu-bar {
+        top: 60px;
+    }
+
+    .cat-menu-list li a {
+        padding: 8px 10px;
+        font-size: 0.6rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* Preloader extra small */
+    .loader-title {
+        font-size: 1.2rem;
+    }
+
+    .diamond-loader {
+        gap: 6px;
+    }
+
+    .diamond-loader span {
+        width: 6px;
+        height: 6px;
+    }
+
+    .loading-text {
+        font-size: 0.7rem;
+    }
+
+    .progress-bar-wrap {
+        width: 120px;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   EXTRA SMALL MOBILE (up to 359px)
+   ─────────────────────────────────────────────────────────────── */
+@media (max-width: 359px) {
+    html {
+        font-size: 13px;
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .brand-main {
+        font-size: 12px;
+    }
+
+    .brand-sub {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    .cat-img-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hero-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   LANDSCAPE ORIENTATION SPECIFIC
+   ─────────────────────────────────────────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 80vh;
+    }
+
+    .luxury-nav {
+        padding: 5px 0;
+    }
+
+    .brand-logo-wrap {
+        width: 60px;
+        height: 45px;
+    }
+
+    .brand-logo {
+        height: 55px;
+    }
+
+    .navbar-collapse {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   HIGH DPI / RETINA DISPLAYS
+   ─────────────────────────────────────────────────────────────── */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .cat-img-circle {
+        border-width: 2px;
+    }
+
+    .gold-divider {
+        height: 2px;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   PRINT STYLES
+   ─────────────────────────────────────────────────────────────── */
+@media print {
+    @page {
+        margin: 1cm;
+    }
+
+    .luxury-nav,
+    .cat-menu-bar,
+    .marquee-band,
+    .footer-luxury,
+    #backToTop,
+    #loader,
+    .hero-orbit,
+    .particle,
+    .floating-shape,
+    .product-actions,
+    .hover-actions,
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none !important;
+    }
+
+    .hero-section,
+    .shop-hero,
+    .about-hero,
+    .collection-hero {
+        min-height: auto;
+        padding: 30px 0;
+        background: white !important;
+        color: black !important;
+    }
+
+    .hero-title,
+    .hero-subtitle {
+        color: black !important;
+    }
+
+    .product-card,
+    .cat-card,
+    .why-card,
+    .testimonial-card,
+    .collection-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    a {
+        text-decoration: none;
+        color: black !important;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   DARK MODE SUPPORT (if needed in future)
+   ─────────────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    /* Uncomment when dark mode is implemented */
+    /* body { background: var(--dark); color: var(--white); } */
+}
+
+/* ───────────────────────────────────────────────────────────────
+   REDUCED MOTION ACCESSIBILITY
+   ─────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero-orbit,
+    .particle,
+    .floating-shape,
+    .marquee-band-track,
+    .progress-line,
+    .diamond-loader span {
+        animation: none !important;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   UTILITY CLASSES FOR RESPONSIVE
+   ─────────────────────────────────────────────────────────────── */
+
+/* Hide on mobile */
+.hide-mobile {
+    display: block;
+}
+
+@media (max-width: 767px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Hide on desktop */
+.hide-desktop {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .hide-desktop {
+        display: block !important;
+    }
+}
+
+/* Text center on mobile */
+@media (max-width: 767px) {
+    .text-center-mobile {
+        text-align: center !important;
+    }
+}
+
+/* Full width on mobile */
+@media (max-width: 767px) {
+    .w-100-mobile {
+        width: 100% !important;
+    }
+}
+
+/* Margin auto on mobile */
+@media (max-width: 767px) {
+    .mx-auto-mobile {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+/* No padding on mobile */
+@media (max-width: 767px) {
+    .p-0-mobile {
+        padding: 0 !important;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   END OF RESPONSIVE STYLES
+   ═══════════════════════════════════════════════════════════════ */
